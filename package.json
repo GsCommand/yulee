@@ -1,0 +1,13 @@
+{
+  "name": "yulee-paver-sealing-site",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "mkdir -p public && cp *.html public/ && cp styles.css public/ && cp robots.txt public/",
+    "start": "vercel dev"
+  },
+  "devDependencies": {
+    "vercel": "latest"
+  }
+}
