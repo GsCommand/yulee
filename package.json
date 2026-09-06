@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "vercel dev",
-    "build": "mkdir -p public public/images && cp *.html styles.css robots.txt sitemap.xml llms.txt favicon.ico *.webp hydroseal-full-calculator.js public/ && cp images/* public/images/ && node embed-hydroseal-full-calculator.js && node add-driveway-calculator-image.js && node localize-yulee-images.js && node install-elfsight-ai-chatbot.js",
+    "build": "mkdir -p public public/images && cp *.html styles.css robots.txt sitemap.xml llms.txt favicon.ico *.webp hydroseal-full-calculator.js public/ && cp images/* public/images/ && node embed-hydroseal-full-calculator.js && node add-driveway-calculator-image.js && node add-pool-deck-slider.js && node localize-yulee-images.js && node install-elfsight-ai-chatbot.js",
     "start": "vercel dev"
   },
   "devDependencies": {
