@@ -1,30 +1,32 @@
 # Yulee Paver Sealing by HydroSeal
 
-> Local exterior-surface service site for Yulee and Nassau County, Florida. Primary specialties are paver sealing, paver cleaning and restoration, travertine sealing, pressure washing, house washing, roof cleaning, and related exterior cleaning.
+> Local exterior-surface service site for Yulee and Nassau County, Florida. Primary specialties are paver sealing, paver cleaning and restoration, travertine sealing, pressure washing, house washing and roof washing.
 
 Canonical site: https://www.yuleepaversealing.com/
 Business: HydroSeal
 Phone: 904-537-5000
-Primary service area: Yulee, Florida and Nassau County, including Wildlight, Del Webb Wildlight, Fernandina Beach, and Amelia Island.
+Primary service area: Yulee, Florida and Nassau County, including Wildlight, Del Webb Wildlight, Fernandina Beach and Amelia Island.
 
-## Core service pages
-- [Paver Sealing Yulee FL](https://www.yuleepaversealing.com/): Main Yulee paver sealing page.
-- [Driveway Paver Sealing Yulee FL](https://www.yuleepaversealing.com/yulee-driveway-paver-sealing.html): Driveway paver cleaning, re-sanding, restoration, joint-sand stabilization, and sealing.
-- [Pool Deck Paver Sealing Yulee FL](https://www.yuleepaversealing.com/yulee-pool-deck-paver-sealing.html): Pool deck, patio, and lanai paver cleaning, re-sanding, and sealing.
+## Core paver service pages
+- [Paver Sealing Yulee FL](https://www.yuleepaversealing.com/): Main Yulee paver sealing page with process, pricing and service overview.
+- [Driveway Paver Sealing Yulee FL](https://www.yuleepaversealing.com/yulee-driveway-paver-sealing.html): Driveway paver cleaning, re-sanding, restoration, joint-sand stabilization and sealing.
+- [Pool Deck Paver Sealing Yulee FL](https://www.yuleepaversealing.com/yulee-pool-deck-paver-sealing.html): Pool deck, patio and lanai paver cleaning, re-sanding and sealing.
 - [Travertine Sealing Yulee FL](https://www.yuleepaversealing.com/yulee-travertine-sealing.html): Stone-safe travertine and natural-stone cleaning and breathable sealing.
-- [Pressure Washing Yulee FL](https://www.yuleepaversealing.com/pressure-washing.html): Pressure washing, power washing, soft washing, driveway cleaning, and exterior cleaning.
-- [House Washing Yulee FL](https://www.yuleepaversealing.com/yulee-house-washing.html): Dedicated house and exterior soft-washing service.
+
+## Exterior cleaning pages
+- [Pressure Washing Yulee FL](https://www.yuleepaversealing.com/pressure-washing.html): Pressure washing, power washing, driveway cleaning and durable exterior-surface cleaning.
+- [House Washing Yulee FL](https://www.yuleepaversealing.com/yulee-house-washing.html): Dedicated lower-pressure house and exterior soft-washing service.
 - [Roof Washing Yulee FL](https://www.yuleepaversealing.com/yulee-roof-washing.html): Dedicated roof cleaning and soft-wash roof service.
 
-## Service areas
-- [Service Areas](https://www.yuleepaversealing.com/service-areas.html): Central service-area hub.
-- [Wildlight](https://www.yuleepaversealing.com/wildlight-paver-sealing-pressure-washing.html): Paver sealing, paver cleaning, restoration, pressure washing, and soft washing in Wildlight.
-- [Del Webb Wildlight](https://www.yuleepaversealing.com/del-webb-wildlight-paver-sealing-pressure-washing.html): Paver sealing and exterior cleaning for Del Webb Wildlight.
-- [Fernandina Beach](https://www.yuleepaversealing.com/fernandina-beach-paver-sealing-pressure-washing.html): Paver sealing and pressure washing in Fernandina Beach.
-- [Amelia Island](https://www.yuleepaversealing.com/amelia-island-paver-sealing-pressure-washing.html): Paver sealing and exterior cleaning on Amelia Island.
+## Paver sealing service areas
+- [Service Areas](https://www.yuleepaversealing.com/service-areas.html): Central paver sealing service-area hub for Yulee and Nassau County.
+- [Paver Sealing Wildlight FL](https://www.yuleepaversealing.com/wildlight-paver-sealing.html): Driveway, patio, walkway and lanai paver cleaning, re-sanding, restoration and sealing in Wildlight.
+- [Del Webb Wildlight Paver Sealing](https://www.yuleepaversealing.com/del-webb-wildlight-paver-sealing.html): Driveway, entry and patio paver maintenance, joint-sand replacement and resealing in Del Webb Wildlight.
+- [Paver Sealing Fernandina Beach FL](https://www.yuleepaversealing.com/fernandina-beach-paver-sealing.html): Coastal driveway, patio and pool-area paver cleaning, restoration and sealing in Fernandina Beach.
+- [Paver Sealing Amelia Island FL](https://www.yuleepaversealing.com/amelia-island-paver-sealing.html): Driveway, pool-deck, patio, travertine and outdoor-stone sealing on Amelia Island.
 
 ## Service approach
-HydroSeal evaluates surface material, existing sealer or coating, joint condition, moisture, staining, drainage, and surrounding property before selecting cleaning or sealing methods. Paver work may include cleaning, targeted stain treatment, re-sanding, small repairs or releveling, and compatible breathable sealer. Travertine is treated as natural stone and uses stone-safe cleaning and breathable protection. House and roof cleaning use lower-pressure soft-wash methods where appropriate.
+HydroSeal evaluates surface material, existing sealer or coating, joint condition, moisture, staining, drainage and surrounding property before selecting cleaning or sealing methods. Paver work may include deep cleaning, targeted stain treatment, re-sanding, small repairs or releveling and compatible breathable sealer. Travertine is treated as natural stone and uses stone-safe cleaning and breathable protection. House and roof cleaning use lower-pressure methods where appropriate.
 
 ## Crawling
 XML sitemap: https://www.yuleepaversealing.com/sitemap.xml
