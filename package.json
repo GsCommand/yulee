@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "vercel dev",
-    "build": "mkdir -p public && cp *.html styles.css robots.txt sitemap.xml llms.txt favicon.ico *.webp *.js public/ && sed -i 's#https://cdn.jsdelivr.net/gh/GsCommand/nocatee@629be5e76618f4a94ccc3e92f4a82bceb7b2ca90/paver-calculator.js#/paver-calculator.js?v=2#g' public/*.html && sed -i 's#https://nocateepaversealing.com/paver-calculator.js#/paver-calculator.js?v=2#g' public/*.html && node inject-calculators-v2.js",
+    "build": "mkdir -p public && cp *.html styles.css robots.txt sitemap.xml llms.txt favicon.ico *.webp public/",
     "start": "vercel dev"
   },
   "devDependencies": {
