@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "vercel dev",
-    "build": "mkdir -p public && cp *.html styles.css robots.txt sitemap.xml llms.txt favicon.ico *.webp public/",
+    "build": "mkdir -p public && cp *.html styles.css robots.txt sitemap.xml llms.txt favicon.ico *.webp public/ && sed -i 's#https://cdn.jsdelivr.net/gh/GsCommand/nocatee@629be5e76618f4a94ccc3e92f4a82bceb7b2ca90/paver-calculator.js#https://nocateepaversealing.com/paver-calculator.js#g' public/*.html && sed -i 's#<link rel=\"stylesheet\" href=\"/styles.css?v=7\" />#<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/gh/GsCommand/nocatee@cbae266f6915d925e2e89ca4a2fd55afbc072350/styles.css\" /><link rel=\"stylesheet\" href=\"/styles.css?v=7\" />#' public/fernandina-beach-paver-sealing.html public/amelia-island-paver-sealing.html",
     "start": "vercel dev"
   },
   "devDependencies": {
