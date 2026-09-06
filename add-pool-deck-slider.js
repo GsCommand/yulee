@@ -48,8 +48,9 @@ if (!html.includes(platformSrc)) {
   html = html.replace('</body>', `<script src="${platformSrc}" async></script>\n</body>`);
 }
 
-if ((html.match(new RegExp(sliderClass, 'g')) || []).length !== 1) {
-  throw new Error('Expected exactly one pool deck before-and-after slider');
+const exactWidgetMarkup = `class="${sliderClass}" data-elfsight-app-lazy`;
+if ((html.split(exactWidgetMarkup).length - 1) !== 1) {
+  throw new Error('Expected exactly one pool deck before-and-after slider widget');
 }
 if (html.includes('Concrete or brick paver pool deck')) {
   throw new Error('Pool deck published pricing table still present after cleanup');
