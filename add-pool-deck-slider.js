@@ -37,16 +37,16 @@ const styles = `<style id="hydroseal-pool-slider-layout">
 .hydroseal-pool-slider-card .${sliderClass}{width:100%}
 .hydroseal-pool-calculator-card{min-width:0;width:100%;max-width:520px;justify-self:end}
 .hydroseal-pool-calculator-card .hydroseal-full-calculator{width:100%}
-.hydroseal-pool-calculator-card .calc-brand{padding:15px 20px 9px}
+.hydroseal-pool-calculator-card .calc-brand{padding:17px 20px 11px}
 .hydroseal-pool-calculator-card .calc-brand h3{margin-top:2px;margin-bottom:4px}
 .hydroseal-pool-calculator-card .calc-brand p{font-size:.9rem}
-.hydroseal-pool-calculator-card .calc-progress{padding:0 20px 10px}
-.hydroseal-pool-calculator-card .calc-step{padding:15px 20px 16px}
+.hydroseal-pool-calculator-card .calc-progress{padding:0 20px 12px}
+.hydroseal-pool-calculator-card .calc-step{padding:19px 20px 20px}
 .hydroseal-pool-calculator-card .calc-step h4{margin-bottom:4px}
 .hydroseal-pool-calculator-card .calc-step>p{margin-bottom:13px}
 .hydroseal-pool-calculator-card .calc-grid{gap:9px}
 .hydroseal-pool-calculator-card .calc-choice,.hydroseal-pool-calculator-card .calc-addon{padding:12px}
-.hydroseal-pool-calculator-card .calc-actions{margin-top:11px}
+.hydroseal-pool-calculator-card .calc-actions{margin-top:13px}
 @media(max-width:900px){.hydroseal-pool-price-calc-grid{grid-template-columns:1fr}.hydroseal-pool-slider-card,.hydroseal-pool-calculator-card{grid-column:1;grid-row:auto}.hydroseal-pool-slider-card{width:100%;max-width:680px;justify-self:center}.hydroseal-pool-calculator-card{width:100%;max-width:560px;justify-self:center}}
 </style>`;
 
@@ -73,4 +73,4 @@ if (html.includes('Published starting rates')) {
 }
 
 fs.writeFileSync(file, html);
-console.log('Tightened pool deck calculator top and bottom spacing beside Elfsight slider');
+console.log('Balanced pool deck calculator height with Elfsight before-and-after slider');
