@@ -3,51 +3,23 @@ const fs = require('fs');
 const file = 'public/yulee-pool-deck-paver-sealing.html';
 let html = fs.readFileSync(file, 'utf8');
 
-const gridMarker = '<div class="hydroseal-price-calc-grid">';
-const priceCardMarker = '<div class="hydroseal-price-card hydroseal-price-table">';
-const calcMarker = '<div class="hydroseal-price-card"><div class="hydroseal-full-calculator"';
+const heading = '<h2>Pool deck paver sealing cost in Yulee</h2>';
 const sliderClass = 'elfsight-app-1ac40f22-7acd-45c3-839e-6716f56e8387';
 const platformSrc = 'https://elfsightcdn.com/platform.js';
 
-if (!html.includes(gridMarker)) throw new Error('Pool deck pricing/calculator grid not found');
-if (!html.includes(priceCardMarker)) throw new Error('Pool deck pricing card not found');
-if (!html.includes(calcMarker)) throw new Error('Pool deck calculator card not found');
+const headingPos = html.indexOf(heading);
+if (headingPos < 0) throw new Error('Pool deck pricing H2 not found');
 
-html = html.replace(gridMarker, '<div class="hydroseal-price-calc-grid hydroseal-pool-price-calc-grid">');
-html = html.replace(
-  calcMarker,
-  `<div class="hydroseal-pool-slider-card"><div class="${sliderClass}" data-elfsight-app-lazy></div></div><div class="hydroseal-price-card hydroseal-pool-calculator-card"><div class="hydroseal-full-calculator"`
-);
+const sectionStart = html.lastIndexOf('<section', headingPos);
+const sectionEndTag = html.indexOf('</section>', headingPos);
+if (sectionStart < 0 || sectionEndTag < 0) throw new Error('Pool deck pricing section bounds not found');
+const sectionEnd = sectionEndTag + '</section>'.length;
 
-const priceStart = html.indexOf(priceCardMarker);
-const sliderStart = html.indexOf('<div class="hydroseal-pool-slider-card">', priceStart);
-if (priceStart < 0 || sliderStart < 0 || sliderStart <= priceStart) {
-  throw new Error('Unable to remove pool deck published pricing text');
-}
-html = html.slice(0, priceStart) + html.slice(sliderStart);
-
-const publishedRatesLabel = '<p class="eyebrow">Published starting rates</p>';
-if (html.includes(publishedRatesLabel)) {
-  html = html.replace(publishedRatesLabel, '');
-}
+const replacement = `<section class="article-block hydroseal-pool-slider-section"><h2>Pool deck paver sealing cost in Yulee</h2><div class="hydroseal-pool-slider-card"><div class="${sliderClass}" data-elfsight-app-lazy></div></div></section>`;
+html = html.slice(0, sectionStart) + replacement + html.slice(sectionEnd);
 
 const styles = `<style id="hydroseal-pool-slider-layout">
-.hydroseal-pool-price-calc-grid{grid-template-columns:minmax(0,1.18fr) minmax(360px,.92fr);gap:28px;align-items:start}
-.hydroseal-pool-slider-card{min-width:0;width:100%;overflow:hidden;border:1px solid #dce7ed;border-radius:24px;background:#fff;box-shadow:0 18px 50px rgba(20,50,75,.10);padding:10px}
-.hydroseal-pool-slider-card .${sliderClass}{width:100%}
-.hydroseal-pool-calculator-card{min-width:0;width:100%;max-width:520px;justify-self:end}
-.hydroseal-pool-calculator-card .hydroseal-full-calculator{width:100%}
-.hydroseal-pool-calculator-card .calc-brand{padding:17px 20px 11px}
-.hydroseal-pool-calculator-card .calc-brand h3{margin-top:2px;margin-bottom:4px}
-.hydroseal-pool-calculator-card .calc-brand p{font-size:.9rem}
-.hydroseal-pool-calculator-card .calc-progress{padding:0 20px 12px}
-.hydroseal-pool-calculator-card .calc-step{padding:19px 20px 20px}
-.hydroseal-pool-calculator-card .calc-step h4{margin-bottom:4px}
-.hydroseal-pool-calculator-card .calc-step>p{margin-bottom:13px}
-.hydroseal-pool-calculator-card .calc-grid{gap:9px}
-.hydroseal-pool-calculator-card .calc-choice,.hydroseal-pool-calculator-card .calc-addon{padding:12px}
-.hydroseal-pool-calculator-card .calc-actions{margin-top:13px}
-@media(max-width:900px){.hydroseal-pool-price-calc-grid{grid-template-columns:1fr}.hydroseal-pool-slider-card,.hydroseal-pool-calculator-card{grid-column:1;grid-row:auto}.hydroseal-pool-slider-card{width:100%;max-width:680px;justify-self:center}.hydroseal-pool-calculator-card{width:100%;max-width:560px;justify-self:center}}
+.hydroseal-pool-slider-section{display:grid;gap:18px}.hydroseal-pool-slider-card{min-width:0;width:min(100%,820px);justify-self:center;overflow:hidden;border:1px solid #dce7ed;border-radius:24px;background:#fff;box-shadow:0 18px 50px rgba(20,50,75,.10);padding:10px}.hydroseal-pool-slider-card .${sliderClass}{width:100%}
 </style>`;
 
 if (!html.includes('id="hydroseal-pool-slider-layout"')) {
@@ -62,15 +34,9 @@ const exactWidgetMarkup = `class="${sliderClass}" data-elfsight-app-lazy`;
 if ((html.split(exactWidgetMarkup).length - 1) !== 1) {
   throw new Error('Expected exactly one pool deck before-and-after slider widget');
 }
-if (html.includes('Concrete or brick paver pool deck')) {
-  throw new Error('Pool deck published pricing table still present after cleanup');
-}
-if (html.includes('Final pricing depends on deck size')) {
-  throw new Error('Pool deck pricing note still present after cleanup');
-}
-if (html.includes('Published starting rates')) {
-  throw new Error('Pool deck Published starting rates label still present');
-}
+if (html.includes('Published starting rates')) throw new Error('Pool deck published rates label still present');
+if (html.includes('Concrete or brick paver pool deck')) throw new Error('Pool deck pricing table still present');
+if (html.includes('Final pricing depends on deck size')) throw new Error('Pool deck pricing note still present');
 
 fs.writeFileSync(file, html);
-console.log('Balanced pool deck calculator height with Elfsight before-and-after slider');
+console.log('Kept Elfsight pool deck before-and-after slider with calculator removed');
