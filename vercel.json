@@ -1,0 +1,24 @@
+{
+  "redirects": [
+    {
+      "source": "/wildlight-paver-sealing-pressure-washing.html",
+      "destination": "/wildlight-paver-sealing.html",
+      "permanent": true
+    },
+    {
+      "source": "/del-webb-wildlight-paver-sealing-pressure-washing.html",
+      "destination": "/del-webb-wildlight-paver-sealing.html",
+      "permanent": true
+    },
+    {
+      "source": "/fernandina-beach-paver-sealing-pressure-washing.html",
+      "destination": "/fernandina-beach-paver-sealing.html",
+      "permanent": true
+    },
+    {
+      "source": "/amelia-island-paver-sealing-pressure-washing.html",
+      "destination": "/amelia-island-paver-sealing.html",
+      "permanent": true
+    }
+  ]
+}
