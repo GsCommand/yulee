@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "vercel dev",
-    "build": "mkdir -p public && cp *.html styles.css robots.txt sitemap.xml llms.txt favicon.ico *.webp public/",
+    "build": "mkdir -p public && cp *.html styles.css robots.txt sitemap.xml llms.txt favicon.ico *.webp public/ && node embed-hydroseal-cost-widget.js",
     "start": "vercel dev"
   },
   "devDependencies": {
