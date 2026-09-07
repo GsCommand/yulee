@@ -47,10 +47,10 @@ body.yulee-home .y-home-proof-blue{padding:18px 20px;border-radius:22px;backgrou
 /* HydroSeal-style overlapping service standards */
 body.yulee-home .y-home-feature-wrap{position:relative;z-index:8;margin-top:-24px}
 body.yulee-home .y-home-feature-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:17px;background:#f0f5f7;border-radius:30px;box-shadow:0 15px 45px rgba(11,45,74,.08)}
-body.yulee-home .y-home-feature,body.yulee-home a.y-home-feature{display:block;height:100%;padding:20px;background:#fff;border:1px solid var(--y-line);border-radius:20px;transition:background .2s ease,border-color .2s ease,transform .2s ease,box-shadow .2s ease;color:inherit}
+body.yulee-home .y-home-feature,body.yulee-home a.y-home-feature{display:block;height:100%;padding:24px 20px;background:#fff;border:1px solid var(--y-line);border-radius:20px;transition:background .2s ease,border-color .2s ease,transform .2s ease,box-shadow .2s ease;color:inherit}
 body.yulee-home .y-home-feature:hover,body.yulee-home .y-home-feature:focus-visible{background:rgba(57,191,234,.20);border-color:rgba(57,191,234,.68);transform:translateY(-2px);box-shadow:0 12px 28px rgba(15,110,168,.13);outline:none}
-body.yulee-home .y-home-feature h3{margin:0 0 5px;font-family:"Arial Black",Arial,sans-serif;font-size:20px;line-height:1.08;color:var(--y-navy)}
-body.yulee-home .y-home-feature p{margin:0;color:#536475;font-size:13px;line-height:1.45}
+body.yulee-home .y-home-feature h3{margin:0 0 6px;font-family:"Arial Black",Arial,sans-serif;font-size:23px;line-height:1.02;color:var(--y-navy)}
+body.yulee-home .y-home-feature p{margin:0;color:#536475;font-size:14px;line-height:1.45}
 
 /* Bring the existing Yulee content into the same visual family without rewriting it */
 body.yulee-home .section{width:min(1180px,calc(100% - 40px));margin-inline:auto;padding:88px 0}
