@@ -1,0 +1,66 @@
+name: Sync exact HydroSeal feature pills
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/sync-hydroseal-feature-pills-exact.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  sync-pills:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Copy exact HydroSeal pill dimensions into Yulee
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+
+          p = Path('apply-home-facelift.js')
+          text = p.read_text()
+
+          old = '''body.yulee-home .y-home-feature-wrap{margin-top:-22px}\nbody.yulee-home .y-home-feature-strip{gap:12px;padding:14px 16px;border-radius:24px;background:rgba(247,250,252,.98)}\nbody.yulee-home .y-home-feature,body.yulee-home a.y-home-feature{padding:17px 18px;border-radius:15px}\nbody.yulee-home .y-home-feature h3{font-size:16px}\nbody.yulee-home .y-home-feature p{font-size:11px}'''
+
+          new = '''body.yulee-home .y-home-feature-wrap{position:relative;z-index:4;width:min(1180px,calc(100% - 40px))!important;margin-top:-23px}\nbody.yulee-home .y-home-feature-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:17px;background:#f0f5f7;border-radius:30px}\nbody.yulee-home .y-home-feature,body.yulee-home a.y-home-feature{display:block;height:100%;padding:20px;background:#fff;border:1px solid #dce5ea;border-radius:20px}\nbody.yulee-home .y-home-feature h3{font-family:\"Arial Black\",Arial,sans-serif!important;font-size:23px!important;line-height:1.08!important;letter-spacing:-.7px!important;color:#0b2d4a;margin:0 0 5px}\nbody.yulee-home .y-home-feature p{font-size:13px;line-height:1.55;color:#536475;margin:0}'''
+
+          if old not in text:
+              raise SystemExit('Current Yulee feature-pill override block was not found exactly; refusing to guess.')
+
+          text = text.replace(old, new, 1)
+          p.write_text(text)
+          print('Exact HydroSeal pill dimensions copied into Yulee visual overrides.')
+          PY
+
+      - name: Verify exact HydroSeal pill values
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -F 'width:min(1180px,calc(100% - 40px))!important;margin-top:-23px' apply-home-facelift.js >/dev/null
+          grep -F 'gap:8px;padding:17px;background:#f0f5f7;border-radius:30px' apply-home-facelift.js >/dev/null
+          grep -F 'height:100%;padding:20px;background:#fff;border:1px solid #dce5ea;border-radius:20px' apply-home-facelift.js >/dev/null
+          grep -F 'font-size:23px!important' apply-home-facelift.js >/dev/null
+          grep -F 'font-size:13px;line-height:1.55' apply-home-facelift.js >/dev/null
+          grep -F '<h1>Paver Sealing Yulee FL</h1>' apply-home-facelift.js >/dev/null
+
+      - name: Commit exact pill sync
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add apply-home-facelift.js
+          if git diff --cached --quiet; then
+            echo 'No pill changes to commit.'
+            exit 0
+          fi
+          git commit -m 'Match Yulee feature pills exactly to HydroSeal'
+          git push
