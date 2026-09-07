@@ -14,7 +14,7 @@ const LOCAL = {
 // receive a clean branded hero treatment instead of substituting an unrelated image.
 const pageImage = {
   'index.html': LOCAL.wildlight,
-  'yulee-driveway-paver-sealing.html': LOCAL.driveway,
+  'yulee-driveway-paver-sealing.html': LOCAL.wildlight,
   'wildlight-paver-sealing.html': LOCAL.wildlight,
   'del-webb-wildlight-paver-sealing.html': LOCAL.wildlight,
   'fernandina-beach-paver-sealing.html': LOCAL.driveway,
