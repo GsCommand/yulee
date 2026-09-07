@@ -103,10 +103,11 @@ for (const filename of targets) {
   const existingProof = heroCard ? `<article class="ys-proof">${heroCard[1]}</article>` : googleProofMarkup();
   const proofBlue = trustItems.length ? `<div class="ys-proof-blue">${trustItems.join(' · ')}</div>` : '';
   const pills = pressurePages.has(filename) ? pressurePills(trustItems) : paverPills();
+  const wildlightTopics = filename === 'wildlight-paver-sealing.html' ? `<div class="ys-wildlight-topics" aria-label="Wildlight paver conditions"><span>Wildlight driveways</span><span>Screened lanais</span><span>Pool decks</span><span>Irrigation staining</span><span>Joint-sand washout</span><span>Coastal exposure</span></div>` : '';
   const imageMarkup = imageSrc ? `<img class="ys-hero-bg" src="${imageSrc}" alt="${imageAlt}" fetchpriority="high" />` : '';
   const heroClass = imageSrc ? 'ys-hero' : 'ys-hero ys-hero--no-image';
 
-  const newHero = `<section class="${heroClass}">${imageMarkup}<div class="ys-hero-grid ys-shell"><div class="ys-glass">${eyebrow}${h1Exact}${heroText}${actions}</div><div class="ys-proof-stack">${existingProof}${proofBlue}</div></div></section>${pills}${breadcrumb ? breadcrumb[0] : ''}`;
+  const newHero = `<section class="${heroClass}">${imageMarkup}<div class="ys-hero-grid ys-shell"><div class="ys-glass">${eyebrow}${h1Exact}${heroText}${actions}</div><div class="ys-proof-stack">${existingProof}${proofBlue}</div></div></section>${pills}${wildlightTopics}${breadcrumb ? breadcrumb[0] : ''}`;
 
   if (!html.includes('/shared-top-layout.css')) {
     const cssAnchor = '<link rel="stylesheet" href="/styles.css?v=7" />';

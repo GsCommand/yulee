@@ -60,6 +60,10 @@ body.y-shared-top .ys-feature p{margin:0;color:#536475;font-size:13px;line-heigh
 body.y-shared-top .ys-feature--compact{display:flex;align-items:center;min-height:88px}
 body.y-shared-top .ys-feature--compact h3{margin:0}
 
+/* Wildlight six-topic strip: one line across the page. */
+body.y-shared-top .ys-wildlight-topics{width:min(1180px,calc(100% - 40px));margin:12px auto 0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+body.y-shared-top .ys-wildlight-topics span{display:flex;align-items:center;justify-content:center;min-height:52px;padding:10px 12px;border:1px solid var(--ys-line);border-radius:999px;background:#fff;color:var(--ys-navy);font-weight:850;font-size:13px;line-height:1.2;text-align:center;white-space:nowrap;box-shadow:0 8px 22px rgba(11,45,74,.06)}
+
 /* Keep breadcrumb content, but place it below the shared hero/pills instead of above the hero. */
 body.y-shared-top .breadcrumb{width:min(1180px,calc(100% - 40px));margin:18px auto 0;padding:0;background:transparent}
 
@@ -85,6 +89,8 @@ body.y-shared-top .breadcrumb{width:min(1180px,calc(100% - 40px));margin:18px au
   body.y-shared-top .ys-hero-grid{grid-template-columns:1fr;padding-top:126px;padding-bottom:64px}
   body.y-shared-top .ys-proof-stack{justify-self:start;max-width:100%;display:grid;grid-template-columns:1fr 1fr}
   body.y-shared-top .ys-feature-strip{grid-template-columns:repeat(2,1fr)}
+  body.y-shared-top .ys-wildlight-topics{width:calc(100% - 24px);display:flex;gap:8px;overflow-x:auto;scrollbar-width:thin;padding-bottom:4px}
+  body.y-shared-top .ys-wildlight-topics span{flex:0 0 auto;min-width:160px}
 }
 @media(max-width:640px){
   body.y-shared-top .ys-logo img{width:160px}
