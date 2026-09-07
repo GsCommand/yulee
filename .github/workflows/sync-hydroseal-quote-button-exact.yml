@@ -1,0 +1,77 @@
+name: Sync exact HydroSeal quote button
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/sync-hydroseal-quote-button-exact.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  sync-quote-button:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Copy exact HydroSeal quote button styling into Yulee
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+
+          p = Path('apply-home-facelift.js')
+          text = p.read_text()
+
+          old_nav = 'body.yulee-home .y-home-quote{font-size:12px;padding:17px 24px;letter-spacing:1px;background:#2fc3ee}'
+          new_nav = 'body.yulee-home .y-home-quote{display:inline-flex;align-items:center;justify-content:center;padding:17px 24px;border-radius:30px;text-transform:uppercase;font-weight:950;letter-spacing:1px;background:#39bfea;color:#fff;box-shadow:0 12px 28px rgba(57,191,234,.32);font-size:inherit;line-height:1.55}'
+
+          old_hero = 'body.yulee-home .y-home-btn{padding:14px 20px;font-size:11px}'
+          new_hero = 'body.yulee-home .y-home-btn{display:inline-flex;align-items:center;justify-content:center;padding:17px 24px;border-radius:30px;text-transform:uppercase;font-weight:950;letter-spacing:1px;font-size:inherit;line-height:1.55}'
+
+          old_blue = 'body.yulee-home .y-home-btn--blue{background:var(--y-water);color:#fff;box-shadow:0 12px 28px rgba(57,191,234,.32)}'
+          new_blue = 'body.yulee-home .y-home-btn--blue{background:#39bfea;color:#fff;box-shadow:0 12px 28px rgba(57,191,234,.32)}'
+
+          for old, new, label in [
+              (old_nav, new_nav, 'header Get a Quote button override'),
+              (old_hero, new_hero, 'hero primary button override'),
+          ]:
+              if old not in text:
+                  raise SystemExit(f'Missing expected {label}; refusing to guess.')
+              text = text.replace(old, new, 1)
+
+          # The base stylesheet may already use var(--y-water) for the hero button.
+          # Only replace if the exact current override is present in this build script.
+          if old_blue in text:
+              text = text.replace(old_blue, new_blue, 1)
+
+          p.write_text(text)
+          print('Exact HydroSeal quote-button dimensions and visual styling copied to Yulee.')
+          PY
+
+      - name: Verify exact HydroSeal values and SEO protection
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -F 'padding:17px 24px;border-radius:30px;text-transform:uppercase;font-weight:950;letter-spacing:1px;background:#39bfea;color:#fff;box-shadow:0 12px 28px rgba(57,191,234,.32);font-size:inherit' apply-home-facelift.js >/dev/null
+          grep -F '<h1>Paver Sealing Yulee FL</h1>' apply-home-facelift.js >/dev/null
+          grep -F 'href="#calculator">Get a Quote</a>' apply-home-facelift.js >/dev/null
+
+      - name: Commit exact quote button sync
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add apply-home-facelift.js
+          if git diff --cached --quiet; then
+            echo 'No quote-button changes to commit.'
+            exit 0
+          fi
+          git commit -m 'Match Yulee Get a Quote button exactly to HydroSeal'
+          git push
