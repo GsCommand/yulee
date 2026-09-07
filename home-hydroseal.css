@@ -1,0 +1,115 @@
+/* Homepage-only HydroSeal-inspired visual layer for yuleepaversealing.com */
+body.yulee-home{--y-navy:#0b2d4a;--y-blue:#0f6ea8;--y-water:#39bfea;--y-line:#dce5ea;--y-shadow:0 22px 60px rgba(11,45,74,.16);background:#fff;color:#0b1220}
+body.yulee-home main{overflow:hidden}
+body.yulee-home .y-shell{width:min(1180px,calc(100% - 40px));margin-inline:auto}
+
+/* floating header */
+body.yulee-home .y-home-header{position:absolute;top:16px;left:0;right:0;z-index:50;padding:0}
+body.yulee-home .y-home-nav{height:78px;display:flex;align-items:center;gap:18px;padding:0 18px;background:rgba(255,255,255,.66);border:1px solid rgba(255,255,255,.55);border-radius:24px;color:var(--y-navy);box-shadow:0 14px 45px rgba(0,0,0,.15);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+body.yulee-home .y-home-logo{margin-right:auto;display:flex;align-items:center}
+body.yulee-home .y-home-logo img{width:220px;max-height:58px;object-fit:contain}
+body.yulee-home .y-home-menu{display:flex;align-items:center;gap:3px}
+body.yulee-home .y-home-group{position:relative}
+body.yulee-home .y-home-parent,body.yulee-home .y-home-link{border:0;background:transparent;color:var(--y-navy);padding:12px 9px;text-transform:uppercase;font-weight:900;font-size:11px;letter-spacing:1.25px;cursor:pointer;white-space:nowrap}
+body.yulee-home .y-home-parent:after{content:'⌄';margin-left:6px}
+body.yulee-home .y-home-mega{display:none;position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);width:300px;padding:14px;background:#fff;color:#0b1220;border-radius:20px;box-shadow:var(--y-shadow);grid-template-columns:1fr;gap:5px}
+body.yulee-home .y-home-mega:before{content:'';position:absolute;left:0;right:0;top:-14px;height:14px}
+body.yulee-home .y-home-group:hover .y-home-mega,body.yulee-home .y-home-group:focus-within .y-home-mega,body.yulee-home .y-home-group.is-open .y-home-mega{display:grid}
+body.yulee-home .y-home-mega a{padding:12px 13px;border-radius:12px;font-weight:800;color:#0b1220}
+body.yulee-home .y-home-mega a:hover,body.yulee-home .y-home-mega a:focus-visible{background:#eaf7fc;color:var(--y-blue)}
+body.yulee-home .y-home-mega a small{display:block;margin-top:2px;color:#607083;font-weight:500}
+body.yulee-home .y-home-call{border:1px solid rgba(11,45,74,.18);padding:12px 14px;border-radius:30px;text-transform:uppercase;font-weight:900;font-size:11px;white-space:nowrap;background:rgba(255,255,255,.4);color:var(--y-navy)}
+body.yulee-home .y-home-quote{display:inline-flex;align-items:center;justify-content:center;padding:14px 18px;border-radius:30px;text-transform:uppercase;font-weight:950;letter-spacing:.8px;font-size:11px;background:var(--y-water);color:#fff;box-shadow:0 12px 28px rgba(57,191,234,.32);white-space:nowrap}
+body.yulee-home .y-home-toggle{display:none;width:44px;height:44px;border:0;border-radius:12px;background:#fff;color:var(--y-navy);font-size:24px}
+
+/* large photo hero */
+body.yulee-home .hero.y-home-hero{position:relative;min-height:825px;padding:0;background:var(--y-navy);color:#fff;overflow:hidden}
+body.yulee-home .y-home-hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+body.yulee-home .y-home-hero:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,32,51,.28),rgba(5,32,51,.05));pointer-events:none}
+body.yulee-home .y-home-hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.5fr .72fr;gap:38px;align-items:center;padding-top:176px;padding-bottom:80px}
+body.yulee-home .y-home-glass{background:rgba(5,32,51,.22);border:1px solid rgba(255,255,255,.13);border-radius:42px;padding:42px;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 24px 80px rgba(0,0,0,.12)}
+body.yulee-home .y-home-hero h1{margin:0 0 16px;font-family:"Arial Black",Arial,sans-serif;font-size:clamp(42px,5.25vw,68px);line-height:1;letter-spacing:-1.7px;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.45)}
+body.yulee-home .y-home-display{font-family:"Arial Black",Arial,sans-serif;font-size:clamp(38px,4.7vw,60px);line-height:1.01;letter-spacing:-1.5px;margin:18px 0 14px;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.5)}
+body.yulee-home .y-home-subhead{margin:0 0 14px;font-size:21px;line-height:1.2;font-weight:900;text-transform:uppercase;color:#aee9fb}
+body.yulee-home .y-home-hero .hero-text{max-width:700px;margin:0;font-size:18px;line-height:1.6;color:#eef8fb;text-shadow:0 2px 12px rgba(0,0,0,.65)}
+body.yulee-home .y-home-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+body.yulee-home .y-home-btn{display:inline-flex;align-items:center;justify-content:center;padding:16px 23px;border-radius:30px;text-transform:uppercase;font-weight:950;letter-spacing:.85px;font-size:12px}
+body.yulee-home .y-home-btn--blue{background:var(--y-water);color:#fff;box-shadow:0 12px 28px rgba(57,191,234,.32)}
+body.yulee-home .y-home-btn--white{background:#fff;color:var(--y-navy)}
+body.yulee-home .y-home-proof-stack{display:flex;flex-direction:column;gap:15px;margin-top:20px}
+body.yulee-home .y-home-proof{padding:28px;border-radius:30px;background:rgba(255,255,255,.96);color:#0b1220;box-shadow:0 22px 55px rgba(0,0,0,.14)}
+body.yulee-home .y-home-proof-kicker{display:inline-flex;padding:7px 10px;border-radius:999px;background:#eaf7fc;color:var(--y-blue);font-weight:900;font-size:11px;text-transform:uppercase;letter-spacing:1.1px}
+body.yulee-home .y-home-proof h2{margin:14px 0 8px;font-family:"Arial Black",Arial,sans-serif;font-size:31px;line-height:1.02;color:var(--y-navy);letter-spacing:-.6px}
+body.yulee-home .y-home-proof p{margin:0;color:#536475;font-weight:700;font-size:15px}
+body.yulee-home .y-home-proof-blue{padding:18px 20px;border-radius:22px;background:rgba(15,110,168,.95);color:#fff;font-weight:950;text-align:center;text-transform:uppercase;font-size:13px;letter-spacing:.7px;box-shadow:0 16px 34px rgba(15,110,168,.25)}
+
+/* HydroSeal-style overlapping service standards */
+body.yulee-home .y-home-feature-wrap{position:relative;z-index:8;margin-top:-24px}
+body.yulee-home .y-home-feature-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:17px;background:#f0f5f7;border-radius:30px;box-shadow:0 15px 45px rgba(11,45,74,.08)}
+body.yulee-home .y-home-feature,body.yulee-home a.y-home-feature{display:block;height:100%;padding:20px;background:#fff;border:1px solid var(--y-line);border-radius:20px;transition:background .2s ease,border-color .2s ease,transform .2s ease,box-shadow .2s ease;color:inherit}
+body.yulee-home .y-home-feature:hover,body.yulee-home .y-home-feature:focus-visible{background:rgba(57,191,234,.20);border-color:rgba(57,191,234,.68);transform:translateY(-2px);box-shadow:0 12px 28px rgba(15,110,168,.13);outline:none}
+body.yulee-home .y-home-feature h3{margin:0 0 5px;font-family:"Arial Black",Arial,sans-serif;font-size:20px;line-height:1.08;color:var(--y-navy)}
+body.yulee-home .y-home-feature p{margin:0;color:#536475;font-size:13px;line-height:1.45}
+
+/* Bring the existing Yulee content into the same visual family without rewriting it */
+body.yulee-home .section{width:min(1180px,calc(100% - 40px));margin-inline:auto;padding:88px 0}
+body.yulee-home .section-heading h2,body.yulee-home .section>h2{font-family:"Arial Black",Arial,sans-serif;line-height:1.04;letter-spacing:-1.1px;color:var(--y-navy)}
+body.yulee-home .section-heading h2{font-size:clamp(34px,4vw,52px)}
+body.yulee-home .home-intro-grid{gap:48px;align-items:center}
+body.yulee-home .home-intro-image{width:100%;max-width:470px;aspect-ratio:1/1;border-radius:32px;box-shadow:0 24px 60px rgba(11,45,74,.17)}
+body.yulee-home .home-local-points span,body.yulee-home .hood-grid span,body.yulee-home .hood-grid a{border-color:#dce5ea;background:#f6fafc;color:var(--y-navy)}
+body.yulee-home #services{width:100%;max-width:none;padding-left:max(20px,calc((100vw - 1180px)/2));padding-right:max(20px,calc((100vw - 1180px)/2));background:#f1f5f7}
+body.yulee-home #services .cards{max-width:1180px;margin-inline:auto}
+body.yulee-home .card{border-color:var(--y-line);border-radius:26px;box-shadow:0 10px 30px rgba(11,45,74,.05);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+body.yulee-home .card:hover{transform:translateY(-3px);box-shadow:0 16px 38px rgba(11,45,74,.11);border-color:rgba(57,191,234,.55)}
+body.yulee-home .card h3{font-family:"Arial Black",Arial,sans-serif;color:var(--y-navy)}
+body.yulee-home .split.yulee-local-split{width:100%;max-width:none;margin:0;padding:90px max(20px,calc((100vw - 1180px)/2));background:var(--y-navy);border-radius:0;gap:50px}
+body.yulee-home .split.yulee-local-split h2{color:#fff;font-family:"Arial Black",Arial,sans-serif;font-size:clamp(32px,3.7vw,50px);line-height:1.05}
+body.yulee-home .pricing-section{scroll-margin-top:105px}
+body.yulee-home #calculator{scroll-margin-top:105px;border-radius:28px;padding:24px;background:#fff;box-shadow:0 18px 45px rgba(11,45,74,.12)}
+body.yulee-home .pricing-rates{border-radius:28px;padding:24px;background:#f4f7f9}
+body.yulee-home .price-table{border-radius:18px;overflow:hidden}
+body.yulee-home .cta-panel{border-radius:30px}
+body.yulee-home .site-footer{background:#071d2e;color:#c3d2d9;border-top:0;text-align:left;padding:38px max(20px,calc((100vw - 1180px)/2)) 100px}
+body.yulee-home .site-footer nav{justify-content:flex-start}
+body.yulee-home .site-footer a,body.yulee-home .site-footer p{color:#d7e5eb}
+
+@media(max-width:1080px){
+  body.yulee-home .y-home-parent,body.yulee-home .y-home-link{font-size:10px;padding-inline:6px}
+  body.yulee-home .y-home-call{display:none}
+}
+@media(max-width:900px){
+  body.yulee-home .y-shell{width:calc(100% - 24px)}
+  body.yulee-home .y-home-header{top:10px}
+  body.yulee-home .y-home-nav{height:68px;border-radius:19px;padding:0 12px}
+  body.yulee-home .y-home-logo img{width:180px;max-height:52px}
+  body.yulee-home .y-home-toggle{display:block}
+  body.yulee-home .y-home-menu{display:none}
+  body.yulee-home .y-home-menu.is-open{display:flex;position:fixed;top:90px;left:12px;right:12px;max-height:calc(100vh - 112px);overflow:auto;background:#fff;color:#0b1220;border-radius:22px;box-shadow:var(--y-shadow);padding:14px;flex-direction:column;align-items:stretch}
+  body.yulee-home .y-home-menu.is-open .y-home-group,body.yulee-home .y-home-menu.is-open .y-home-link{width:100%}
+  body.yulee-home .y-home-menu.is-open .y-home-parent,body.yulee-home .y-home-menu.is-open .y-home-link{display:block;width:100%;text-align:left;color:#0b1220;padding:13px 12px}
+  body.yulee-home .y-home-group:hover .y-home-mega{display:none}
+  body.yulee-home .y-home-group.is-open .y-home-mega{display:grid;position:static;transform:none;width:100%;box-shadow:none;border:1px solid var(--y-line);margin-bottom:5px}
+  body.yulee-home .y-home-quote{margin-left:auto;padding:12px 14px}
+  body.yulee-home .y-home-hero-grid{grid-template-columns:1fr;padding-top:126px;padding-bottom:64px}
+  body.yulee-home .y-home-proof-stack{display:grid;grid-template-columns:1fr 1fr}
+  body.yulee-home .y-home-feature-strip{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:640px){
+  body.yulee-home .y-home-logo img{width:160px}
+  body.yulee-home .y-home-quote{font-size:10px;padding:11px 12px}
+  body.yulee-home .hero.y-home-hero{min-height:auto}
+  body.yulee-home .y-home-hero-grid{padding-top:106px;padding-bottom:36px}
+  body.yulee-home .y-home-glass{padding:28px 20px;border-radius:28px;background:rgba(5,32,51,.30)}
+  body.yulee-home .y-home-hero h1{font-size:42px}
+  body.yulee-home .y-home-display{font-size:42px}
+  body.yulee-home .y-home-subhead{font-size:18px}
+  body.yulee-home .y-home-hero .hero-text{font-size:16px}
+  body.yulee-home .y-home-proof-stack{grid-template-columns:1fr}
+  body.yulee-home .y-home-feature-wrap{margin-top:0}
+  body.yulee-home .y-home-feature-strip{width:100%;grid-template-columns:1fr;border-radius:0;padding:12px}
+  body.yulee-home .section{width:calc(100% - 28px);padding:68px 0}
+  body.yulee-home #services{padding:68px 14px}
+  body.yulee-home .split.yulee-local-split{padding:68px 14px}
+  body.yulee-home .site-footer{padding-left:18px;padding-right:18px}
+}
