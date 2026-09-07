@@ -21,6 +21,8 @@ const pageImage = {
   'service-areas.html': LOCAL.wildlight
 };
 
+const trustMarkup = `<section class="section cert-section yulee-trust-section" aria-label="HydroSeal credentials"><div class="section-inner"><div class="content-grid three"><div class="content-card"><h3>Licensed &amp; Insured</h3><p>HydroSeal is licensed and insured for professional exterior surface work.</p></div><div class="content-card"><h3>Trident Master Certified</h3><p>HydroSeal is a Trident Master Certified paver sealing applicator.</p></div><div class="content-card"><h3>2-Year Warranty</h3><p>Qualifying sealing projects include HydroSeal's written two-year workmanship and adhesion warranty.</p></div></div></div></section>`;
+
 const noPhotoStyles = `<style id="yulee-local-image-fallback">.hero-no-image .hero-media{background:linear-gradient(135deg,#082744 0%,#005ea8 58%,#1e7ebb 100%)}.hero-no-image .hero-media::before{background:linear-gradient(90deg,rgba(8,18,28,.34),rgba(8,18,28,.08))}.yulee-trust-section .content-card{text-align:center}.yulee-trust-section .content-card h3{color:var(--blue-dark)}</style>`;
 
 function removeExternalImageMetadata(html) {
