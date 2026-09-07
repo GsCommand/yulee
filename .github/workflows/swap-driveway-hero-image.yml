@@ -1,0 +1,52 @@
+name: Swap Yulee driveway image
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/swap-driveway-hero-image.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  swap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Replace driveway image references only
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('yulee-driveway-paver-sealing.html')
+          text = p.read_text()
+          old = 'https://www.yuleepaversealing.com/images/yulee-driveway-paver-sealing.webp'
+          new = 'https://www.yuleepaversealing.com/images/yulee-wildlight-paver-sealing.webp'
+          count = text.count(old)
+          if count != 2:
+              raise SystemExit(f'Expected exactly 2 driveway image references, found {count}')
+          before_h1 = '<h1>Driveway Paver Sealing Yulee FL</h1>'
+          before_title = '<title>Driveway Paver Sealing Yulee FL | Wildlight & Nassau County</title>'
+          before_canonical = '<link rel="canonical" href="https://www.yuleepaversealing.com/yulee-driveway-paver-sealing.html" />'
+          for marker in (before_h1, before_title, before_canonical):
+              if marker not in text:
+                  raise SystemExit(f'Protected SEO marker missing before swap: {marker}')
+          text = text.replace(old, new)
+          for marker in (before_h1, before_title, before_canonical):
+              if marker not in text:
+                  raise SystemExit(f'Protected SEO marker changed: {marker}')
+          if old in text or text.count(new) < 2:
+              raise SystemExit('Image replacement verification failed')
+          p.write_text(text)
+          PY
+      - name: Commit image swap
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add yulee-driveway-paver-sealing.html
+          git commit -m 'Replace driveway page image with Wildlight asset'
+          git push
