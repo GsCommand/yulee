@@ -43,11 +43,6 @@ const header = `
               <a href="/yulee-driveway-paver-sealing.html">Driveway Paver Sealing<small>Clean, resand, and protect</small></a>
               <a href="/yulee-pool-deck-paver-sealing.html">Pool Deck Sealing<small>Moisture-aware preparation</small></a>
               <a href="/yulee-travertine-sealing.html">Travertine Sealing<small>Natural-stone specific care</small></a>
-              <a href="https://hydrosealpavers.com/paver-resealing/">Paver Resealing<small>Restore weathered protection</small></a>
-              <a href="https://hydrosealpavers.com/paver-cleaning">Paver Cleaning<small>Surface-safe preparation and cleaning</small></a>
-              <a href="https://hydrosealpavers.com/paver-repair">Paver Repair<small>Small repairs and paver re-leveling</small></a>
-              <a href="https://hydrosealpavers.com/paver-sealing/sand-options">Joint Sand Options<small>ASTM C144 colors and selection</small></a>
-              <a href="#calculator">Instant Pricing Calculator<small>Estimate standard sealing cost</small></a>
             </div>
           </div>
           <div class="y-home-group">
