@@ -12,7 +12,7 @@ const sectionEndTag = html.indexOf('</section>', headingPos);
 if (sectionStart < 0 || sectionEndTag < 0) throw new Error('Driveway pricing section bounds not found');
 const sectionEnd = sectionEndTag + '</section>'.length;
 
-const replacement = `<section class="article-block hydroseal-driveway-showcase"><h2>Driveway paver sealing cost in Yulee</h2><div class="hydroseal-driveway-calculator-grid"><figure class="hydroseal-driveway-result-image"><img src="/driveway-paver-resealed.webp" alt="Before and after freshly resealed paver driveway by HydroSeal in Yulee, Florida" loading="lazy" decoding="async"></figure><div class="hydroseal-driveway-nocatee-calculator"><div class="hspav" data-calculator aria-label="Paver sealing cost calculator"></div></div></div></section>`;
+const replacement = `<section class="article-block hydroseal-driveway-showcase"><h2>Driveway paver sealing cost in Yulee</h2><div class="hydroseal-driveway-calculator-grid"><figure class="hydroseal-driveway-result-image"><img src="/yulee-wildlight-paver-sealing.webp" alt="Before and after freshly resealed paver driveway by HydroSeal in Yulee, Florida" loading="lazy" decoding="async"></figure><div class="hydroseal-driveway-nocatee-calculator"><div class="hspav" data-calculator aria-label="Paver sealing cost calculator"></div></div></div></section>`;
 html = html.slice(0, sectionStart) + replacement + html.slice(sectionEnd);
 
 const styles = `<style id="hydroseal-driveway-image-layout">
@@ -28,4 +28,4 @@ if (html.includes('Concrete or brick paver driveway — clean, re-sand, seal')) 
 if ((html.match(/data-calculator/g) || []).length !== 1) throw new Error('Expected exactly one driveway Nocatee calculator');
 
 fs.writeFileSync(file, html);
-console.log('Restored Nocatee calculator beside driveway before-and-after image');
+console.log('Restored Nocatee calculator beside Wildlight paver image');
