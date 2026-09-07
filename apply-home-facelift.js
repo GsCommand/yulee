@@ -66,7 +66,7 @@ const header = `
           <div class="y-home-group">
             <button class="y-home-parent" type="button" aria-expanded="false">About</button>
             <div class="y-home-mega">
-              <a href="https://hydrosealpavers.com/about">About HydroSeal</a>
+              <a href="/about.html">About HydroSeal</a>
               <a href="#calculator">Pricing Calculator</a>
               <a href="https://hydrosealpavers.com/warranty">2-Year Warranty</a>
             </div>

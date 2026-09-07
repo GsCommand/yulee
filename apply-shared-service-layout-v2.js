@@ -42,7 +42,7 @@ function headerMarkup() {
         <a href="/pressure-washing.html">Pressure Washing</a><a href="/yulee-house-washing.html">House Washing</a><a href="/yulee-roof-washing.html">Roof Washing</a>
       </div></div>
       <div class="ys-group"><button class="ys-parent" type="button" aria-expanded="false">About</button><div class="ys-mega">
-        <a href="https://hydrosealpavers.com/about">About HydroSeal</a><a href="/#calculator">Pricing Calculator</a><a href="https://hydrosealpavers.com/warranty">2-Year Warranty</a>
+        <a href="/about.html">About HydroSeal</a><a href="/#calculator">Pricing Calculator</a><a href="https://hydrosealpavers.com/warranty">2-Year Warranty</a>
       </div></div>
     </div>
     <a class="ys-call" href="tel:+19045375000">Call 904.537.5000</a>

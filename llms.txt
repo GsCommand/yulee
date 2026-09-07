@@ -28,6 +28,9 @@ Primary service area: Yulee, Florida and Nassau County, including Wildlight, Del
 ## Service approach
 HydroSeal evaluates surface material, existing sealer or coating, joint condition, moisture, staining, drainage and surrounding property before selecting cleaning or sealing methods. Paver work may include deep cleaning, targeted stain treatment, re-sanding, small repairs or releveling and compatible breathable sealer. Travertine is treated as natural stone and uses stone-safe cleaning and breathable protection. House and roof cleaning use lower-pressure methods where appropriate.
 
+## Company
+- [About HydroSeal](https://www.yuleepaversealing.com/about.html): HydroSeal company background, process standards, Trident Master Certified approach and Yulee/Nassau County service philosophy.
+
 ## Crawling
 XML sitemap: https://www.yuleepaversealing.com/sitemap.xml
 Robots: https://www.yuleepaversealing.com/robots.txt
