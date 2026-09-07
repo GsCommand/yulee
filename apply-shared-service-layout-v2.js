@@ -42,7 +42,7 @@ function headerMarkup() {
         <a href="/pressure-washing.html">Pressure Washing</a><a href="/yulee-house-washing.html">House Washing</a><a href="/yulee-roof-washing.html">Roof Washing</a>
       </div></div>
       <div class="ys-group"><button class="ys-parent" type="button" aria-expanded="false">About</button><div class="ys-mega">
-        <a href="/about.html">About HydroSeal</a><a href="/#calculator">Pricing Calculator</a><a href="https://hydrosealpavers.com/warranty">2-Year Warranty</a>
+        <a href="/about.html">About HydroSeal</a><a href="/#calculator">Pricing Calculator</a><a href="/warranty.html">2-Year Warranty</a>
       </div></div>
     </div>
     <a class="ys-call" href="tel:+19045375000">Call 904.537.5000</a>
@@ -61,7 +61,7 @@ function paverPills() {
     <article class="ys-feature"><h3>DEEP CLEANING</h3><p>Surface preparation before sealing.</p></article>
     <a class="ys-feature" href="https://hydrosealpavers.com/paver-sealing/sand-options"><h3>JOINT SAND</h3><p>ASTM C144 kiln-dried sand.</p></a>
     <article class="ys-feature"><h3>BREATHABLE SEALER</h3><p>Two coats for Florida conditions.</p></article>
-    <a class="ys-feature" href="https://hydrosealpavers.com/warranty"><h3>2-YEAR WARRANTY</h3><p>Written workmanship and adhesion coverage.</p></a>
+    <a class="ys-feature" href="/warranty.html"><h3>2-YEAR WARRANTY</h3><p>Written workmanship and adhesion coverage.</p></a>
   </div></div>`;
 }
 

@@ -30,6 +30,7 @@ HydroSeal evaluates surface material, existing sealer or coating, joint conditio
 
 ## Company
 - [About HydroSeal](https://www.yuleepaversealing.com/about.html): HydroSeal company background, process standards, Trident Master Certified approach and Yulee/Nassau County service philosophy.
+- [Paver Sealing Warranty](https://www.yuleepaversealing.com/warranty.html): HydroSeal 2-year workmanship and coating-adhesion warranty terms, exclusions and service steps for Yulee and Nassau County.
 
 ## Crawling
 XML sitemap: https://www.yuleepaversealing.com/sitemap.xml

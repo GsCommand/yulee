@@ -68,7 +68,7 @@ const header = `
             <div class="y-home-mega">
               <a href="/about.html">About HydroSeal</a>
               <a href="#calculator">Pricing Calculator</a>
-              <a href="https://hydrosealpavers.com/warranty">2-Year Warranty</a>
+              <a href="/warranty.html">2-Year Warranty</a>
             </div>
           </div>
         </div>
@@ -138,7 +138,7 @@ const hero = `
           <article class="y-home-feature"><h3>DEEP CLEANING</h3><p>Surface preparation before sealing.</p></article>
           <a class="y-home-feature" href="https://hydrosealpavers.com/paver-sealing/sand-options"><h3>JOINT SAND</h3><p>ASTM C144 kiln-dried sand.</p></a>
           <article class="y-home-feature"><h3>BREATHABLE SEALER</h3><p>Two coats for Florida conditions.</p></article>
-          <a class="y-home-feature" href="https://hydrosealpavers.com/warranty"><h3>2-YEAR WARRANTY</h3><p>Written workmanship and adhesion coverage.</p></a>
+          <a class="y-home-feature" href="/warranty.html"><h3>2-YEAR WARRANTY</h3><p>Written workmanship and adhesion coverage.</p></a>
         </div>
       </div>`;
 
