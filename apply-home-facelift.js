@@ -127,12 +127,11 @@ const hero = `
           </div>
           <div class="y-home-proof-stack">
             <article class="y-home-proof">
-              <div class="y-home-google">Google</div>
+              <div aria-label="Google reviews" class="y-home-google-badge"><svg aria-hidden="true" focusable="false" viewBox="0 0 256 262"><path d="M255.68 133.5c0-10.79-.97-18.68-3.06-26.89H130.55v47.73h71.62c-1.44 11.86-9.17 29.71-26.34 41.7l-.24 1.6 38.31 29.68 2.65.26c24.31-22.42 38.13-55.43 38.13-94.08" fill="#4285F4"></path><path d="M130.55 261c34.98 0 64.32-11.54 85.76-31.38l-40.72-31.54c-10.9 7.62-25.52 12.97-45.04 12.97-34.25 0-63.32-22.42-73.67-53.41l-1.51.13-39.84 30.83-.52 1.45C36.36 232.1 79.97 261 130.55 261" fill="#34A853"></path><path d="M56.88 157.64c-2.69-7.89-4.24-16.34-4.24-25.14s1.55-17.25 4.1-25.14l-.07-1.69L16.34 74.34l-1.32.63C6 92.98.84 112.76.84 132.5s5.16 39.52 14.18 57.53z" fill="#FBBC05"></path><path d="M130.55 53.95c24.62 0 41.25 10.68 50.69 19.61l37-36.1C194.73 15.61 165.53 1 130.55 1 79.97 1 36.36 29.9 15.02 74.97l41.65 32.33c10.49-30.98 39.56-53.35 73.88-53.35" fill="#EB4335"></path></svg><span>Google</span></div>
               <div class="y-home-stars" aria-label="Five stars">★★★★★</div>
-              <h2>Professional paver sealing by HydroSeal.</h2>
-              <p>Licensed &amp; Insured · 2-Year Warranty · Published Pricing</p>
-              <div class="y-home-proof-rule"></div>
-              <div class="y-home-review-link">Read customer reviews →</div>
+              <h3>5-STAR RATED PAVER RESTORATION.</h3>
+              <p>Homeowners hire HydroSeal when faded, dirty pavers need more than a quick pressure wash.</p>
+              <a class="y-home-review-link" href="https://share.google/4ddHhmrSn3woAYR6h" rel="noopener noreferrer" target="_blank">Read customer reviews →</a>
             </article>
             <div class="y-home-proof-blue">Trident Master Certified</div>
           </div>
@@ -174,15 +173,16 @@ body.yulee-home .y-home-subhead{margin:0 0 9px;font-size:18px;letter-spacing:.15
 body.yulee-home .y-home-hero .hero-text{max-width:620px;font-size:14px;line-height:1.45;color:rgba(255,255,255,.92);text-shadow:none}
 body.yulee-home .y-home-actions{margin-top:22px}
 body.yulee-home .y-home-btn{padding:14px 20px;font-size:11px}
-body.yulee-home .y-home-proof-stack{max-width:330px;justify-self:end;gap:12px;margin-top:4px}
-body.yulee-home .y-home-proof{padding:24px 25px 22px;border-radius:24px;background:#fff;box-shadow:0 22px 50px rgba(4,21,34,.18)}
-body.yulee-home .y-home-google{font-size:12px;font-weight:800;color:#4285f4;margin-bottom:7px}
-body.yulee-home .y-home-stars{font-size:20px;letter-spacing:2px;color:#f5b400;line-height:1;margin-bottom:15px}
-body.yulee-home .y-home-proof h2{margin:0 0 10px;font-size:27px;line-height:1.02}
-body.yulee-home .y-home-proof p{font-size:13px;line-height:1.35;color:#243b53}
-body.yulee-home .y-home-proof-rule{height:1px;background:#dce5ea;margin:17px 0 14px}
-body.yulee-home .y-home-review-link{font-size:11px;letter-spacing:1px;text-transform:uppercase;font-weight:950;color:#0b2d4a}
-body.yulee-home .y-home-proof-blue{padding:14px 18px;border-radius:18px;background:#0e7fbc;font-size:11px}
+body.yulee-home .y-home-proof-stack{width:100%;max-width:372px;justify-self:end;gap:15px;margin-top:24px;min-width:0}
+body.yulee-home .y-home-proof{padding:28px;border-radius:30px;background:rgba(255,255,255,.96);color:#0b1220;box-shadow:0 22px 60px rgba(11,45,74,.16)}
+body.yulee-home .y-home-google-badge{display:inline-flex;align-items:center;gap:7px;padding:5px 10px;border-radius:999px;background:#fff;border:1px solid rgba(15,23,42,.12);box-shadow:0 8px 18px rgba(0,0,0,.06)}
+body.yulee-home .y-home-google-badge svg{width:14px;height:14px;display:block}
+body.yulee-home .y-home-google-badge span{font-size:11px;line-height:1;font-weight:800;color:#5f6368;letter-spacing:0;text-transform:none}
+body.yulee-home .y-home-stars{color:#ffb000;font-size:24px;letter-spacing:2px;line-height:1}
+body.yulee-home .y-home-proof h3{font-family:"Arial Black",Arial,sans-serif!important;font-size:29px!important;line-height:1.08!important;letter-spacing:-.7px!important;margin:14px 0;color:#0b1220}
+body.yulee-home .y-home-proof p{font-size:15px;line-height:1.55;color:#536475;font-weight:700}
+body.yulee-home .y-home-review-link{display:inline-block;margin-top:14px;font-weight:900;text-transform:uppercase;font-size:12px;letter-spacing:1.4px;color:#0b1220}
+body.yulee-home .y-home-proof-blue{padding:20px 22px;border-radius:24px;background:rgba(15,110,168,.94);font-size:15.6px!important;line-height:1!important;letter-spacing:-.3px!important;text-align:center;width:100%;color:#fff;font-weight:950;text-transform:uppercase;white-space:nowrap}
 body.yulee-home .y-home-feature-wrap{margin-top:-22px}
 body.yulee-home .y-home-feature-strip{gap:12px;padding:14px 16px;border-radius:24px;background:rgba(247,250,252,.98)}
 body.yulee-home .y-home-feature,body.yulee-home a.y-home-feature{padding:17px 18px;border-radius:15px}
