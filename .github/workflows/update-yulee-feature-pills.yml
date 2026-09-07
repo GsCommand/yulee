@@ -1,0 +1,69 @@
+name: Update Yulee feature pills to match HydroSeal
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/update-yulee-feature-pills.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update-pills:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Match Yulee feature pill sizing to HydroSeal
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+
+          css = Path('home-hydroseal.css')
+          c = css.read_text()
+
+          replacements = {
+              'body.yulee-home .y-home-feature,body.yulee-home a.y-home-feature{display:block;height:100%;padding:20px;background:#fff;border:1px solid var(--y-line);border-radius:20px;transition:background .2s ease,border-color .2s ease,transform .2s ease,box-shadow .2s ease;color:inherit}':
+              'body.yulee-home .y-home-feature,body.yulee-home a.y-home-feature{display:block;height:100%;padding:24px 20px;background:#fff;border:1px solid var(--y-line);border-radius:20px;transition:background .2s ease,border-color .2s ease,transform .2s ease,box-shadow .2s ease;color:inherit}',
+              'body.yulee-home .y-home-feature h3{margin:0 0 5px;font-family:"Arial Black",Arial,sans-serif;font-size:20px;line-height:1.08;color:var(--y-navy)}':
+              'body.yulee-home .y-home-feature h3{margin:0 0 6px;font-family:"Arial Black",Arial,sans-serif;font-size:23px;line-height:1.02;color:var(--y-navy)}',
+              'body.yulee-home .y-home-feature p{margin:0;color:#536475;font-size:13px;line-height:1.45}':
+              'body.yulee-home .y-home-feature p{margin:0;color:#536475;font-size:14px;line-height:1.45}'
+          }
+
+          for old, new in replacements.items():
+              if old not in c:
+                  raise SystemExit(f'Missing expected CSS block: {old}')
+              c = c.replace(old, new, 1)
+
+          css.write_text(c)
+          print('Updated Yulee feature pill typography and spacing.')
+          PY
+
+      - name: Verify pill rules exist
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -F 'y-home-feature h3{margin:0 0 6px;font-family:"Arial Black",Arial,sans-serif;font-size:23px;line-height:1.02;color:var(--y-navy)}' home-hydroseal.css >/dev/null
+          grep -F 'y-home-feature p{margin:0;color:#536475;font-size:14px;line-height:1.45}' home-hydroseal.css >/dev/null
+          grep -F 'y-home-feature,body.yulee-home a.y-home-feature{display:block;height:100%;padding:24px 20px;background:#fff;border:1px solid var(--y-line);border-radius:20px' home-hydroseal.css >/dev/null
+
+      - name: Commit pill update
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add home-hydroseal.css
+          if git diff --cached --quiet; then
+            echo 'No pill changes to commit.'
+            exit 0
+          fi
+          git commit -m 'Match Yulee feature pills to HydroSeal'
+          git push
