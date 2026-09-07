@@ -1,0 +1,103 @@
+/* Shared top-of-page HydroSeal-style visual layer for Yulee service/location pages. */
+body.y-shared-top{--ys-navy:#0b2d4a;--ys-blue:#0f6ea8;--ys-water:#39bfea;--ys-line:#dce5ea;--ys-shadow:0 22px 60px rgba(11,45,74,.16);background:#fff;color:#0b1220}
+body.y-shared-top .ys-shell{width:min(1260px,calc(100% - 40px));margin-inline:auto}
+
+/* Floating navigation: mirrors the current Yulee homepage treatment. */
+body.y-shared-top .ys-header{position:absolute;top:18px;left:0;right:0;z-index:50}
+body.y-shared-top .ys-nav{height:72px;display:flex;align-items:center;gap:14px;padding:0 18px 0 24px;border-radius:22px;background:rgba(245,249,252,.88);border:1px solid rgba(255,255,255,.86);box-shadow:0 15px 38px rgba(5,32,51,.18);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);color:var(--ys-navy)}
+body.y-shared-top .ys-logo{margin-right:auto;display:flex;align-items:center}
+body.y-shared-top .ys-logo img{width:190px;max-height:54px;object-fit:contain}
+body.y-shared-top .ys-menu{display:flex;align-items:center;gap:3px}
+body.y-shared-top .ys-group{position:relative}
+body.y-shared-top .ys-parent{border:0;background:transparent;color:var(--ys-navy);padding:12px 9px;text-transform:uppercase;font-weight:900;font-size:12px;letter-spacing:1.4px;cursor:pointer;white-space:nowrap}
+body.y-shared-top .ys-parent:after{content:'⌄';margin-left:6px}
+body.y-shared-top .ys-mega{display:none;position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);width:300px;padding:14px;background:#fff;color:#0b1220;border-radius:20px;box-shadow:var(--ys-shadow);grid-template-columns:1fr;gap:5px}
+body.y-shared-top .ys-mega:before{content:'';position:absolute;left:0;right:0;top:-14px;height:14px}
+body.y-shared-top .ys-group--paver .ys-mega{width:320px;grid-template-columns:1fr;gap:7px;padding:18px}
+body.y-shared-top .ys-group:hover .ys-mega,body.y-shared-top .ys-group:focus-within .ys-mega,body.y-shared-top .ys-group.is-open .ys-mega{display:grid}
+body.y-shared-top .ys-mega a{padding:12px 13px;border-radius:12px;font-weight:800;color:#0b1220;text-decoration:none}
+body.y-shared-top .ys-mega a:hover,body.y-shared-top .ys-mega a:focus-visible{background:#eaf7fc;color:var(--ys-blue)}
+body.y-shared-top .ys-mega a small{display:block;margin-top:2px;color:#607083;font-weight:500}
+body.y-shared-top .ys-call{border:1px solid rgba(11,45,74,.18);padding:12px 15px;border-radius:30px;text-transform:uppercase;font-weight:900;font-size:12px;white-space:nowrap;background:rgba(255,255,255,.66);color:var(--ys-navy);text-decoration:none}
+body.y-shared-top .ys-quote{display:inline-flex;align-items:center;justify-content:center;padding:17px 24px;border-radius:30px;text-transform:uppercase;font-weight:950;letter-spacing:1px;background:#39bfea;color:#fff;box-shadow:0 12px 28px rgba(57,191,234,.32);font-size:inherit;line-height:1.55;white-space:nowrap;text-decoration:none}
+body.y-shared-top .ys-toggle{display:none;width:44px;height:44px;border:0;border-radius:12px;background:#fff;color:var(--ys-navy);font-size:24px}
+
+/* Bright page-specific image hero. No tint/gradient overlay is applied to the image. */
+body.y-shared-top .ys-hero{position:relative;min-height:760px;padding:0;background:#fff;color:#fff;overflow:hidden}
+body.y-shared-top .ys-hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 47%;filter:none!important;opacity:1!important}
+body.y-shared-top .ys-hero:before,body.y-shared-top .ys-hero:after{display:none!important;content:none!important;background:none!important}
+body.y-shared-top .ys-hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.18fr) minmax(300px,.62fr);gap:34px;align-items:center;padding-top:150px;padding-bottom:96px}
+body.y-shared-top .ys-glass{max-width:690px;padding:34px 34px 30px;border-radius:30px;background:rgba(8,35,57,.48);border:1px solid rgba(255,255,255,.18);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 22px 60px rgba(4,21,34,.20)}
+body.y-shared-top .ys-glass .eyebrow{margin:0 0 18px;font-size:10px;line-height:1.35;text-transform:uppercase;letter-spacing:1.55px;font-weight:900;color:#fff}
+body.y-shared-top .ys-glass h1{margin:0 0 16px;font-family:"Arial Black",Arial,sans-serif;font-size:clamp(48px,5.1vw,72px);line-height:.95;letter-spacing:-2px;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.35)}
+body.y-shared-top .ys-glass .hero-text{max-width:620px;margin:0;font-size:14px;line-height:1.45;color:rgba(255,255,255,.92);text-shadow:0 2px 10px rgba(0,0,0,.38)}
+body.y-shared-top .ys-glass .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+body.y-shared-top .ys-glass .hero-actions .button{display:inline-flex;align-items:center;justify-content:center;padding:17px 24px;border-radius:30px;text-transform:uppercase;font-weight:950;letter-spacing:1px;font-size:inherit;line-height:1.55;text-decoration:none}
+body.y-shared-top .ys-glass .hero-actions .button.primary{background:#39bfea;color:#fff;box-shadow:0 12px 28px rgba(57,191,234,.32)}
+body.y-shared-top .ys-glass .hero-actions .button.secondary{background:#fff;color:var(--ys-navy);border-color:#fff}
+
+/* Existing page hero card, restyled into the same right-hand proof-column geometry. */
+body.y-shared-top .ys-proof-stack{display:flex;flex-direction:column;gap:15px;width:100%;max-width:372px;justify-self:end}
+body.y-shared-top .ys-proof{padding:26px 27px 25px;border-radius:26px;background:rgba(255,255,255,.97);color:#0b1220;box-shadow:0 22px 55px rgba(0,0,0,.14)}
+body.y-shared-top .ys-proof h2,body.y-shared-top .ys-proof h3{margin:0 0 10px;font-family:"Arial Black",Arial,sans-serif;color:var(--ys-navy);line-height:1.08}
+body.y-shared-top .ys-proof h2{font-size:25px}
+body.y-shared-top .ys-proof h3{font-size:21px}
+body.y-shared-top .ys-proof p{margin:0 0 10px;color:#536475;font-size:14px;line-height:1.5}
+body.y-shared-top .ys-proof ul{margin:10px 0 0;padding-left:20px;color:#536475;font-size:14px;line-height:1.55}
+body.y-shared-top .ys-proof-blue{padding:16px 18px;border-radius:20px;background:#0f6ea8;color:#fff;font-weight:950;text-align:center;text-transform:uppercase;font-size:13px;letter-spacing:.7px;box-shadow:0 16px 34px rgba(15,110,168,.25)}
+body.y-shared-top .ys-google-badge{display:flex;align-items:center;gap:9px;margin-bottom:10px;font-weight:800;color:#3c4043}
+body.y-shared-top .ys-google-badge svg{width:24px;height:24px;flex:0 0 24px}
+body.y-shared-top .ys-stars{color:#f4b400;font-size:21px;letter-spacing:2px;margin-bottom:10px}
+body.y-shared-top .ys-review-link{display:inline-block;margin-top:8px;font-weight:850;color:#0f6ea8;text-decoration:none}
+
+/* Same overlapping pill geometry as the homepage. */
+body.y-shared-top .ys-feature-wrap{position:relative;z-index:8;width:min(1180px,calc(100% - 40px));margin:-23px auto 0}
+body.y-shared-top .ys-feature-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:17px;background:#f0f5f7;border-radius:30px;box-shadow:0 15px 45px rgba(11,45,74,.08)}
+body.y-shared-top .ys-feature,body.y-shared-top a.ys-feature{display:block;height:100%;padding:20px;background:#fff;border:1px solid var(--ys-line);border-radius:20px;transition:background .2s ease,border-color .2s ease,transform .2s ease,box-shadow .2s ease;color:inherit;text-decoration:none}
+body.y-shared-top .ys-feature:hover,body.y-shared-top .ys-feature:focus-visible{background:rgba(57,191,234,.20);border-color:rgba(57,191,234,.68);transform:translateY(-2px);box-shadow:0 12px 28px rgba(15,110,168,.13);outline:none}
+body.y-shared-top .ys-feature h3{margin:0 0 5px;font-family:"Arial Black",Arial,sans-serif;font-size:23px;line-height:1.08;color:var(--ys-navy)}
+body.y-shared-top .ys-feature p{margin:0;color:#536475;font-size:13px;line-height:1.45}
+body.y-shared-top .ys-feature--compact{display:flex;align-items:center;min-height:88px}
+body.y-shared-top .ys-feature--compact h3{margin:0}
+
+/* Keep breadcrumb content, but place it below the shared hero/pills instead of above the hero. */
+body.y-shared-top .breadcrumb{width:min(1180px,calc(100% - 40px));margin:18px auto 0;padding:0;background:transparent}
+
+@media(max-width:1080px){
+  body.y-shared-top .ys-nav{gap:8px;padding-inline:14px}
+  body.y-shared-top .ys-logo img{width:174px}
+  body.y-shared-top .ys-parent{font-size:11px;padding-inline:6px}
+  body.y-shared-top .ys-call{display:none}
+}
+@media(max-width:900px){
+  body.y-shared-top .ys-shell{width:calc(100% - 24px)}
+  body.y-shared-top .ys-header{top:10px}
+  body.y-shared-top .ys-nav{height:68px;border-radius:19px;padding:0 12px}
+  body.y-shared-top .ys-logo img{width:180px;max-height:52px}
+  body.y-shared-top .ys-toggle{display:block}
+  body.y-shared-top .ys-menu{display:none}
+  body.y-shared-top .ys-menu.is-open{display:flex;position:fixed;top:90px;left:12px;right:12px;max-height:calc(100vh - 112px);overflow:auto;background:#fff;color:#0b1220;border-radius:22px;box-shadow:var(--ys-shadow);padding:14px;flex-direction:column;align-items:stretch}
+  body.y-shared-top .ys-menu.is-open .ys-group{width:100%}
+  body.y-shared-top .ys-menu.is-open .ys-parent{display:block;width:100%;text-align:left;color:#0b1220;padding:13px 12px}
+  body.y-shared-top .ys-group:hover .ys-mega{display:none}
+  body.y-shared-top .ys-group.is-open .ys-mega{display:grid;position:static;transform:none;width:100%;box-shadow:none;border:1px solid var(--ys-line);margin-bottom:5px}
+  body.y-shared-top .ys-quote{margin-left:auto;padding:12px 14px}
+  body.y-shared-top .ys-hero-grid{grid-template-columns:1fr;padding-top:126px;padding-bottom:64px}
+  body.y-shared-top .ys-proof-stack{justify-self:start;max-width:100%;display:grid;grid-template-columns:1fr 1fr}
+  body.y-shared-top .ys-feature-strip{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:640px){
+  body.y-shared-top .ys-logo img{width:160px}
+  body.y-shared-top .ys-quote{font-size:10px;padding:11px 12px}
+  body.y-shared-top .ys-hero{min-height:auto}
+  body.y-shared-top .ys-hero-grid{padding-top:106px;padding-bottom:36px}
+  body.y-shared-top .ys-glass{padding:28px 20px;border-radius:28px;background:rgba(8,35,57,.42)}
+  body.y-shared-top .ys-glass h1{font-size:42px}
+  body.y-shared-top .ys-glass .hero-text{font-size:16px}
+  body.y-shared-top .ys-proof-stack{grid-template-columns:1fr}
+  body.y-shared-top .ys-feature-wrap{width:calc(100% - 24px);margin-top:-18px}
+  body.y-shared-top .ys-feature-strip{grid-template-columns:1fr;padding:10px;border-radius:22px}
+  body.y-shared-top .ys-feature{padding:18px}
+  body.y-shared-top .ys-feature h3{font-size:20px}
+  body.y-shared-top .breadcrumb{width:calc(100% - 24px)}
+}
