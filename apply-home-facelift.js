@@ -37,13 +37,17 @@ const header = `
         <a class="y-home-logo" href="/" aria-label="Yulee Paver Sealing home"><img src="/images/yulee-hydroseal-logo.webp" alt="Yulee Paver Sealing by HydroSeal" width="400" height="145" /></a>
         <button class="y-home-toggle" type="button" aria-expanded="false" aria-controls="yHomeMenu" aria-label="Open menu">☰</button>
         <div class="y-home-menu" id="yHomeMenu">
-          <div class="y-home-group">
+          <div class="y-home-group y-home-group--paver">
             <button class="y-home-parent" type="button" aria-expanded="false">Paver Sealing</button>
             <div class="y-home-mega">
-              <a href="/yulee-driveway-paver-sealing.html">Driveway Paver Sealing<small>Cleaning, joint sand and breathable sealer</small></a>
-              <a href="/yulee-pool-deck-paver-sealing.html">Pool Deck Paver Sealing<small>Pool decks, patios and wet-zone pavers</small></a>
+              <a href="/yulee-driveway-paver-sealing.html">Driveway Paver Sealing<small>Clean, resand, and protect</small></a>
+              <a href="/yulee-pool-deck-paver-sealing.html">Pool Deck Sealing<small>Moisture-aware preparation</small></a>
               <a href="/yulee-travertine-sealing.html">Travertine Sealing<small>Natural-stone specific care</small></a>
-              <a href="https://hydrosealpavers.com/paver-sealing/sand-options">Joint Sand Options<small>ASTM C144 kiln-dried sand</small></a>
+              <a href="https://hydrosealpavers.com/paver-resealing/">Paver Resealing<small>Restore weathered protection</small></a>
+              <a href="https://hydrosealpavers.com/paver-cleaning">Paver Cleaning<small>Surface-safe preparation and cleaning</small></a>
+              <a href="https://hydrosealpavers.com/paver-repair">Paver Repair<small>Small repairs and paver re-leveling</small></a>
+              <a href="https://hydrosealpavers.com/paver-sealing/sand-options">Joint Sand Options<small>ASTM C144 colors and selection</small></a>
+              <a href="#calculator">Instant Pricing Calculator<small>Estimate standard sealing cost</small></a>
             </div>
           </div>
           <div class="y-home-group">
@@ -154,9 +158,9 @@ body.yulee-home .y-shell{width:min(1260px,calc(100% - 40px))}
 body.yulee-home .y-home-header{top:18px}
 body.yulee-home .y-home-nav{height:72px;padding:0 18px 0 24px;gap:14px;border-radius:22px;background:rgba(245,249,252,.88);border:1px solid rgba(255,255,255,.86);box-shadow:0 15px 38px rgba(5,32,51,.18);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
 body.yulee-home .y-home-logo img{width:190px;max-height:54px}
-body.yulee-home .y-home-parent{font-size:10px;letter-spacing:1.15px;padding:11px 8px}
-body.yulee-home .y-home-call{font-size:10px;padding:11px 14px;background:rgba(255,255,255,.66)}
-body.yulee-home .y-home-quote{font-size:10px;padding:13px 19px;background:#2fc3ee}
+body.yulee-home .y-home-parent{font-size:12px;letter-spacing:1.4px;padding:12px 9px}
+body.yulee-home .y-home-call{font-size:12px;padding:12px 15px;background:rgba(255,255,255,.66)}
+body.yulee-home .y-home-quote{font-size:12px;padding:17px 24px;letter-spacing:1px;background:#2fc3ee}
 body.yulee-home .hero.y-home-hero{min-height:760px;background:#fff}
 body.yulee-home .y-home-hero-bg{object-position:center 47%;filter:none!important;opacity:1!important}
 body.yulee-home .y-home-hero:before,body.yulee-home .y-home-hero:after{display:none!important;content:none!important;background:none!important}
@@ -184,7 +188,7 @@ body.yulee-home .y-home-feature-strip{gap:12px;padding:14px 16px;border-radius:2
 body.yulee-home .y-home-feature,body.yulee-home a.y-home-feature{padding:17px 18px;border-radius:15px}
 body.yulee-home .y-home-feature h3{font-size:16px}
 body.yulee-home .y-home-feature p{font-size:11px}
-@media(max-width:1080px){body.yulee-home .y-home-nav{gap:8px}body.yulee-home .y-home-logo img{width:170px}body.yulee-home .y-home-parent{font-size:9px;padding-inline:5px}}
+@media(max-width:980px){body.yulee-home .y-home-nav{gap:8px}body.yulee-home .y-home-logo img{width:170px}body.yulee-home .y-home-parent{font-size:11px;padding-inline:5px}}
 @media(max-width:900px){body.yulee-home .y-home-hero-grid{grid-template-columns:1fr;padding-top:118px;padding-bottom:58px}body.yulee-home .y-home-proof-stack{max-width:none;justify-self:stretch;grid-template-columns:1fr 1fr}body.yulee-home .y-home-glass{max-width:none}}
 @media(max-width:640px){body.yulee-home .y-home-nav{height:64px}body.yulee-home .y-home-logo img{width:145px}body.yulee-home .hero.y-home-hero{min-height:auto}body.yulee-home .y-home-hero-grid{padding-top:100px;padding-bottom:34px}body.yulee-home .y-home-glass{padding:24px 18px;border-radius:24px;background:rgba(8,35,57,.55)}body.yulee-home .y-home-eyebrow{font-size:8px;margin-bottom:14px}body.yulee-home .y-home-hero h1{font-size:39px}body.yulee-home .y-home-display{font-size:38px}body.yulee-home .y-home-subhead{font-size:15px}body.yulee-home .y-home-hero .hero-text{font-size:13px}body.yulee-home .y-home-proof-stack{grid-template-columns:1fr}body.yulee-home .y-home-feature-wrap{margin-top:0}}
 </style>`;
