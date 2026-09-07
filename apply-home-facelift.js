@@ -159,7 +159,7 @@ body.yulee-home .y-home-nav{height:72px;padding:0 18px 0 24px;gap:14px;border-ra
 body.yulee-home .y-home-logo img{width:190px;max-height:54px}
 body.yulee-home .y-home-parent{font-size:12px;letter-spacing:1.4px;padding:12px 9px}
 body.yulee-home .y-home-call{font-size:12px;padding:12px 15px;background:rgba(255,255,255,.66)}
-body.yulee-home .y-home-quote{font-size:12px;padding:17px 24px;letter-spacing:1px;background:#2fc3ee}
+body.yulee-home .y-home-quote{display:inline-flex;align-items:center;justify-content:center;padding:17px 24px;border-radius:30px;text-transform:uppercase;font-weight:950;letter-spacing:1px;background:#39bfea;color:#fff;box-shadow:0 12px 28px rgba(57,191,234,.32);font-size:inherit;line-height:1.55}
 body.yulee-home .hero.y-home-hero{min-height:760px;background:#fff}
 body.yulee-home .y-home-hero-bg{object-position:center 47%;filter:none!important;opacity:1!important}
 body.yulee-home .y-home-hero:before,body.yulee-home .y-home-hero:after{display:none!important;content:none!important;background:none!important}
@@ -172,7 +172,7 @@ body.yulee-home .y-home-display{margin:8px 0 10px;font-size:clamp(43px,4.7vw,66p
 body.yulee-home .y-home-subhead{margin:0 0 9px;font-size:18px;letter-spacing:.15px;color:#a9edff}
 body.yulee-home .y-home-hero .hero-text{max-width:620px;font-size:14px;line-height:1.45;color:rgba(255,255,255,.92);text-shadow:none}
 body.yulee-home .y-home-actions{margin-top:22px}
-body.yulee-home .y-home-btn{padding:14px 20px;font-size:11px}
+body.yulee-home .y-home-btn{display:inline-flex;align-items:center;justify-content:center;padding:17px 24px;border-radius:30px;text-transform:uppercase;font-weight:950;letter-spacing:1px;font-size:inherit;line-height:1.55}
 body.yulee-home .y-home-proof-stack{width:100%;max-width:372px;justify-self:end;gap:15px;margin-top:24px;min-width:0}
 body.yulee-home .y-home-proof{padding:28px;border-radius:30px;background:rgba(255,255,255,.96);color:#0b1220;box-shadow:0 22px 60px rgba(11,45,74,.16)}
 body.yulee-home .y-home-google-badge{display:inline-flex;align-items:center;gap:7px;padding:5px 10px;border-radius:999px;background:#fff;border:1px solid rgba(15,23,42,.12);box-shadow:0 8px 18px rgba(0,0,0,.06)}
