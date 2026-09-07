@@ -1,0 +1,74 @@
+name: Trim Yulee paver navigation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/trim-yulee-paver-nav.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  trim-nav:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Remove extra paver dropdown links
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+
+          p = Path('apply-home-facelift.js')
+          text = p.read_text()
+
+          removals = [
+              '              <a href="https://hydrosealpavers.com/paver-resealing/">Paver Resealing<small>Restore weathered protection</small></a>\n',
+              '              <a href="https://hydrosealpavers.com/paver-cleaning">Paver Cleaning<small>Surface-safe preparation and cleaning</small></a>\n',
+              '              <a href="https://hydrosealpavers.com/paver-repair">Paver Repair<small>Small repairs and paver re-leveling</small></a>\n',
+              '              <a href="https://hydrosealpavers.com/paver-sealing/sand-options">Joint Sand Options<small>ASTM C144 colors and selection</small></a>\n',
+              '              <a href="#calculator">Instant Pricing Calculator<small>Estimate standard sealing cost</small></a>\n',
+          ]
+
+          for item in removals:
+              if item not in text:
+                  raise SystemExit(f'Expected nav item not found; refusing to guess: {item.strip()}')
+              text = text.replace(item, '', 1)
+
+          p.write_text(text)
+          print('Removed resealing, cleaning, repair, joint sand, and instant pricing from Paver Sealing dropdown.')
+          PY
+
+      - name: Verify remaining paver navigation
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -F 'Driveway Paver Sealing<small>Clean, resand, and protect</small>' apply-home-facelift.js >/dev/null
+          grep -F 'Pool Deck Sealing<small>Moisture-aware preparation</small>' apply-home-facelift.js >/dev/null
+          grep -F 'Travertine Sealing<small>Natural-stone specific care</small>' apply-home-facelift.js >/dev/null
+          ! grep -F 'Paver Resealing<small>' apply-home-facelift.js
+          ! grep -F 'Paver Cleaning<small>' apply-home-facelift.js
+          ! grep -F 'Paver Repair<small>' apply-home-facelift.js
+          ! grep -F 'Joint Sand Options<small>' apply-home-facelift.js
+          ! grep -F 'Instant Pricing Calculator<small>' apply-home-facelift.js
+          grep -F '<h1>Paver Sealing Yulee FL</h1>' apply-home-facelift.js >/dev/null
+
+      - name: Commit navigation cleanup
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add apply-home-facelift.js
+          if git diff --cached --quiet; then
+            echo 'No navigation changes to commit.'
+            exit 0
+          fi
+          git commit -m 'Trim Yulee paver sealing navigation'
+          git push
