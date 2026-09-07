@@ -111,7 +111,7 @@ html = html.replace(oldHeaderPattern, `\n${header}`);
 
 const hero = `
       <section class="hero y-home-hero">
-        <img class="y-home-hero-bg" src="/images/yulee-wildlight-paver-sealing.webp" alt="Resealed paver driveway in Yulee, Florida" fetchpriority="high" />
+        <img class="y-home-hero-bg" src="/yulee-sealing-pavers-header.png" alt="Resealed paver driveway in Yulee, Florida" fetchpriority="high" />
         <div class="y-home-hero-grid y-shell">
           <div class="y-home-glass">
             <p class="y-home-eyebrow"><span></span>Professional paver sealing in Yulee, Wildlight &amp; Nassau County</p>
