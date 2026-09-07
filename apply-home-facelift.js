@@ -183,11 +183,11 @@ body.yulee-home .y-home-proof h3{font-family:"Arial Black",Arial,sans-serif!impo
 body.yulee-home .y-home-proof p{font-size:15px;line-height:1.55;color:#536475;font-weight:700}
 body.yulee-home .y-home-review-link{display:inline-block;margin-top:14px;font-weight:900;text-transform:uppercase;font-size:12px;letter-spacing:1.4px;color:#0b1220}
 body.yulee-home .y-home-proof-blue{padding:20px 22px;border-radius:24px;background:rgba(15,110,168,.94);font-size:15.6px!important;line-height:1!important;letter-spacing:-.3px!important;text-align:center;width:100%;color:#fff;font-weight:950;text-transform:uppercase;white-space:nowrap}
-body.yulee-home .y-home-feature-wrap{margin-top:-22px}
-body.yulee-home .y-home-feature-strip{gap:12px;padding:14px 16px;border-radius:24px;background:rgba(247,250,252,.98)}
-body.yulee-home .y-home-feature,body.yulee-home a.y-home-feature{padding:17px 18px;border-radius:15px}
-body.yulee-home .y-home-feature h3{font-size:16px}
-body.yulee-home .y-home-feature p{font-size:11px}
+body.yulee-home .y-home-feature-wrap{position:relative;z-index:4;width:min(1180px,calc(100% - 40px))!important;margin-top:-23px}
+body.yulee-home .y-home-feature-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:17px;background:#f0f5f7;border-radius:30px}
+body.yulee-home .y-home-feature,body.yulee-home a.y-home-feature{display:block;height:100%;padding:20px;background:#fff;border:1px solid #dce5ea;border-radius:20px}
+body.yulee-home .y-home-feature h3{font-family:"Arial Black",Arial,sans-serif!important;font-size:23px!important;line-height:1.08!important;letter-spacing:-.7px!important;color:#0b2d4a;margin:0 0 5px}
+body.yulee-home .y-home-feature p{font-size:13px;line-height:1.55;color:#536475;margin:0}
 @media(max-width:980px){body.yulee-home .y-home-nav{gap:8px}body.yulee-home .y-home-logo img{width:170px}body.yulee-home .y-home-parent{font-size:11px;padding-inline:5px}}
 @media(max-width:900px){body.yulee-home .y-home-hero-grid{grid-template-columns:1fr;padding-top:118px;padding-bottom:58px}body.yulee-home .y-home-proof-stack{max-width:none;justify-self:stretch;grid-template-columns:1fr 1fr}body.yulee-home .y-home-glass{max-width:none}}
 @media(max-width:640px){body.yulee-home .y-home-nav{height:64px}body.yulee-home .y-home-logo img{width:145px}body.yulee-home .hero.y-home-hero{min-height:auto}body.yulee-home .y-home-hero-grid{padding-top:100px;padding-bottom:34px}body.yulee-home .y-home-glass{padding:24px 18px;border-radius:24px;background:rgba(8,35,57,.55)}body.yulee-home .y-home-eyebrow{font-size:8px;margin-bottom:14px}body.yulee-home .y-home-hero h1{font-size:39px}body.yulee-home .y-home-display{font-size:38px}body.yulee-home .y-home-subhead{font-size:15px}body.yulee-home .y-home-hero .hero-text{font-size:13px}body.yulee-home .y-home-proof-stack{grid-template-columns:1fr}body.yulee-home .y-home-feature-wrap{margin-top:0}}
