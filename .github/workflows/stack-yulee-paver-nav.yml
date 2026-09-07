@@ -1,0 +1,69 @@
+name: Stack Yulee paver navigation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/stack-yulee-paver-nav.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  stack-paver-nav:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Stack Paver Sealing dropdown vertically
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+
+          p = Path('home-hydroseal.css')
+          text = p.read_text()
+
+          old = 'body.yulee-home .y-home-group--paver .y-home-mega{width:620px;grid-template-columns:1fr 1fr;gap:7px;padding:18px}'
+          new = 'body.yulee-home .y-home-group--paver .y-home-mega{width:320px;grid-template-columns:1fr;gap:7px;padding:18px}'
+
+          if old not in text:
+              raise SystemExit('Expected two-column Paver Sealing dropdown CSS not found; refusing to guess.')
+
+          text = text.replace(old, new, 1)
+          p.write_text(text)
+          print('Paver Sealing dropdown is now a single vertical column: driveway, pool deck, travertine.')
+          PY
+
+      - name: Verify order and layout
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -F 'body.yulee-home .y-home-group--paver .y-home-mega{width:320px;grid-template-columns:1fr;gap:7px;padding:18px}' home-hydroseal.css >/dev/null
+          python - <<'PY'
+          from pathlib import Path
+          text = Path('apply-home-facelift.js').read_text()
+          a = text.index('Driveway Paver Sealing<small>')
+          b = text.index('Pool Deck Sealing<small>')
+          c = text.index('Travertine Sealing<small>')
+          assert a < b < c
+          print('Verified visual order source: Driveway -> Pool Deck -> Travertine.')
+          PY
+
+      - name: Commit layout change
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add home-hydroseal.css
+          if git diff --cached --quiet; then
+            echo 'No dropdown layout changes to commit.'
+            exit 0
+          fi
+          git commit -m 'Stack Yulee paver navigation in service order'
+          git push
