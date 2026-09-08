@@ -28,12 +28,13 @@ const footer = `<footer class="site-footer yulee-standard-footer">
 </footer>`;
 
 const style = `<style id="yulee-standard-footer-style">
-.yulee-standard-footer{text-align:center!important;padding-left:20px!important;padding-right:20px!important}
+.yulee-standard-footer{background:#0b3658!important;color:#fff!important;text-align:center!important;padding:30px 20px!important;border:0!important}
 .yulee-standard-footer .yulee-footer-links{display:flex!important;align-items:center!important;justify-content:center!important;flex-wrap:wrap!important;gap:0!important;width:100%!important;text-align:center!important}
-.yulee-standard-footer .yulee-footer-links a{display:inline-block!important;text-align:center!important}
-.yulee-standard-footer .yulee-footer-dot{display:inline-block!important;margin:0 8px!important;opacity:.7}
-.yulee-standard-footer .yulee-footer-copy{width:100%!important;margin:10px auto 0!important;text-align:center!important}
-@media(max-width:700px){.yulee-standard-footer .yulee-footer-dot{margin:0 5px!important}.yulee-standard-footer .yulee-footer-links{line-height:1.8!important}}
+.yulee-standard-footer .yulee-footer-links a{display:inline-block!important;text-align:center!important;color:#fff!important;text-decoration:none!important}
+.yulee-standard-footer .yulee-footer-links a:hover,.yulee-standard-footer .yulee-footer-links a:focus-visible{color:#8edcff!important}
+.yulee-standard-footer .yulee-footer-dot{display:inline-block!important;margin:0 8px!important;color:#fff!important;opacity:.72}
+.yulee-standard-footer .yulee-footer-copy{width:100%!important;margin:10px auto 0!important;text-align:center!important;color:#fff!important;opacity:.9}
+@media(max-width:700px){.yulee-standard-footer{padding:26px 14px!important}.yulee-standard-footer .yulee-footer-dot{margin:0 5px!important}.yulee-standard-footer .yulee-footer-links{line-height:1.8!important}}
 </style>`;
 
 for (const filename of files) {
@@ -47,7 +48,10 @@ for (const filename of files) {
 
   html = html.replace(footers[0], footer);
 
-  if (!html.includes('id="yulee-standard-footer-style"')) {
+  const existingStyle = /<style id="yulee-standard-footer-style">[\s\S]*?<\/style>\s*/i;
+  if (existingStyle.test(html)) {
+    html = html.replace(existingStyle, `${style}\n`);
+  } else {
     if (!html.includes('</head>')) throw new Error(`${filename}: missing </head>`);
     html = html.replace('</head>', `${style}\n</head>`);
   }
@@ -61,13 +65,15 @@ for (const filename of files) {
     'Roof Washing',
     'Service Areas',
     '© 2026 HydroSeal · Yulee Paver Sealing · Serving Yulee, Fernandina Beach &amp; Nassau County, FL',
+    'background:#0b3658!important',
+    'color:#fff!important',
   ];
   for (const needle of required) {
     if (!html.includes(needle)) throw new Error(`${filename}: standardized footer verification failed for ${needle}`);
   }
 
   fs.writeFileSync(file, html);
-  console.log(`Standardized centered footer: ${filename}`);
+  console.log(`Standardized dark-blue centered footer: ${filename}`);
 }
 
-console.log(`Verified standardized footer on ${files.length} HTML pages.`);
+console.log(`Verified dark-blue standardized footer on ${files.length} HTML pages.`);
