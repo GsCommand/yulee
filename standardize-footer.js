@@ -42,7 +42,7 @@ for (const filename of files) {
   let html = fs.readFileSync(file, 'utf8');
 
   // Remove only the bottom credential strip. Keep the separate social-icons section intact.
-  html = html.replace(/<section class="section cert-section yulee-trust-section"\b[\s\S]*?<\/section>\s*/gi, '');
+  html = html.replace(/<section class="section cert-section yulee-trust-section"[\s\S]*?<\/section>\s*/gi, '');
 
   const footers = html.match(/<footer\b[\s\S]*?<\/footer>/gi) || [];
   if (footers.length !== 1) {
