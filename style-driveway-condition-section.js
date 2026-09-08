@@ -27,13 +27,8 @@ const css = `<style id="driveway-condition-layout">
 .driveway-condition-content>h2{margin-bottom:14px}
 .driveway-condition-content>.lead{margin-bottom:24px}
 .driveway-condition-stack{display:grid;gap:14px;margin-top:2px}
-.driveway-condition-card{position:relative;display:grid;grid-template-columns:48px 1fr;gap:16px;align-items:start;padding:22px 22px 21px;border:1px solid #d8e4ed;border-radius:20px;box-shadow:0 10px 26px rgba(11,45,74,.07);overflow:hidden}
+.driveway-condition-card{position:relative;display:grid;grid-template-columns:48px 1fr;gap:16px;align-items:start;padding:22px 22px 21px;border:1px solid #d8e4ed;border-radius:20px;box-shadow:0 10px 26px rgba(11,45,74,.07);overflow:hidden;background:linear-gradient(135deg,#f0f9ff 0%,#fff 72%)}
 .driveway-condition-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:#39bfea}
-.driveway-condition-card--clean{background:linear-gradient(135deg,#f0f9ff 0%,#fff 72%)}
-.driveway-condition-card--sand{background:linear-gradient(135deg,#eefbf8 0%,#fff 72%)}
-.driveway-condition-card--sand::before{background:#28b9aa}
-.driveway-condition-card--restore{background:linear-gradient(135deg,#f2f5f9 0%,#fff 72%)}
-.driveway-condition-card--restore::before{background:#5f7f9b}
 .driveway-condition-number{display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:13px;background:#0b2d4a;color:#fff;font-size:12px;font-weight:900;letter-spacing:1px;box-shadow:0 7px 16px rgba(11,45,74,.18)}
 .driveway-condition-card h3{margin:0 0 7px;color:#0b2d4a;font-size:clamp(19px,1.6vw,23px);line-height:1.12}
 .driveway-condition-card p{margin:0;color:#536475;line-height:1.66}
