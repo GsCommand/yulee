@@ -36,9 +36,18 @@ if (processMatches.length !== 1) {
 }
 html = html.replace(processPattern, '');
 
+const jointSealerPattern = /<section class="article-grid"><div class="article-card"><h2>Paver Joint Sand Yulee<\/h2>[\s\S]*?<h2>Paver Sealer Yulee FL<\/h2>[\s\S]*?<\/section>\s*/g;
+const jointSealerMatches = html.match(jointSealerPattern) || [];
+if (jointSealerMatches.length !== 1) {
+  throw new Error(`Expected exactly one driveway joint-sand/sealer card section, found ${jointSealerMatches.length}.`);
+}
+html = html.replace(jointSealerPattern, '');
+
 for (const forbidden of [
   'Yulee neighborhoods where paver driveways are part of the actual housing stock',
-  'Paver Sanding and Sealing Yulee'
+  'Paver Sanding and Sealing Yulee',
+  'Paver Joint Sand Yulee',
+  'Paver Sealer Yulee FL'
 ]) {
   if (html.includes(forbidden)) throw new Error(`Removed driveway section text is still present: ${forbidden}`);
 }
@@ -49,4 +58,4 @@ for (const key of ['title', 'canonical', 'h1', 'jsonld']) {
 }
 
 fs.writeFileSync(file, html);
-console.log('Removed driveway newer-community research and Process sections only.');
+console.log('Removed driveway newer-community, Process, and joint-sand/sealer sections only.');
