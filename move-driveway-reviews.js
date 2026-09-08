@@ -19,23 +19,22 @@ if (matches.length !== 1) {
 }
 
 const reviewBlock = matches[0];
-const staticProof = `<section class="driveway-static-proof" aria-labelledby="driveway-static-proof-title"><div class="driveway-static-proof-inner"><p class="eyebrow">Customer proof</p><h2 id="driveway-static-proof-title">Trusted by Yulee homeowners.</h2><div class="driveway-static-review-grid"><article class="driveway-static-review"><div class="driveway-static-stars" aria-label="5 out of 5 stars">★★★★★</div><p>“HydroSeal made our paver driveway look brand new. The color came back to life, the joints were properly sanded, and the finish was smooth and professional.”</p><strong>Scott M. · Google</strong></article><article class="driveway-static-review"><div class="driveway-static-stars" aria-label="5 out of 5 stars">★★★★★</div><p>“Outstanding results on our driveway, porch, and flower-bed pavers. Greg was professional, communicated clearly, and provided excellent customer service.”</p><strong>Jane J. · Google</strong></article><article class="driveway-static-review"><div class="driveway-static-stars" aria-label="5 out of 5 stars">★★★★★</div><p>“They took their time, paid attention to every detail, and were thorough from start to finish. Our pavers look brand new and exceeded expectations.”</p><strong>Sophia K. · Google</strong></article></div></div></section>`;
+const staticProof = `<section class="driveway-static-proof" aria-labelledby="driveway-static-proof-title"><div class="driveway-static-proof-inner"><span class="driveway-static-kicker">Customer proof</span><h2 id="driveway-static-proof-title">Trusted by Yulee homeowners.</h2><div class="driveway-static-review-grid"><article class="driveway-static-review"><div class="driveway-static-stars" aria-label="5 out of 5 stars">★★★★★</div><p>“HydroSeal made our paver driveway look brand new. The color came back to life, the joints were properly sanded, and the finish was smooth and professional.”</p><strong>Scott M. · Google</strong></article><article class="driveway-static-review"><div class="driveway-static-stars" aria-label="5 out of 5 stars">★★★★★</div><p>“Outstanding results on our driveway, porch, and flower-bed pavers. Greg was professional, communicated clearly, and provided excellent customer service.”</p><strong>Jane J. · Google</strong></article><article class="driveway-static-review"><div class="driveway-static-stars" aria-label="5 out of 5 stars">★★★★★</div><p>“They took their time, paid attention to every detail, and were thorough from start to finish. Our pavers look brand new and exceeded expectations.”</p><strong>Sophia K. · Google</strong></article></div></div></section>`;
 
 const proofCss = `<style id="driveway-static-proof-style">
-.driveway-static-proof{width:min(1180px,calc(100% - 40px));margin:8px auto 26px;padding:0}
-.driveway-static-proof-inner{background:linear-gradient(180deg,#f8fbfd 0%,#fff 100%);border:1px solid #dce5ea;border-radius:26px;padding:clamp(24px,4vw,36px);box-shadow:0 14px 36px rgba(11,45,74,.07)}
-.driveway-static-proof .eyebrow{margin:0 0 8px;color:#0f6ea8;font-size:11px;font-weight:900;letter-spacing:1.3px;text-transform:uppercase}
-.driveway-static-proof h2{margin:0;color:#0b2d4a;font-size:clamp(30px,3vw,42px);line-height:1.06;letter-spacing:-.8px}
-.driveway-static-review-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:24px}
-.driveway-static-review{position:relative;background:#fff;border:1px solid #dce5ea;border-radius:18px;padding:22px 22px 20px;box-shadow:0 8px 22px rgba(11,45,74,.05);overflow:hidden}
-.driveway-static-review::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:#39bfea}
-.driveway-static-review:nth-child(2)::before{background:#0f6ea8}
-.driveway-static-review:nth-child(3)::before{background:#5f7f9b}
-.driveway-static-stars{margin-bottom:11px;color:#ffb000;font-size:21px;line-height:1;letter-spacing:2px;font-weight:900}
-.driveway-static-review p{margin:0 0 15px;color:#42576b;font-size:15px;line-height:1.68}
-.driveway-static-review strong{color:#0b2d4a;font-size:13px;letter-spacing:.2px}
-@media(max-width:850px){.driveway-static-review-grid{grid-template-columns:1fr}}
-@media(max-width:560px){.driveway-static-proof{width:min(100% - 24px,1180px);margin-bottom:22px}.driveway-static-proof-inner{padding:22px 16px;border-radius:21px}.driveway-static-review{padding:20px 18px}}
+.driveway-static-proof{width:min(1180px,calc(100% - 40px));margin:0 auto;padding:56px 0 0}
+.driveway-static-proof-inner{margin:0;padding:0;background:transparent;border:0;border-radius:0;box-shadow:none}
+.driveway-static-kicker{display:block;margin-bottom:10px;color:#0f6ea8;font-size:12px;font-weight:900;letter-spacing:1.8px;text-transform:uppercase}
+.driveway-static-proof h2{margin:0 0 14px;color:#0b2d4a;font-family:"Arial Black",Arial,sans-serif;font-size:clamp(32px,4vw,52px);line-height:1.05;letter-spacing:-1px}
+.driveway-static-review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:26px}
+.driveway-static-review{margin:0;padding:25px;border:1px solid #dce5ea;border-radius:24px;background:#fff;box-shadow:none;overflow:visible}
+.driveway-static-review::before{display:none!important;content:none!important}
+.driveway-static-stars{margin:0 0 12px;color:#ffb000;font-size:16px;line-height:1;letter-spacing:2px;font-weight:900}
+.driveway-static-review p{margin:0 0 14px;color:#344657;font-size:15px;line-height:1.6}
+.driveway-static-review strong{display:block;color:#68798a;font-size:13px;font-weight:800;letter-spacing:0}
+section[aria-label="Recent reviews"]{width:min(1180px,calc(100% - 40px))!important;margin:30px auto 42px!important;padding:14px!important;border:1px solid #dce5ea!important;border-radius:24px!important;background:#fff!important;min-height:260px!important}
+@media(max-width:980px){.driveway-static-review-grid{grid-template-columns:1fr}.driveway-static-proof{padding-top:48px}}
+@media(max-width:650px){.driveway-static-proof{width:calc(100% - 24px);padding-top:42px}.driveway-static-proof h2{font-size:clamp(30px,10vw,40px)}.driveway-static-review{padding:25px}section[aria-label="Recent reviews"]{width:calc(100% - 24px)!important;margin-top:26px!important}}
 </style>`;
 
 html = html.replace(reviewRegex, '');
@@ -63,4 +62,4 @@ for (const reviewer of ['Scott M. · Google', 'Jane J. · Google', 'Sophia K. ·
 }
 
 fs.writeFileSync(file, html);
-console.log('Placed static Yulee homeowner reviews above the Recent reviews Elfsight widget, both above Wildlight focus.');
+console.log('Matched Yulee static customer proof styling to HydroSeal while keeping Elfsight underneath.');
