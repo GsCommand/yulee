@@ -21,23 +21,32 @@ function protectedFields(source) {
 }
 
 const before = protectedFields(html);
-const sectionPattern = /<section class="article-block" data-yulee-community-research="2026-09-07"><p class="eyebrow">Verified newer-community paver patterns<\/p>[\s\S]*?<\/section>\s*/g;
-const matches = html.match(sectionPattern) || [];
 
-if (matches.length !== 1) {
-  throw new Error(`Expected exactly one driveway newer-community research section, found ${matches.length}.`);
+const communityPattern = /<section class="article-block" data-yulee-community-research="2026-09-07"><p class="eyebrow">Verified newer-community paver patterns<\/p>[\s\S]*?<\/section>\s*/g;
+const communityMatches = html.match(communityPattern) || [];
+if (communityMatches.length !== 1) {
+  throw new Error(`Expected exactly one driveway newer-community research section, found ${communityMatches.length}.`);
 }
+html = html.replace(communityPattern, '');
 
-html = html.replace(sectionPattern, '');
+const processPattern = /<section class="article-block"><p class="eyebrow">Process<\/p><h2>Paver Sanding and Sealing Yulee<\/h2>[\s\S]*?<\/section>\s*/g;
+const processMatches = html.match(processPattern) || [];
+if (processMatches.length !== 1) {
+  throw new Error(`Expected exactly one driveway Process section, found ${processMatches.length}.`);
+}
+html = html.replace(processPattern, '');
 
-if (html.includes('Yulee neighborhoods where paver driveways are part of the actual housing stock')) {
-  throw new Error('Driveway newer-community research heading is still present after removal.');
+for (const forbidden of [
+  'Yulee neighborhoods where paver driveways are part of the actual housing stock',
+  'Paver Sanding and Sealing Yulee'
+]) {
+  if (html.includes(forbidden)) throw new Error(`Removed driveway section text is still present: ${forbidden}`);
 }
 
 const after = protectedFields(html);
 for (const key of ['title', 'canonical', 'h1', 'jsonld']) {
-  if (before[key] !== after[key]) throw new Error(`Protected ${key} changed while removing driveway community section.`);
+  if (before[key] !== after[key]) throw new Error(`Protected ${key} changed while removing driveway sections.`);
 }
 
 fs.writeFileSync(file, html);
-console.log('Removed verified newer-community paver patterns section from driveway page only.');
+console.log('Removed driveway newer-community research and Process sections only.');
