@@ -50,12 +50,22 @@ if (serviceAreasMatches.length !== 1) {
 }
 html = html.replace(serviceAreasPattern, '');
 
+const credentialsPattern = /<section class="section cert-section yulee-trust-section" aria-label="HydroSeal credentials">[\s\S]*?<\/section>\s*/g;
+const credentialsMatches = html.match(credentialsPattern) || [];
+if (credentialsMatches.length !== 1) {
+  throw new Error(`Expected exactly one driveway bottom credentials section, found ${credentialsMatches.length}.`);
+}
+html = html.replace(credentialsPattern, '');
+
 for (const forbidden of [
   'Yulee neighborhoods where paver driveways are part of the actual housing stock',
   'Paver Sanding and Sealing Yulee',
   'Paver Joint Sand Yulee',
   'Paver Sealer Yulee FL',
-  'Driveway paver sealing near Yulee'
+  'Driveway paver sealing near Yulee',
+  'HydroSeal is licensed and insured for professional exterior surface work.',
+  'HydroSeal is a Trident Master Certified paver sealing applicator.',
+  "Qualifying sealing projects include HydroSeal's written two-year workmanship and adhesion warranty."
 ]) {
   if (html.includes(forbidden)) throw new Error(`Removed driveway section text is still present: ${forbidden}`);
 }
@@ -66,4 +76,4 @@ for (const key of ['title', 'canonical', 'h1', 'jsonld']) {
 }
 
 fs.writeFileSync(file, html);
-console.log('Removed driveway newer-community, Process, joint-sand/sealer, and service-areas sections only.');
+console.log('Removed driveway newer-community, Process, joint-sand/sealer, service-areas, and bottom credentials sections only.');
