@@ -37,7 +37,7 @@ const css = `<style id="driveway-condition-layout">
 .driveway-condition-number{display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:13px;background:#0b2d4a;color:#fff;font-size:12px;font-weight:900;letter-spacing:1px;box-shadow:0 7px 16px rgba(11,45,74,.18)}
 .driveway-condition-card h3{margin:0 0 7px;color:#0b2d4a;font-size:clamp(19px,1.6vw,23px);line-height:1.12}
 .driveway-condition-card p{margin:0;color:#536475;line-height:1.66}
-.driveway-condition-image{margin:0;min-width:0;border-radius:26px;overflow:hidden;border:1px solid #d8e4ed;background:#eef4f7;box-shadow:0 22px 52px rgba(11,45,74,.14);min-height:100%}
+.driveway-condition-image{margin:0;min-width:0;border-radius:26px;overflow:hidden;border:1px solid rgba(57,191,234,.42);background:#eef4f7;box-shadow:0 22px 52px rgba(57,191,234,.32);min-height:100%}
 .driveway-condition-image img{display:block;width:100%;height:100%;min-height:560px;object-fit:cover;object-position:center}
 @media(max-width:980px){.driveway-condition-grid{grid-template-columns:1fr}.driveway-condition-image{min-height:0}.driveway-condition-image img{height:auto;min-height:0;max-height:620px;object-fit:cover}.driveway-condition-card{grid-template-columns:44px 1fr}}
 @media(max-width:560px){.driveway-condition-card{padding:18px 16px 18px;gap:12px;border-radius:17px}.driveway-condition-number{width:38px;height:38px;border-radius:11px}.driveway-condition-image{border-radius:20px}}
