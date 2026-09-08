@@ -41,6 +41,9 @@ for (const filename of files) {
   const file = path.join(publicDir, filename);
   let html = fs.readFileSync(file, 'utf8');
 
+  // Remove only the bottom credential strip. Keep the separate social-icons section intact.
+  html = html.replace(/<section class="section cert-section yulee-trust-section"\b[\s\S]*?<\/section>\s*/gi, '');
+
   const footers = html.match(/<footer\b[\s\S]*?<\/footer>/gi) || [];
   if (footers.length !== 1) {
     throw new Error(`${filename}: expected exactly one footer, found ${footers.length}`);
@@ -72,8 +75,12 @@ for (const filename of files) {
     if (!html.includes(needle)) throw new Error(`${filename}: standardized footer verification failed for ${needle}`);
   }
 
+  if (html.includes('class="section cert-section yulee-trust-section"')) {
+    throw new Error(`${filename}: bottom credential strip still present after cleanup.`);
+  }
+
   fs.writeFileSync(file, html);
-  console.log(`Standardized dark-blue centered footer: ${filename}`);
+  console.log(`Removed bottom credentials and standardized dark-blue footer: ${filename}`);
 }
 
-console.log(`Verified dark-blue standardized footer on ${files.length} HTML pages.`);
+console.log(`Verified bottom credential removal and dark-blue footer on ${files.length} HTML pages; social icon sections were not touched.`);
