@@ -44,11 +44,12 @@ if (!pricingHeading.includes('<h2>Paver sealing cost in Yulee</h2>')) {
   throw new Error('Protected homepage pricing H2 was not found in the pricing heading.');
 }
 
-const calculatorMarker = '<article class="pricing-panel pricing-calculator"';
-const calculatorStart = pricingSection.indexOf(calculatorMarker, gridStart);
-if (calculatorStart < 0) throw new Error('Homepage calculator panel was not found inside pricing section.');
-const calculatorEndTag = pricingSection.indexOf('</article>', calculatorStart);
-if (calculatorEndTag < 0) throw new Error('Homepage calculator panel closing tag was not found.');
+const calculatorClassMarker = 'class="pricing-panel pricing-calculator"';
+const calculatorClassPos = pricingSection.indexOf(calculatorClassMarker, gridStart);
+if (calculatorClassPos < 0) throw new Error('Homepage calculator panel was not found inside pricing section.');
+const calculatorStart = pricingSection.lastIndexOf('<article', calculatorClassPos);
+const calculatorEndTag = pricingSection.indexOf('</article>', calculatorClassPos);
+if (calculatorStart < 0 || calculatorEndTag < 0) throw new Error('Homepage calculator panel bounds were not found.');
 const calculator = pricingSection.slice(calculatorStart, calculatorEndTag + '</article>'.length);
 
 const whySection = html.slice(whyStart, areasStart);
@@ -70,7 +71,7 @@ if (!whyHeadingInner.includes('<p class="eyebrow">Why HydroSeal</p>') ||
 }
 
 const whyPanel = `<article class="pricing-panel home-why-panel" aria-labelledby="home-why-title"><div class="home-why-heading">${whyHeadingInner.replace('<h2>', '<h2 id="home-why-title">')}</div><div class="callout home-why-points">${whyCalloutInner}</div></article>`;
-const newPricingSection = `${pricingMarker}${pricingHeading}<div class="pricing-grid home-why-calculator-grid">${whyPanel}${calculator}</div></section>`;
+const newPricingSection = `<section class="section pricing-section home-why-calculator-section">${pricingHeading}<div class="pricing-grid home-why-calculator-grid">${whyPanel}${calculator}</div></section>`;
 
 html = html.slice(0, pricingStart) + newPricingSection + '\n\n      ' + html.slice(areasStart);
 
