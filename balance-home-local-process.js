@@ -36,10 +36,12 @@ const processMarker = '<div><p class="eyebrow">Process</p>';
 const processPos = oldSection.indexOf(processMarker);
 if (processPos < 0) throw new Error('Process column marker was not found inside homepage local/process section.');
 
-const processColumnAndClose = oldSection.slice(processPos);
-if (!processColumnAndClose.includes('HydroSeal generally uses ASTM C144 kiln-dried joint sand with a compatible joint-stabilizing sealer. This is the core of our paver sanding and sealing Yulee service.')) {
-  throw new Error('Expected ASTM C144 closing paragraph is missing from Process column.');
+const closingParagraph = '<p>HydroSeal generally uses ASTM C144 kiln-dried joint sand with a compatible joint-stabilizing sealer. This is the core of our paver sanding and sealing Yulee service.</p>';
+let processColumnAndClose = oldSection.slice(processPos);
+if (!processColumnAndClose.includes(closingParagraph)) {
+  throw new Error('Expected ASTM C144 closing paragraph is missing from Process column before removal.');
 }
+processColumnAndClose = processColumnAndClose.replace(closingParagraph, '');
 
 const localColumn = `<div class="home-local-profile-column"><p class="eyebrow">Local surface profile</p><h2>Why paver sealing in Yulee changes by neighborhood and exposure</h2><p>Yulee pavers age differently based on sun, drainage, irrigation, shade and coastal exposure. We evaluate those conditions before recommending routine resealing or a more involved restoration.</p><div class="local-profile-grid"><article class="local-profile-card"><strong>Wildlight &amp; newer installations</strong><p>We check original sealer wear, joint loss and tire-lane fading before another coat is applied.</p></article><article class="local-profile-card"><strong>Nassau rain &amp; runoff</strong><p>Heavy rain and runoff can pull sand from joints, especially along driveway edges and drainage paths.</p></article><article class="local-profile-card"><strong>Irrigation &amp; rust staining</strong><p>Mineral, fertilizer and iron staining should be treated before sealing so discoloration is not locked in.</p></article><article class="local-profile-card"><strong>Screened lanais &amp; pool decks</strong><p>Shade and humidity slow drying, making moisture checks and preparation more important around pools and lanais.</p></article><article class="local-profile-card"><strong>Yulee-to-coast transition</strong><p>Closer to Fernandina Beach and Amelia Island, wind-driven moisture and coastal exposure affect preparation and drying.</p></article><article class="local-profile-card"><strong>Concrete pavers vs. stone</strong><p>Concrete pavers and natural stone need different chemistry, pressure and sealers. See our <a href="/yulee-travertine-sealing.html">travertine sealing</a> process.</p></article></div></div>`;
 
@@ -74,11 +76,13 @@ for (const required of [
   'Irrigation &amp; rust staining',
   'Screened lanais &amp; pool decks',
   'Yulee-to-coast transition',
-  'Concrete pavers vs. stone',
-  'HydroSeal generally uses ASTM C144 kiln-dried joint sand with a compatible joint-stabilizing sealer. This is the core of our paver sanding and sealing Yulee service.'
+  'Concrete pavers vs. stone'
 ]) {
   if (!html.includes(required)) throw new Error(`Expected local/process content is missing: ${required}`);
 }
+if (html.includes('HydroSeal generally uses ASTM C144 kiln-dried joint sand with a compatible joint-stabilizing sealer. This is the core of our paver sanding and sealing Yulee service.')) {
+  throw new Error('Removed ASTM C144 closing paragraph is still present in homepage output.');
+}
 
 fs.writeFileSync(file, html);
-console.log('Shortened homepage local surface profile copy and balanced it against the Process column without changing headings or SEO fields.');
+console.log('Balanced homepage local surface profile against Process column and removed the ASTM C144 closing paragraph without changing headings or SEO fields.');
