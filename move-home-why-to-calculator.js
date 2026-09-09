@@ -92,11 +92,13 @@ const css = `<style id="home-why-calculator-style">
 .home-why-points p{margin:0!important;padding:16px 0!important;color:#536475!important;font-size:15px!important;line-height:1.66!important;border-top:1px solid #dce8ef!important}
 .home-why-points p:first-child{border-top:0!important;padding-top:0!important}
 .home-why-points strong{color:#0b3658!important;font-weight:900!important}
-.pricing-section .pricing-calculator{position:relative!important;top:auto!important;align-self:stretch!important;height:100%!important;padding:clamp(24px,3vw,32px)!important;border:1px solid #d7e6ef!important;border-radius:28px!important;background:#fff!important;box-shadow:0 18px 46px rgba(11,45,74,.10)!important}
-.pricing-section .pricing-calculator>.section-heading{margin-bottom:18px!important;text-align:left!important}
-.pricing-section .pricing-calculator>.section-heading h3{margin:0!important;color:#0b2d4a!important}
+.pricing-section .pricing-calculator{position:relative!important;top:auto!important;align-self:stretch!important;height:100%!important;overflow:hidden!important;padding:clamp(24px,3vw,32px)!important;border:1px solid #cfe4ed!important;border-top:5px solid #39bfea!important;border-radius:28px!important;background:linear-gradient(145deg,#f1fbff 0%,#e9f7fb 46%,#f8fcfe 100%)!important;box-shadow:0 18px 46px rgba(11,45,74,.10),0 18px 42px rgba(57,191,234,.16)!important}
+.pricing-section .pricing-calculator::after{content:"";position:absolute;right:-90px;top:-100px;width:235px;height:235px;border-radius:50%;background:linear-gradient(145deg,rgba(57,191,234,.19),rgba(22,143,136,.07));pointer-events:none}
+.pricing-section .pricing-calculator>.section-heading{position:relative;z-index:1;margin-bottom:18px!important;padding:0 4px 12px!important;text-align:left!important;border-bottom:1px solid rgba(15,110,168,.16)!important}
+.pricing-section .pricing-calculator>.section-heading h3{margin:0!important;color:#0b3658!important}
+.pricing-section .pricing-calculator>.hspav{position:relative!important;z-index:1!important;background:rgba(255,255,255,.96)!important;border:1px solid rgba(57,191,234,.28)!important;border-radius:22px!important;box-shadow:0 12px 30px rgba(15,110,168,.10)!important}
 @media(max-width:900px){.home-why-calculator-grid{grid-template-columns:1fr!important}.home-why-panel,.pricing-section .pricing-calculator{height:auto!important}.home-why-panel{border-radius:22px!important}}
-@media(max-width:600px){.pricing-section{padding-left:12px!important;padding-right:12px!important}.home-why-panel,.pricing-section .pricing-calculator{padding:22px 18px!important;border-radius:20px!important}}
+@media(max-width:600px){.pricing-section{padding-left:12px!important;padding-right:12px!important}.home-why-panel,.pricing-section .pricing-calculator{padding:22px 18px!important;border-radius:20px!important}.pricing-section .pricing-calculator>.hspav{border-radius:18px!important}}
 </style>`;
 
 html = html.replace('</head>', `${css}\n</head>`);
@@ -135,4 +137,4 @@ const calcPos = html.indexOf('pricing-panel pricing-calculator');
 if (whyPos < 0 || calcPos < 0 || whyPos > calcPos) throw new Error('Why HydroSeal panel is not positioned left/before the calculator.');
 
 fs.writeFileSync(file, html);
-console.log('Removed calculator intro and equalized homepage Why HydroSeal and calculator panels.');
+console.log('Added aqua color treatment to the equalized homepage calculator panel.');
