@@ -73,9 +73,9 @@ if (after.canonical !== before.canonical) throw new Error('Homepage canonical ch
 if (after.h1 !== before.h1) throw new Error('Homepage H1 changed during badge move.');
 if (JSON.stringify(after.jsonLd) !== JSON.stringify(before.jsonLd)) throw new Error('Homepage JSON-LD/schema changed during badge move.');
 
-const finalBadgePos = html.indexOf('home-bottom-cert-badges');
-const finalSocialPos = html.indexOf('elfsight-app-f7229490-8c31-483c-aa82-d3a3b751a7c7');
-const faqPos = html.indexOf('faq-section');
+const finalBadgePos = html.indexOf('<div class="home-bottom-cert-badges">');
+const finalSocialPos = html.indexOf(socialAppMarker);
+const faqPos = html.indexOf('<section class="section faq-section">');
 if (finalBadgePos < 0 || finalSocialPos < 0 || finalBadgePos > finalSocialPos) {
   throw new Error('Certification badge strip is not directly before the social icon widget.');
 }
