@@ -33,10 +33,10 @@ if (after.canonical !== before.canonical) throw new Error('Homepage canonical ch
 if (after.h1 !== before.h1) throw new Error('Homepage H1 changed while removing quote section.');
 if (JSON.stringify(after.jsonLd) !== JSON.stringify(before.jsonLd)) throw new Error('Homepage JSON-LD/schema changed while removing quote section.');
 
+if (/\bid="quote"\b/i.test(html)) throw new Error('Homepage quote section id is still present.');
 for (const removed of [
   'Get a Yulee paver sealing quote',
-  'Send surface photos, approximate square footage and your neighborhood.',
-  'info@hydrosealpavers.com'
+  'Send surface photos, approximate square footage and your neighborhood.'
 ]) {
   if (html.includes(removed)) throw new Error(`Homepage quote content still present: ${removed}`);
 }
