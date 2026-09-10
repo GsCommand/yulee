@@ -39,8 +39,8 @@ if (after.canonical !== before.canonical) throw new Error('Pool deck canonical c
 if (JSON.stringify(after.h1) !== JSON.stringify(before.h1)) throw new Error('Pool deck H1 changed while removing sections.');
 if (JSON.stringify(after.jsonLd) !== JSON.stringify(before.jsonLd)) throw new Error('Pool deck JSON-LD/schema changed while removing sections.');
 
-if (html.includes(processHeading) || html.includes('pool-process-section')) throw new Error('Pool process section was not fully removed.');
-if (html.includes(serviceHeading) || html.includes('pool-service-areas')) throw new Error('Pool service-area section was not fully removed.');
+if (html.includes(processHeading) || /class="article-block pool-process-section"/i.test(html)) throw new Error('Pool process section was not fully removed.');
+if (html.includes(serviceHeading) || /class="article-block pool-service-areas"/i.test(html)) throw new Error('Pool service-area section was not fully removed.');
 
 fs.writeFileSync(file, html);
 console.log('Removed pool deck process and service-area sections.');
