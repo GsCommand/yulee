@@ -23,8 +23,8 @@ html = html
   .replace(/\s*<style id="pool-static-proof-style">[\s\S]*?<\/style>\s*/i, '\n')
   .replace(/\s*<section class="pool-static-proof"[\s\S]*?<\/section>\s*/i, '\n');
 
-const galleryMarker = '<section class="section gallery-embed" aria-label="Recent pool deck work">';
-if (!html.includes(galleryMarker)) throw new Error('Dedicated Recent pool deck work gallery section not found.');
+const reviewsMarker = '<section class="section gallery-embed" aria-label="Recent reviews">';
+if (!html.includes(reviewsMarker)) throw new Error('Recent reviews widget section not found.');
 
 const proof = `<section class="pool-static-proof" aria-labelledby="pool-static-proof-title">
   <div class="pool-static-proof-inner">
@@ -65,16 +65,16 @@ const css = `<style id="pool-static-proof-style">
 @media(max-width:650px){.pool-static-proof{width:calc(100% - 24px);padding-top:42px}.pool-static-proof h2{font-size:clamp(30px,10vw,40px)}.pool-static-review{padding:22px}}
 </style>`;
 
-html = html.replace(galleryMarker, `${proof}\n${galleryMarker}`);
+html = html.replace(reviewsMarker, `${proof}\n${reviewsMarker}`);
 if (!html.includes('</head>')) throw new Error('Pool deck </head> marker missing.');
 html = html.replace('</head>', `${css}\n</head>`);
 
 const after = snapshot(html);
-if (after.title !== before.title) throw new Error('Pool deck title changed while adding static proof.');
-if (after.description !== before.description) throw new Error('Pool deck meta description changed while adding static proof.');
-if (after.canonical !== before.canonical) throw new Error('Pool deck canonical changed while adding static proof.');
-if (JSON.stringify(after.h1) !== JSON.stringify(before.h1)) throw new Error('Pool deck H1 changed while adding static proof.');
-if (JSON.stringify(after.jsonLd) !== JSON.stringify(before.jsonLd)) throw new Error('Pool deck JSON-LD/schema changed while adding static proof.');
+if (after.title !== before.title) throw new Error('Pool deck title changed while moving static proof.');
+if (after.description !== before.description) throw new Error('Pool deck meta description changed while moving static proof.');
+if (after.canonical !== before.canonical) throw new Error('Pool deck canonical changed while moving static proof.');
+if (JSON.stringify(after.h1) !== JSON.stringify(before.h1)) throw new Error('Pool deck H1 changed while moving static proof.');
+if (JSON.stringify(after.jsonLd) !== JSON.stringify(before.jsonLd)) throw new Error('Pool deck JSON-LD/schema changed while moving static proof.');
 
 for (const required of [
   'CUSTOMER PROOF',
@@ -82,14 +82,14 @@ for (const required of [
   'Diane R. · Google',
   'Had to be the most professional job I ever had done.',
   'Scott M. · Google',
-  'elfsight-app-aac62a49-a425-47be-9c8a-13971e000940'
+  'elfsight-app-6c4e28f8-e9a0-49a8-b07c-0c224e121a67'
 ]) {
   if (!html.includes(required)) throw new Error(`Pool static proof verification failed: ${required}`);
 }
 
 const proofPos = html.indexOf('Trusted by Yulee Homeowners.');
-const galleryPos = html.indexOf('elfsight-app-aac62a49-a425-47be-9c8a-13971e000940');
-if (!(proofPos >= 0 && galleryPos > proofPos)) throw new Error('Pool static proof is not above the Pool Deck Gallery.');
+const reviewsPos = html.indexOf('elfsight-app-6c4e28f8-e9a0-49a8-b07c-0c224e121a67');
+if (!(proofPos >= 0 && reviewsPos > proofPos)) throw new Error('Pool static proof is not directly above the reviews widget.');
 
 fs.writeFileSync(file, html);
-console.log('Added three-card pool deck customer proof directly above dedicated Pool Deck Gallery.');
+console.log('Placed three-card pool deck customer proof directly above the Recent reviews widget.');
