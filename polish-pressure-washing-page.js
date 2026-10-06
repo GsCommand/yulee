@@ -44,7 +44,7 @@ const descAfter = (html.match(/<meta\s+name="description"\s+content="[^"]*"\s*\/
 const canonicalAfter = (html.match(/<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/i) || [])[0];
 const h1After = (html.match(/<h1\b[^>]*>[\s\S]*?<\/h1>/i) || [])[0];
 if (titleAfter !== titleBefore || descAfter !== descBefore || canonicalAfter !== canonicalBefore || h1After !== h1Before) throw new Error('Pressure washing SEO foundation changed during homepage match.');
-if (/Roof Washing|Roof Cleaning|yulee-roof-washing\.html/i.test(html)) throw new Error('Roof service copy resurfaced in pressure-washing output.');
+if (/Roof Washing|yulee-roof-washing\.html/i.test(html)) throw new Error('Removed roof-service page or link resurfaced in pressure-washing output.');
 
 fs.writeFileSync(file, html);
 console.log('Matched Pressure Washing page to homepage design system.');
