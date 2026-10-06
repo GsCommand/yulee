@@ -3,145 +3,49 @@ const path = require('path');
 
 const file = path.join(__dirname, 'public', 'pressure-washing.html');
 if (!fs.existsSync(file)) throw new Error('Pressure washing page missing from public build.');
-let html = fs.readFileSync(file, 'utf8');
 
-const titleBefore = (html.match(/<title>[\s\S]*?<\/title>/i) || [])[0];
-const descBefore = (html.match(/<meta\s+name="description"\s+content="[^"]*"\s*\/?>/i) || [])[0];
-const canonicalBefore = (html.match(/<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/i) || [])[0];
-const h1Before = (html.match(/<h1\b[^>]*>[\s\S]*?<\/h1>/i) || [])[0];
-if (!titleBefore || !descBefore || !canonicalBefore || !h1Before) throw new Error('Protected pressure-washing SEO fields missing.');
+const html = `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pressure Washing Yulee FL | Wildlight, Fernandina Beach & Amelia Island</title>
+<meta name="description" content="Pressure washing Yulee FL for houses, driveways, concrete and exterior surfaces. Serving Wildlight, Fernandina Beach and Amelia Island. Call or text 904.537.5000." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://www.yuleepaversealing.com/pressure-washing.html" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Pressure Washing Yulee FL | Wildlight & Fernandina Beach" />
+<meta property="og:description" content="House washing, soft washing, driveway cleaning and exterior pressure washing in Yulee, Wildlight, Fernandina Beach and Amelia Island." />
+<meta property="og:image" content="https://www.yuleepaversealing.com/images/hydroseal-house-washing.webp" />
+<link rel="stylesheet" href="/styles.css?v=7" />
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","name":"Pressure Washing Yulee FL","serviceType":"Residential pressure washing, power washing and soft washing","provider":{"@id":"https://hydrosealpavers.com/#business"},"areaServed":[{"@type":"Place","name":"Yulee, Florida"},{"@type":"Place","name":"Wildlight, Yulee, Florida"},{"@type":"Place","name":"Fernandina Beach, Florida"},{"@type":"Place","name":"Amelia Island, Florida"},{"@type":"AdministrativeArea","name":"Nassau County, Florida"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do you pressure wash houses?","acceptedAnswer":{"@type":"Answer","text":"House washing is generally handled with a softer cleaning method on suitable exterior finishes rather than aggressive high pressure."}},{"@type":"Question","name":"What surfaces can be pressure washed?","acceptedAnswer":{"@type":"Answer","text":"Driveways, sidewalks, concrete and other durable exterior surfaces are common pressure-washing targets. Delicate materials may require lower pressure or soft washing."}},{"@type":"Question","name":"What is the difference between pressure washing and soft washing?","acceptedAnswer":{"@type":"Answer","text":"Pressure washing uses controlled mechanical pressure on durable surfaces, while soft washing relies more on cleaning chemistry and lower pressure for delicate exterior materials."}},{"@type":"Question","name":"Do you serve Fernandina Beach and Amelia Island?","acceptedAnswer":{"@type":"Answer","text":"Yes. Service is available in Yulee, Wildlight, Fernandina Beach, Amelia Island and nearby Nassau County communities subject to scheduling and project fit."}}]}]}</script>
+</head>
+<body>
+<header class="site-header"><a class="brand" href="/" aria-label="Yulee Paver Sealing home"><img class="brand-logo" src="https://www.yuleepaversealing.com/images/yulee-hydroseal-logo.webp" alt="Yulee Paver Sealing by HydroSeal" width="400" height="145" /></a><nav class="nav" aria-label="Primary navigation"><div class="nav-dropdown"><button class="nav-dropbtn" type="button">Paver Sealing</button><div class="nav-menu"><a href="/">Paver Sealing Yulee</a><a href="/yulee-driveway-paver-sealing.html">Driveway Sealing</a><a href="/yulee-pool-deck-paver-sealing.html">Pool Deck Sealing</a><a href="/yulee-travertine-sealing.html">Travertine Sealing</a></div></div><div class="nav-dropdown"><button class="nav-dropbtn" type="button">Pressure Washing</button><div class="nav-menu"><a href="/pressure-washing.html">Pressure Washing</a><a href="/yulee-house-washing.html">House Washing</a></div></div><a href="/service-areas.html">Service Areas</a><a class="nav-cta nav-call-text" href="tel:+19045375000"><span class="nav-call-label">Call or Text</span><span class="nav-call-phone">904.537.5000</span></a><a class="nav-cta" href="https://hydrosealpavers.com/get-a-quote">Get Quote</a></nav></header>
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><span aria-current="page">Pressure Washing</span></nav>
+<main>
+<section class="hero"><div class="hero-media"><img class="hero-image" src="https://www.yuleepaversealing.com/images/hydroseal-house-washing.webp" alt="Pressure washing Yulee FL and residential soft washing" width="1600" height="1067" fetchpriority="high" /><div class="hero-copy"><p class="eyebrow">Exterior cleaning in Nassau County</p><h1>Pressure Washing Yulee FL</h1><p class="hero-text">Pressure washing, power washing and soft washing for homes, driveways, concrete and exterior surfaces in Yulee, Wildlight, Fernandina Beach and Amelia Island.</p><div class="hero-actions"><a class="button primary" href="https://hydrosealpavers.com/get-a-quote">Request a quote</a><a class="button secondary" href="tel:+19045375000">Call 904.537.5000</a></div><div class="trust-strip"><span>House Washing</span><span>Driveway Cleaning</span><span>Concrete Cleaning</span><span>Soft Washing</span></div></div><aside class="hero-card"><h2>Surface-specific cleaning</h2><ul><li>House soft washing</li><li>Driveways and concrete</li><li>Patios and exterior hardscape</li><li>Surface-appropriate pressure</li></ul></aside></div></section>
+<section class="section gallery-embed" aria-label="Recent exterior cleaning projects"><script src="https://elfsightcdn.com/platform.js" async></script><div class="elfsight-app-bfab489f-7fca-4f05-ba5a-d92616b76b26" data-elfsight-app-lazy></div></section>
+<article class="service-article">
+<section class="article-block"><p class="eyebrow">Surface-specific cleaning</p><h2>Pressure should match the surface, not the other way around</h2><p class="lead">Yulee homes and hardscape deal with Florida humidity, algae, mildew, irrigation overspray, shade and heavy rain. Professional exterior cleaning starts by identifying the material and buildup before selecting pressure, chemistry and rinsing.</p><div class="content-grid three"><div class="content-card"><h3>House Soft Washing</h3><p>Lower-pressure cleaning for suitable stucco, siding, soffits, fascia, trim and painted exterior finishes.</p></div><div class="content-card"><h3>Driveway Cleaning</h3><p>Controlled pressure washing for concrete driveways, sidewalks and other durable hard surfaces.</p></div><div class="content-card"><h3>Exterior Surface Evaluation</h3><p>Pressure, cleaning solution and dwell time are selected around the material, staining and surrounding landscaping.</p></div></div></section>
+<section class="article-grid"><div class="article-card"><p class="eyebrow">Soft washing</p><h2>Delicate exterior finishes need lower pressure</h2><p>Stucco, siding, soffits, fascia, trim and painted surfaces should not be treated like concrete. Soft washing relies more on cleaning chemistry and controlled rinsing than aggressive pressure.</p><h3>House washing in Yulee</h3><p>Our house-washing process is designed around the exterior finish, organic buildup, landscaping and runoff conditions at the property.</p></div><div class="article-card"><p class="eyebrow">Hard surfaces</p><h2>Concrete and driveways can handle a different approach</h2><p>Concrete driveways, sidewalks and durable hardscape can often be cleaned effectively with controlled pressure when the surface condition supports it.</p><h3>Pressure where it belongs</h3><p>Oil, organic buildup, irrigation staining and embedded dirt are evaluated before cleaning so the method fits the condition of the surface.</p></div></section>
+<section class="article-block"><p class="eyebrow">Process</p><h2>How Yulee Pressure Washing Works</h2><div class="process-grid"><div class="process-step"><strong>Inspect</strong><p>Identify the surface, buildup, staining and sensitive areas.</p></div><div class="process-step"><strong>Protect</strong><p>Prepare landscaping, fixtures and nearby materials.</p></div><div class="process-step"><strong>Treat</strong><p>Apply appropriate cleaning solution where needed.</p></div><div class="process-step"><strong>Clean</strong><p>Use pressure washing or soft washing based on the surface.</p></div><div class="process-step"><strong>Rinse</strong><p>Remove loosened buildup and cleaning residue.</p></div><div class="process-step"><strong>Review</strong><p>Inspect the work and address agreed touch-up areas.</p></div></div></section>
+<section class="article-grid"><div class="article-card"><p class="eyebrow">Power washing</p><h2>Pressure washing and power washing in Yulee</h2><p>Homeowners often use pressure washing and power washing interchangeably. The important part is choosing the right combination of pressure, chemistry, dwell time and rinsing for the actual material being cleaned.</p></div><div class="article-card"><p class="eyebrow">Coastal conditions</p><h2>Why Nassau County exteriors get dirty fast</h2><p>Humidity, shade, irrigation, salt exposure and frequent rain encourage algae, mildew and surface buildup. Cleaning intervals vary with exposure, landscaping and how quickly each side of the property dries.</p></div></section>
+<section class="article-block"><p class="eyebrow">Service areas</p><h2>Pressure washing near Yulee</h2><div class="location-nav"><a class="location-link" href="/service-areas.html"><strong>Yulee</strong><span>House washing, driveway cleaning, concrete and exterior surface cleaning.</span></a><a class="location-link" href="/wildlight-paver-sealing.html"><strong>Wildlight</strong><span>Soft washing, driveway cleaning and exterior surface cleaning.</span></a><a class="location-link" href="/fernandina-beach-paver-sealing.html"><strong>Fernandina Beach</strong><span>Exterior cleaning with attention to coastal exposure and landscaping.</span></a><a class="location-link" href="/amelia-island-paver-sealing.html"><strong>Amelia Island</strong><span>Pressure and soft washing for suitable residential exterior surfaces.</span></a></div></section>
+</article>
+<section class="section split"><div><p class="eyebrow">Pressure where it belongs</p><h2>Use pressure for durable surfaces</h2><p>Concrete driveways, sidewalks and other durable hardscape can often be cleaned efficiently with pressure washing when the surface condition supports it.</p></div><div><p class="eyebrow">Soft wash where it does not</p><h2>Use lower pressure for homes and painted finishes</h2><p>Stucco, siding, soffits, fascia, trim and painted finishes may require lower pressure and chemistry-led cleaning rather than aggressive blasting.</p></div></section>
+<section class="section gallery-embed" aria-label="Recent reviews"><div class="elfsight-app-6c4e28f8-e9a0-49a8-b07c-0c224e121a67" data-elfsight-app-lazy></div></section>
+<section class="section faq-section"><div class="section-heading"><p class="eyebrow">Questions</p><h2>Yulee pressure washing questions</h2></div><details class="faq-item"><summary>Do you pressure wash houses?</summary><p>House washing is generally handled with a softer cleaning method on suitable exterior finishes rather than aggressive high pressure.</p></details><details class="faq-item"><summary>What surfaces can be pressure washed?</summary><p>Driveways, sidewalks, concrete and other durable exterior surfaces are common pressure-washing targets. Delicate materials may require lower pressure or soft washing.</p></details><details class="faq-item"><summary>What is the difference between pressure washing and soft washing?</summary><p>Pressure washing relies more on mechanical pressure for durable surfaces, while soft washing uses cleaning chemistry and lower pressure for more delicate exterior finishes.</p></details><details class="faq-item"><summary>Do you serve Fernandina Beach and Amelia Island?</summary><p>Yes. Service is available in Yulee, Wildlight, Fernandina Beach, Amelia Island and nearby Nassau County communities subject to scheduling and project fit.</p></details></section>
+<section class="cta-panel"><p class="eyebrow">Free estimate</p><h2>Get a Yulee pressure washing quote</h2><p>Send photos of the surfaces you want cleaned and any staining, algae or heavy buildup you want us to review.</p><p class="nap"><strong>HydroSeal</strong> — Yulee Pressure Washing<br />Serving Yulee, Wildlight &amp; Nassau County, FL<br /><a href="tel:+19045375000">904.537.5000</a></p><div class="hero-actions"><a class="button primary" href="https://hydrosealpavers.com/get-a-quote">Request quote</a></div></section>
+</main>
+<section class="social-icons"><div class="elfsight-app-f7229490-8c31-483c-aa82-d3a3b751a7c7" data-elfsight-app-lazy></div></section>
+<div class="mobile-contactbar"><a class="mobile-callbar-btn" href="tel:+19045375000">📞 Call</a><a class="mobile-callbar-btn" href="sms:+19045375000">💬 Text</a></div>
+<footer class="site-footer"><nav><a href="/">Paver Sealing Yulee FL</a><a href="/yulee-driveway-paver-sealing.html">Driveway Paver Sealing</a><a href="/yulee-pool-deck-paver-sealing.html">Pool Deck Sealing</a><a href="/pressure-washing.html">Pressure Washing</a><a href="/yulee-house-washing.html">House Washing</a><a href="/service-areas.html">Service Areas</a></nav><p>&copy; 2026 HydroSeal · Yulee Pressure Washing · Nassau County, FL</p></footer>
+</body></html>`;
 
-html = html.replace(/<body class="([^"]*)">/i, (_m, cls) => `<body class="${cls} pressure-travertine-clone">`);
-if (!html.includes('pressure-travertine-clone')) html = html.replace(/<body>/i, '<body class="pressure-travertine-clone">');
-
-html = html.replace('<article class="service-article">', '<article class="service-article pressure-trav-content">');
-html = html.replace('<section class="section split">', '<section class="section split pressure-readiness-split">');
-html = html.replace('<section class="section faq-section">', '<section class="section faq-section pressure-faq">');
-html = html.replace('<section class="cta-panel">', '<section class="cta-panel pressure-cta">');
-
-const css = `
-<style id="pressure-travertine-clone-style">
-body.pressure-travertine-clone{
- --pw-navy:#0b2d4a;--pw-blue:#0f6ea8;--pw-water:#39bfea;--pw-indigo:#596fd3;--pw-purple:#7d6ac8;
- --pw-ink:#0b1220;--pw-muted:#536475;--pw-line:#dce5ea;--pw-soft:#f4f7f9;
- --pw-shadow:0 16px 40px rgba(11,45,74,.10);--pw-shadow-strong:0 24px 58px rgba(11,45,74,.15);
- background:#fff;color:var(--pw-ink)
+if (/Roof Washing|Roof Cleaning|yulee-roof-washing\.html/i.test(html)) {
+  throw new Error('Roof service copy resurfaced in pressure-washing output.');
 }
-body.pressure-travertine-clone main{overflow:hidden;background:#fff}
-body.pressure-travertine-clone .service-article{width:min(1180px,calc(100% - 40px));margin-inline:auto;padding:26px 0 0}
-
-/* Keep the same shared hero/nav structure as Travertine */
-body.pressure-travertine-clone .ys-hero{min-height:650px}
-body.pressure-travertine-clone .ys-hero:after{background:linear-gradient(90deg,rgba(5,32,51,.38),rgba(5,32,51,.08))}
-body.pressure-travertine-clone .ys-glass{background:rgba(5,32,51,.26);border:1px solid rgba(255,255,255,.14);box-shadow:0 24px 70px rgba(0,0,0,.14)}
-body.pressure-travertine-clone .ys-glass h1,body.pressure-travertine-clone .ys-glass .hero-text{text-shadow:0 3px 16px rgba(0,0,0,.68)}
-body.pressure-travertine-clone .ys-proof{border:1px solid rgba(220,229,234,.95)}
-body.pressure-travertine-clone .ys-feature-strip{background:#f1f5f7;border:1px solid var(--pw-line)}
-body.pressure-travertine-clone .ys-feature{border:1px solid var(--pw-line);box-shadow:0 8px 20px rgba(11,45,74,.05)}
-
-/* Travertine-style bordered section language */
-body.pressure-travertine-clone .pressure-trav-content>section,
-body.pressure-travertine-clone .pressure-readiness-split,
-body.pressure-travertine-clone .pressure-faq,
-body.pressure-travertine-clone .pressure-cta{position:relative}
-
-body.pressure-travertine-clone .pressure-trav-content .article-block,
-body.pressure-travertine-clone .pressure-trav-content .feature-band,
-body.pressure-travertine-clone .pressure-trav-content>.article-grid,
-body.pressure-travertine-clone .pressure-readiness-split,
-body.pressure-travertine-clone .pressure-faq,
-body.pressure-travertine-clone .pressure-cta{
- border:1px solid var(--pw-line)!important;border-radius:28px!important;box-shadow:var(--pw-shadow)!important;
-}
-body.pressure-travertine-clone .pressure-trav-content .article-block,
-body.pressure-travertine-clone .pressure-trav-content .feature-band,
-body.pressure-travertine-clone .pressure-trav-content>.article-grid{
- background:linear-gradient(145deg,#fff 0%,#fbfdfe 100%)!important;
- padding:clamp(28px,4vw,44px)!important;margin:30px 0 0!important;
-}
-body.pressure-travertine-clone .pressure-trav-content .article-block::before,
-body.pressure-travertine-clone .pressure-trav-content .feature-band::before,
-body.pressure-travertine-clone .pressure-trav-content>.article-grid::before,
-body.pressure-travertine-clone .pressure-faq::before,
-body.pressure-travertine-clone .pressure-cta::before{
- content:"";position:absolute;left:22px;right:22px;top:0;height:4px;border-radius:0 0 6px 6px;background:linear-gradient(90deg,var(--pw-water),var(--pw-blue));
-}
-body.pressure-travertine-clone .pressure-trav-content .feature-band::before{background:linear-gradient(90deg,var(--pw-blue),var(--pw-indigo))}
-body.pressure-travertine-clone .pressure-trav-content>.article-grid::before{background:linear-gradient(90deg,var(--pw-indigo),var(--pw-purple))}
-body.pressure-travertine-clone .pressure-cta::before{background:linear-gradient(90deg,var(--pw-water),#79d7f4)}
-
-body.pressure-travertine-clone .pressure-trav-content h2,
-body.pressure-travertine-clone .pressure-faq h2,
-body.pressure-travertine-clone .pressure-cta h2{
- font-family:"Arial Black",Arial,sans-serif;color:var(--pw-navy);line-height:1.04;letter-spacing:-.9px
-}
-body.pressure-travertine-clone .pressure-trav-content h2{font-size:clamp(32px,3.7vw,48px)}
-body.pressure-travertine-clone .pressure-trav-content p{color:var(--pw-muted);line-height:1.72}
-body.pressure-travertine-clone .pressure-trav-content .eyebrow{color:var(--pw-blue);font-weight:900;text-transform:uppercase;letter-spacing:1.1px}
-
-/* Interior cards mirror Travertine paired/detail cards */
-body.pressure-travertine-clone .content-grid,
-body.pressure-travertine-clone .article-grid{gap:16px!important}
-body.pressure-travertine-clone .content-card,
-body.pressure-travertine-clone .article-card,
-body.pressure-travertine-clone .feature-band .article-grid>div{
- position:relative;background:#fff!important;border:1px solid var(--pw-line)!important;border-radius:22px!important;
- padding:28px!important;box-shadow:0 8px 24px rgba(11,45,74,.06)!important;overflow:hidden;
-}
-body.pressure-travertine-clone .content-card::before,
-body.pressure-travertine-clone .article-card::before,
-body.pressure-travertine-clone .feature-band .article-grid>div::before{
- content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--pw-blue)
-}
-body.pressure-travertine-clone .content-card:nth-child(2)::before,
-body.pressure-travertine-clone .article-card:nth-child(2)::before{background:var(--pw-indigo)}
-body.pressure-travertine-clone .content-card:nth-child(3)::before{background:var(--pw-purple)}
-body.pressure-travertine-clone .content-card h3,
-body.pressure-travertine-clone .article-card h3,
-body.pressure-travertine-clone .feature-band h3{color:var(--pw-navy);font-family:"Arial Black",Arial,sans-serif}
-
-/* Process cards exactly in the Travertine family */
-body.pressure-travertine-clone .process-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px!important}
-body.pressure-travertine-clone .process-step{position:relative;border:1px solid var(--pw-line)!important;border-radius:18px!important;background:#fff!important;box-shadow:0 8px 20px rgba(11,45,74,.05)!important;padding:20px!important;overflow:hidden}
-body.pressure-travertine-clone .process-step::before{content:"";position:absolute;left:0;top:0;right:0;height:3px;background:var(--pw-water)}
-body.pressure-travertine-clone .process-step:nth-child(2)::before,body.pressure-travertine-clone .process-step:nth-child(5)::before{background:var(--pw-blue)}
-body.pressure-travertine-clone .process-step:nth-child(3)::before,body.pressure-travertine-clone .process-step:nth-child(6)::before{background:var(--pw-indigo)}
-body.pressure-travertine-clone .process-step strong{color:var(--pw-navy)!important}
-
-/* Same readiness split treatment as Travertine */
-body.pressure-travertine-clone .pressure-readiness-split{width:min(1180px,calc(100% - 40px))!important;margin:34px auto 0!important;background:#f1f5f7!important;padding:18px!important;gap:16px!important}
-body.pressure-travertine-clone .pressure-readiness-split>div{position:relative;background:#fff;border:1px solid var(--pw-line);border-radius:20px;padding:28px;box-shadow:0 8px 22px rgba(11,45,74,.05);overflow:hidden}
-body.pressure-travertine-clone .pressure-readiness-split>div::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--pw-water)}
-body.pressure-travertine-clone .pressure-readiness-split>div:nth-child(2)::before{background:var(--pw-indigo)}
-body.pressure-travertine-clone .pressure-readiness-split h2{color:var(--pw-navy)!important}
-body.pressure-travertine-clone .pressure-readiness-split p{color:var(--pw-muted)!important}
-
-/* Reviews */
-body.pressure-travertine-clone .gallery-embed{width:min(1180px,calc(100% - 40px));margin:36px auto 0;border:1px solid var(--pw-line);border-radius:26px;background:#fff;box-shadow:var(--pw-shadow);padding:22px!important;overflow:hidden}
-body.pressure-travertine-clone .gallery-embed::before{content:"";display:block;height:4px;margin:-22px -22px 18px;background:linear-gradient(90deg,var(--pw-water),var(--pw-indigo))}
-
-/* FAQ */
-body.pressure-travertine-clone .pressure-faq{width:min(1180px,calc(100% - 40px));margin:36px auto 0!important;padding:clamp(28px,4vw,42px)!important;background:linear-gradient(145deg,#fff,#f8fbfd)!important}
-body.pressure-travertine-clone .pressure-faq .faq-item{border:1px solid var(--pw-line)!important;border-radius:16px!important;background:#fff!important;margin-top:10px!important;box-shadow:0 6px 18px rgba(11,45,74,.04)!important;overflow:hidden}
-body.pressure-travertine-clone .pressure-faq .faq-item summary{padding:18px 20px!important;color:var(--pw-navy)!important;font-weight:850!important}
-body.pressure-travertine-clone .pressure-faq .faq-item p{padding:0 20px 18px!important;margin:0!important;color:var(--pw-muted)!important}
-
-/* CTA */
-body.pressure-travertine-clone .pressure-cta{width:min(1180px,calc(100% - 40px));margin:36px auto 88px!important;padding:clamp(30px,5vw,52px)!important;background:linear-gradient(135deg,#0b2d4a,#0f6ea8)!important;color:#fff!important;box-shadow:var(--pw-shadow-strong)!important}
-body.pressure-travertine-clone .pressure-cta h2,body.pressure-travertine-clone .pressure-cta p,body.pressure-travertine-clone .pressure-cta a{color:#fff!important}
-
-@media(max-width:900px){body.pressure-travertine-clone .process-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:640px){body.pressure-travertine-clone .service-article,body.pressure-travertine-clone .pressure-readiness-split,body.pressure-travertine-clone .pressure-faq,body.pressure-travertine-clone .pressure-cta,body.pressure-travertine-clone .gallery-embed{width:calc(100% - 24px)!important}body.pressure-travertine-clone .process-grid{grid-template-columns:1fr}body.pressure-travertine-clone .pressure-trav-content .article-block,body.pressure-travertine-clone .pressure-trav-content .feature-band,body.pressure-travertine-clone .pressure-trav-content>.article-grid{padding:24px 20px!important}}
-</style>`;
-
-html = html.replace('</head>', `${css}\n</head>`);
-
-const titleAfter = (html.match(/<title>[\s\S]*?<\/title>/i) || [])[0];
-const descAfter = (html.match(/<meta\s+name="description"\s+content="[^"]*"\s*\/?>/i) || [])[0];
-const canonicalAfter = (html.match(/<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/i) || [])[0];
-const h1After = (html.match(/<h1\b[^>]*>[\s\S]*?<\/h1>/i) || [])[0];
-if (titleAfter !== titleBefore || descAfter !== descBefore || canonicalAfter !== canonicalBefore || h1After !== h1Before) throw new Error('Pressure washing SEO foundation changed during travertine-layout match.');
-if (/yulee-roof-washing\.html/i.test(html)) throw new Error('Removed roof-service link resurfaced in pressure-washing output.');
-
 fs.writeFileSync(file, html);
-console.log('Matched Pressure Washing page to the Travertine page layout and visual system.');
+console.log('Rebuilt Pressure Washing page on the Travertine page section structure.');
