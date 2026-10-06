@@ -11,7 +11,7 @@ if (!html.includes(heading)) {
   const marker = '<section class="article-block"><p class="eyebrow">Process</p><h2>How Yulee Travertine Sealing Works</h2>';
   if (!html.includes(marker)) throw new Error('Travertine process section not found for compatibility placeholder.');
 
-  const placeholder = '<section class="feature-band" data-build-placeholder="travertine-wildlight"><p class="eyebrow">Wildlight focus</p><h2>Travertine Sealing Wildlight Yulee</h2></section>\n';
+  const placeholder = '<section class="feature-band"><p class="eyebrow">Wildlight focus</p><h2>Travertine Sealing Wildlight Yulee</h2></section>\n';
   html = html.replace(marker, placeholder + marker);
   fs.writeFileSync(file, html);
   console.log('Inserted temporary travertine Wildlight build placeholder.');
