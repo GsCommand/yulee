@@ -1,0 +1,50 @@
+const fs = require('fs');
+const path = require('path');
+
+const file = path.join(__dirname, 'public', 'pressure-washing.html');
+if (!fs.existsSync(file)) throw new Error('Pressure washing page missing from public build.');
+let html = fs.readFileSync(file, 'utf8');
+
+const titleBefore = (html.match(/<title>[\s\S]*?<\/title>/i) || [])[0];
+const descBefore = (html.match(/<meta\s+name="description"\s+content="[^"]*"\s*\/?>/i) || [])[0];
+const canonicalBefore = (html.match(/<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/i) || [])[0];
+const h1Before = (html.match(/<h1\b[^>]*>[\s\S]*?<\/h1>/i) || [])[0];
+if (!titleBefore || !descBefore || !canonicalBefore || !h1Before) throw new Error('Protected pressure-washing SEO fields missing.');
+
+if (!html.includes('/home-hydroseal.css')) {
+  html = html.replace('</head>', '<link rel="stylesheet" href="/home-hydroseal.css?v=4" />\n</head>');
+}
+html = html.replace(/<body class="([^"]*)">/i, (_m, cls) => `<body class="${cls} yulee-home pressure-home-match">`);
+if (!html.includes('pressure-home-match')) html = html.replace(/<body>/i, '<body class="yulee-home pressure-home-match">');
+
+const swaps = [
+  [/\bys-header\b/g,'y-home-header'],[/\bys-nav\b/g,'y-home-nav'],[/\bys-shell\b/g,'y-shell'],[/\bys-logo\b/g,'y-home-logo'],[/\bys-toggle\b/g,'y-home-toggle'],[/\bys-menu\b/g,'y-home-menu'],[/\bys-group--paver\b/g,'y-home-group--paver'],[/\bys-group\b/g,'y-home-group'],[/\bys-parent\b/g,'y-home-parent'],[/\bys-mega\b/g,'y-home-mega'],[/\bys-call\b/g,'y-home-call'],[/\bys-quote\b/g,'y-home-quote'],[/\bys-hero-bg\b/g,'y-home-hero-bg'],[/\bys-hero-grid\b/g,'y-home-hero-grid'],[/\bys-glass\b/g,'y-home-glass'],[/\bys-proof-stack\b/g,'y-home-proof-stack'],[/\bys-google-badge\b/g,'y-home-google-badge'],[/\bys-stars\b/g,'y-home-stars'],[/\bys-review-link\b/g,'y-home-review-link'],[/\bys-proof-blue\b/g,'y-home-proof-blue'],[/\bys-proof\b/g,'y-home-proof'],[/\bys-feature-wrap\b/g,'y-home-feature-wrap'],[/\bys-feature-strip\b/g,'y-home-feature-strip'],[/\bys-feature--compact\b/g,'y-home-feature--compact'],[/\bys-feature\b/g,'y-home-feature']
+];
+for (const [re, value] of swaps) html = html.replace(re, value);
+html = html.replace(/class="ys-hero(?: ys-hero--no-image)?"/g, 'class="hero y-home-hero"');
+html = html.replace(/<div class="hero-actions">/g, '<div class="y-home-actions">');
+html = html.replace(/class="button primary"/g, 'class="y-home-btn y-home-btn--blue"');
+html = html.replace(/class="button secondary"/g, 'class="y-home-btn y-home-btn--white"');
+
+html = html.replace('<article class="service-article">', '<article class="service-article pressure-home-content">');
+html = html.replace('<section class="section split">', '<section class="section split pressure-home-process">');
+html = html.replace('<section class="section faq-section">', '<section class="section faq-section pressure-home-faq">');
+html = html.replace('<section class="cta-panel">', '<section class="cta-panel pressure-home-cta">');
+
+const css = `\n<style id="pressure-home-match-v1">\nbody.pressure-home-match{background:#fff;color:#0b1220}\nbody.pressure-home-match .y-home-header{position:absolute}\nbody.pressure-home-match .y-home-hero{min-height:790px}\nbody.pressure-home-match .y-home-hero:after{background:linear-gradient(90deg,rgba(5,32,51,.34),rgba(5,32,51,.08))}\nbody.pressure-home-match .y-home-glass{max-width:720px;background:transparent!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;padding-left:0!important}\nbody.pressure-home-match .y-home-glass .eyebrow{color:#aee9fb;font-weight:900;text-transform:uppercase;letter-spacing:1.2px}\nbody.pressure-home-match .y-home-glass h1,body.pressure-home-match .y-home-glass .hero-text{text-shadow:0 3px 16px rgba(0,0,0,.72)}\nbody.pressure-home-match .y-home-proof h3{margin:12px 0 8px;font-family:"Arial Black",Arial,sans-serif;font-size:28px;line-height:1.04;color:var(--y-navy)}\nbody.pressure-home-match .y-home-feature--compact{display:flex;align-items:center;justify-content:center;min-height:108px;text-align:center}\nbody.pressure-home-match .y-home-feature--compact h3{margin:0;font-size:20px}\n
+body.pressure-home-match .pressure-home-content{width:min(1180px,calc(100% - 40px));margin:0 auto;padding:88px 0 36px}\nbody.pressure-home-match .pressure-home-content .article-block,body.pressure-home-match .pressure-home-content .feature-band,body.pressure-home-match .pressure-home-content>.article-grid{margin:0 0 68px}\nbody.pressure-home-match .pressure-home-content .article-block{padding:0;background:transparent;border:0;box-shadow:none}\nbody.pressure-home-match .pressure-home-content .article-block h2,body.pressure-home-match .pressure-home-content .feature-band h2,body.pressure-home-match .pressure-home-content .article-card h2{font-family:"Arial Black",Arial,sans-serif;line-height:1.04;color:var(--y-navy);letter-spacing:-.9px}\nbody.pressure-home-match .pressure-home-content .article-block>h2,body.pressure-home-match .pressure-home-content .feature-band>h2{font-size:clamp(34px,4vw,50px)}\nbody.pressure-home-match .pressure-home-content .lead,body.pressure-home-match .pressure-home-content p{color:#536475;line-height:1.72}\nbody.pressure-home-match .pressure-home-content .content-grid,body.pressure-home-match .pressure-home-content .article-grid{gap:18px}\nbody.pressure-home-match .pressure-home-content .content-card,body.pressure-home-match .pressure-home-content .article-card{padding:28px;border:1px solid var(--y-line);border-radius:26px;background:#fff;box-shadow:0 10px 30px rgba(11,45,74,.05)}\nbody.pressure-home-match .pressure-home-content .content-card h3,body.pressure-home-match .pressure-home-content .article-card h3{font-family:"Arial Black",Arial,sans-serif;color:var(--y-navy)}\nbody.pressure-home-match .pressure-home-content .feature-band{padding:54px;border-radius:30px;background:#f1f5f7;border:0}\nbody.pressure-home-match .pressure-home-content .feature-band .article-grid>div{padding:24px;border-radius:22px;background:#fff;border:1px solid var(--y-line)}\nbody.pressure-home-match .pressure-home-content .process-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}\nbody.pressure-home-match .pressure-home-content .process-step{padding:24px;border:1px solid var(--y-line);border-radius:22px;background:#f7fafc}\nbody.pressure-home-match .pressure-home-content .process-step strong{font-family:"Arial Black",Arial,sans-serif;color:var(--y-navy);font-size:20px}\n
+body.pressure-home-match .pressure-home-process{width:100%;max-width:none;margin:0;padding:90px max(20px,calc((100vw - 1180px)/2));background:var(--y-navy);border-radius:0;display:grid;grid-template-columns:1fr 1fr;gap:50px;color:#dce8ee}\nbody.pressure-home-match .pressure-home-process>div{padding:0;background:transparent;border:0}\nbody.pressure-home-match .pressure-home-process h2{font-family:"Arial Black",Arial,sans-serif;font-size:clamp(34px,3.7vw,48px);line-height:1.04;color:#fff}\nbody.pressure-home-match .pressure-home-process .eyebrow{color:#83d9f2;font-weight:900;text-transform:uppercase;letter-spacing:1.2px}\nbody.pressure-home-match .pressure-home-process p{color:#d7e5eb;line-height:1.7}\n
+body.pressure-home-match .gallery-embed{width:min(1180px,calc(100% - 40px));margin-inline:auto;padding:82px 0}\nbody.pressure-home-match .pressure-home-faq{width:min(980px,calc(100% - 40px));margin:0 auto;padding:88px 0}\nbody.pressure-home-match .pressure-home-faq .section-heading{text-align:center;margin-bottom:30px}\nbody.pressure-home-match .pressure-home-faq h2{font-family:"Arial Black",Arial,sans-serif;font-size:clamp(34px,4vw,52px);line-height:1.04;color:var(--y-navy)}\nbody.pressure-home-match .pressure-home-faq .faq-item{margin:12px 0;padding:0 22px;border:1px solid var(--y-line);border-radius:20px;background:#fff;box-shadow:0 8px 24px rgba(11,45,74,.05)}\nbody.pressure-home-match .pressure-home-faq summary{padding:20px 0;color:var(--y-navy);font-weight:900}\nbody.pressure-home-match .pressure-home-faq .faq-item p{color:#536475;line-height:1.65}\nbody.pressure-home-match .pressure-home-cta{width:min(1180px,calc(100% - 40px));margin:0 auto 88px;border-radius:30px;background:linear-gradient(120deg,var(--y-blue),var(--y-navy));padding:52px;color:#fff}\nbody.pressure-home-match .pressure-home-cta h2,body.pressure-home-match .pressure-home-cta p,body.pressure-home-match .pressure-home-cta a{color:#fff}\n
+@media(max-width:900px){body.pressure-home-match .pressure-home-process{grid-template-columns:1fr}body.pressure-home-match .pressure-home-content .process-grid{grid-template-columns:1fr 1fr}}\n@media(max-width:640px){body.pressure-home-match .y-home-hero{min-height:auto}body.pressure-home-match .pressure-home-content{width:calc(100% - 24px);padding-top:58px}body.pressure-home-match .pressure-home-content .feature-band{padding:28px 20px}body.pressure-home-match .pressure-home-content .process-grid{grid-template-columns:1fr}body.pressure-home-match .pressure-home-faq,body.pressure-home-match .pressure-home-cta{width:calc(100% - 24px)}body.pressure-home-match .pressure-home-cta{padding:34px 22px}}\n</style>`;
+
+html = html.replace('</head>', `${css}\n</head>`);
+
+const titleAfter = (html.match(/<title>[\s\S]*?<\/title>/i) || [])[0];
+const descAfter = (html.match(/<meta\s+name="description"\s+content="[^"]*"\s*\/?>/i) || [])[0];
+const canonicalAfter = (html.match(/<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/i) || [])[0];
+const h1After = (html.match(/<h1\b[^>]*>[\s\S]*?<\/h1>/i) || [])[0];
+if (titleAfter !== titleBefore || descAfter !== descBefore || canonicalAfter !== canonicalBefore || h1After !== h1Before) throw new Error('Pressure washing SEO foundation changed during homepage match.');
+if (/Roof Washing|Roof Cleaning|yulee-roof-washing\.html/i.test(html)) throw new Error('Roof service copy resurfaced in pressure-washing output.');
+
+fs.writeFileSync(file, html);
+console.log('Matched Pressure Washing page to homepage design system.');
