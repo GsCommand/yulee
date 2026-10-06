@@ -16,13 +16,17 @@ if (!fs.existsSync(file)) throw new Error('Yulee HydroSeal logo missing from pub
   let tail = 0;
   let cleared = 0;
 
+  // Remove the edge-connected off-white/very-light-gray matte around the logo.
+  // The wider threshold catches the slightly gray WebP background while preserving
+  // the saturated blue/cyan logo artwork and dark lettering.
   const isBackground = (idx) => {
     const o = idx * 4;
     const r = data[o], g = data[o + 1], b = data[o + 2], a = data[o + 3];
     if (a === 0) return true;
     const max = Math.max(r, g, b);
     const min = Math.min(r, g, b);
-    return r >= 238 && g >= 238 && b >= 238 && (max - min) <= 12;
+    const avg = (r + g + b) / 3;
+    return avg >= 220 && min >= 205 && (max - min) <= 30;
   };
 
   const push = (x, y) => {
@@ -50,7 +54,7 @@ if (!fs.existsSync(file)) throw new Error('Yulee HydroSeal logo missing from pub
   }
 
   await sharp(data, { raw: { width, height, channels: 4 } })
-    .webp({ quality: 96, alphaQuality: 100 })
+    .webp({ quality: 98, alphaQuality: 100 })
     .toFile(`${file}.tmp.webp`);
 
   fs.renameSync(`${file}.tmp.webp`, file);
