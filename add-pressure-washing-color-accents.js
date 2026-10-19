@@ -204,3 +204,56 @@ body{
 html = html.replace('</head>', `${css}\n</head>`);
 fs.writeFileSync(file, html);
 console.log('Added professional blue/aqua/teal/indigo border accents to pressure washing page.');
+
+// Reuse the final homepage shell so navigation and responsive layout stay in sync.
+const home = fs.readFileSync(path.join(__dirname, 'public', 'index.html'), 'utf8');
+function required(source, pattern, label) {
+  const match = source.match(pattern);
+  if (!match) throw new Error('Missing homepage component: ' + label);
+  return match[0];
+}
+let page = fs.readFileSync(file, 'utf8');
+const homeHeader = required(home, /<header class="y-home-header">[\s\S]*?<\/header>\s*<script>[\s\S]*?<\/script>/, 'navigation');
+let hero = required(home, /<section class="hero y-home-hero">[\s\S]*?<\/section>/, 'hero');
+hero = hero.replace('/yulee-sealing-pavers-header.png', '/images/hydroseal-house-washing.webp')
+  .replace('Resealed paver driveway in Yulee, Florida', 'Residential exterior cleaning in Yulee, Florida')
+  .replace('Professional paver sealing in Yulee, Wildlight &amp; Nassau County', 'Exterior cleaning in Yulee, Wildlight &amp; Nassau County')
+  .replace('Paver Sealing Yulee FL', 'Pressure Washing Yulee FL')
+  .replace('WE BRING YOUR<br>PAVERS BACK.', 'A FRESH START<br>FOR YOUR HOME.')
+  .replace('Cleaned. Resanded. Sealed. Built for Florida.', 'House washing. Driveways. Outdoor surfaces.')
+  .replace(/<p class="hero-text">[\s\S]*?<\/p>/, '<p class="hero-text">Pressure washing and soft washing for homes, driveways, concrete and exterior surfaces in Yulee, Wildlight, Fernandina Beach and Amelia Island. The cleaning method is matched to your surface.</p>')
+  .replace('5-STAR RATED PAVER RESTORATION.', 'HOMEOWNERS TRUST HYDROSEAL.')
+  .replace('Homeowners hire HydroSeal when faded, dirty pavers need more than a quick pressure wash.', 'See what Northeast Florida homeowners say about their experience with HydroSeal.')
+  .replace('Trident Master Certified', 'Surface-specific exterior cleaning')
+  .replaceAll('href="#calculator"', 'href="https://hydrosealpavers.com/get-a-quote"');
+const features = `<div class="y-home-feature-wrap y-shell"><div class="y-home-feature-strip">${[
+ ['HOUSE WASHING','Lower-pressure care for suitable exterior finishes.'],
+ ['DRIVEWAYS','Controlled cleaning for concrete and hard surfaces.'],
+ ['SOFT WASHING','Cleaning chemistry matched to the material.'],
+ ['LOCAL SERVICE','Yulee, Wildlight and Nassau County.']
+].map(([title, copy]) => `<article class="y-home-feature"><h3>${title}</h3><p>${copy}</p></article>`).join('')}</div></div>`;
+page = page.replace('<body>', '<body class="yulee-home yulee-pressure-home">')
+ .replace(/<header class="site-header">[\s\S]*?<\/header>/, homeHeader.replace('href="#calculator">Pricing Calculator', 'href="/#calculator">Pricing Calculator').replace('href="#calculator">Get a Quote','href="https://hydrosealpavers.com/get-a-quote">Get a Quote'))
+ .replace(/<nav class="breadcrumb"[\s\S]*?<\/nav>/, '')
+ .replace(/<section class="hero">[\s\S]*?<\/section>/, hero + features);
+const homeStyles = required(home, /<style id="yulee-home-hydroseal-v2">[\s\S]*?<\/style>/, 'visual styles');
+page = page.replace('</head>', `<link rel="stylesheet" href="/home-hydroseal.css?v=1" />${homeStyles}
+<style id="pressure-home-layout">
+body.yulee-pressure-home .service-article{width:min(1180px,calc(100% - 40px));margin:0 auto;padding:0}
+body.yulee-pressure-home .service-article>section{margin:48px 0}
+body.yulee-pressure-home .article-block,body.yulee-pressure-home .article-card{border-radius:28px;padding:32px;box-shadow:0 18px 48px rgba(15,110,168,.12)}
+body.yulee-pressure-home .article-block h2,body.yulee-pressure-home .article-card h2,body.yulee-pressure-home .split h2{font-family:"Arial Black",Arial,sans-serif;line-height:1.08;letter-spacing:-1px;font-size:clamp(28px,3vw,42px);color:#0b2d4a}
+body.yulee-pressure-home .content-card,body.yulee-pressure-home .process-step,body.yulee-pressure-home .location-link{border-radius:20px}
+body.yulee-pressure-home .y-home-proof-blue{white-space:normal;line-height:1.35!important}
+body.yulee-pressure-home .y-home-glass{background:rgba(8,35,57,.66)}
+body.yulee-pressure-home .y-home-hero-bg{object-position:center}
+body.yulee-pressure-home .gallery-embed,body.yulee-pressure-home .faq-section{padding:40px 28px;margin-top:48px;margin-bottom:48px}
+@media(max-width:720px){body.yulee-pressure-home .service-article{width:calc(100% - 24px)}body.yulee-pressure-home .article-block,body.yulee-pressure-home .article-card{padding:24px 20px}body.yulee-pressure-home .article-grid,body.yulee-pressure-home .content-grid,body.yulee-pressure-home .process-grid{grid-template-columns:1fr}body.yulee-pressure-home .y-home-feature-strip{grid-template-columns:1fr 1fr}body.yulee-pressure-home .y-home-feature{padding:15px}body.yulee-pressure-home .y-home-feature h3{font-size:18px!important}}
+@media(max-width:380px){body.yulee-pressure-home .y-home-feature-strip{grid-template-columns:1fr}}
+</style></head>`);
+const footer = home.match(/<footer class="site-footer"[\s\S]*?<\/footer>/);
+const footerStyle = home.match(/<style id="yulee-standard-footer-style">[\s\S]*?<\/style>/);
+if (footer) page = page.replace(/<footer class="site-footer"[\s\S]*?<\/footer>/, footer[0]);
+if (footerStyle) page = page.replace('</head>',footerStyle[0]+'</head>');
+fs.writeFileSync(file, page);
+console.log('Applied homepage navigation, photo hero, feature strip, typography and responsive spacing to Pressure Washing.');
