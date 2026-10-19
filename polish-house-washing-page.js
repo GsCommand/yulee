@@ -69,3 +69,51 @@ if (/Roof Washing|yulee-roof-washing\.html/i.test(html)) throw new Error('Roof W
 
 fs.writeFileSync(file, html);
 console.log('Removed dark hero glass overlay while preserving homepage navigation and layout.');
+
+// House-washing redesign: a dedicated image panel keeps the service visible.
+let redesigned = fs.readFileSync(file, 'utf8');
+const imagePath = '/images/yulee-house-soft-washing-hero.webp';
+redesigned = redesigned.replace(/<img class="y-home-hero-bg"[^>]*>/, '')
+ .replace(/<meta property="og:image" content="[^"]*"\s*\/?>/, `<meta property="og:image" content="https://www.yuleepaversealing.com${imagePath}" />`);
+const proofMatch = redesigned.match(/<div class="y-home-proof-stack">[\s\S]*?<\/article><div class="y-home-proof-blue">[\s\S]*?<\/div><\/div>/);
+if (!proofMatch) throw new Error('House washing review card missing');
+const proof = proofMatch[0].replace('5-STAR RATED PAVER RESTORATION.', 'TRUSTED BY LOCAL HOMEOWNERS.');
+redesigned = redesigned.replace(proofMatch[0], `<figure class="house-hero-photo"><img src="${imagePath}" alt="Illustration of a clean Florida stucco home with landscaped front yard" width="1536" height="1024" fetchpriority="high" decoding="async" /><figcaption>Illustrative house-washing image</figcaption></figure>`);
+redesigned = redesigned.replace('<p class="eyebrow">House washing</p>', '<p class="eyebrow">Yulee · Wildlight · Nassau County</p>')
+ .replace('<h1>Yulee House Washing</h1>', '<h1>Yulee House Washing</h1><p class="house-hero-promise">A cleaner home.<br>A gentler approach.</p>');
+redesigned = redesigned.replace('<section class="section faq-section house-home-faq">', `<section class="house-review-section"><div><p class="eyebrow">Customer confidence</p><h2>Care for your home starts with the right method.</h2><p>Tell us about your exterior finish, shaded areas and visible buildup. We review the surfaces and agree on the work before cleaning begins.</p><a class="y-home-btn y-home-btn--blue" href="https://hydrosealpavers.com/get-a-quote">Request your house wash quote</a></div>${proof}</section><section class="section faq-section house-home-faq">`);
+const redesignCss = `<style id="house-washing-redesign-v5">
+body.house-home-match .y-home-header{position:relative;top:auto;padding-top:18px}
+body.house-home-match .y-home-nav{background:#fff;border:1px solid #dce7ed;box-shadow:0 12px 34px rgba(11,45,74,.08)}
+body.house-home-match .y-home-hero{min-height:0!important;background:linear-gradient(130deg,#f4fbfd,#eaf3f8);color:#0b2d4a;padding:0}
+body.house-home-match .y-home-hero:after{display:none}
+body.house-home-match .y-home-hero-grid{grid-template-columns:minmax(0,.9fr) minmax(0,1.15fr);gap:44px;padding-top:58px;padding-bottom:70px;align-items:center}
+body.house-home-match .y-home-glass h1{color:#0b2d4a!important;font-size:clamp(40px,4.4vw,64px);line-height:1.02;text-shadow:none!important;letter-spacing:-1.8px}
+body.house-home-match .y-home-glass .eyebrow{color:#0f6ea8!important;text-shadow:none!important;font-size:12px}
+body.house-home-match .y-home-glass .hero-text{color:#526779!important;font-size:17px;line-height:1.7;text-shadow:none!important}
+body.house-home-match .house-hero-promise{font-weight:850;font-size:clamp(24px,2.5vw,36px);line-height:1.15;letter-spacing:-.7px;color:#147c95;margin:20px 0}
+body.house-home-match .house-hero-photo{margin:0;min-width:0;position:relative}
+body.house-home-match .house-hero-photo img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:contain;border-radius:30px;box-shadow:16px 22px 0 #d4ebf2,0 22px 55px rgba(11,45,74,.17)}
+body.house-home-match .house-hero-photo figcaption{margin-top:28px;color:#627b87;font-size:11px;text-align:right}
+body.house-home-match .y-home-feature-wrap{margin-top:-22px}
+body.house-home-match .y-home-feature-strip{box-shadow:0 16px 38px rgba(15,110,168,.12)}
+body.house-home-match .y-home-feature{border-top:4px solid #39bfea}
+body.house-home-match .y-home-feature:nth-child(2){border-top-color:#0f6ea8}
+body.house-home-match .y-home-feature:nth-child(3){border-top-color:#2bb7a9}
+body.house-home-match .y-home-feature:nth-child(4){border-top-color:#596fd3}
+body.house-home-match .house-home-content .article-block:first-child{gap:38px}
+body.house-home-match .house-home-content .content-card{border-top:4px solid #39bfea;box-shadow:0 16px 35px rgba(15,110,168,.10)}
+body.house-home-match .house-home-content .content-card:nth-child(2){border-top-color:#2bb7a9}
+body.house-home-match .house-home-content .content-card:nth-child(3){border-top-color:#596fd3}
+body.house-home-match .house-home-process{width:min(1180px,calc(100% - 40px));padding:48px;margin:0 auto;border-radius:30px;box-shadow:0 20px 48px rgba(11,45,74,.14)}
+body.house-home-match .house-review-section{width:min(1180px,calc(100% - 40px));margin:70px auto 0;display:grid;grid-template-columns:1fr .8fr;gap:60px;align-items:center}
+body.house-home-match .house-review-section h2{font-family:'Arial Black',Arial,sans-serif;font-size:clamp(30px,3vw,44px);line-height:1.08;color:#0b2d4a}
+body.house-home-match .house-review-section p{line-height:1.7;color:#526779}
+body.house-home-match .house-review-section .y-home-proof-stack{margin:0}
+body.house-home-match .y-home-proof-blue{white-space:normal;line-height:1.5}
+@media(max-width:900px){body.house-home-match .y-home-hero-grid{grid-template-columns:1fr;padding-top:38px;gap:30px}body.house-home-match .house-hero-photo{max-width:720px}body.house-home-match .house-review-section{grid-template-columns:1fr;gap:28px}body.house-home-match .house-home-process{padding:30px}}
+@media(max-width:640px){body.house-home-match .y-home-header{padding-top:10px}body.house-home-match .y-home-hero-grid{padding-bottom:48px}body.house-home-match .house-hero-photo img{border-radius:22px;box-shadow:8px 12px 0 #d4ebf2}body.house-home-match .house-hero-photo figcaption{margin-top:17px}body.house-home-match .house-home-process,body.house-home-match .house-review-section{width:calc(100% - 24px)}body.house-home-match .house-home-process{padding:26px 22px}}
+</style>`;
+redesigned = redesigned.replace('</head>',redesignCss+'</head>');
+fs.writeFileSync(file,redesigned);
+console.log('Redesigned house washing page with dedicated generated hero image and service-focused sections.');
