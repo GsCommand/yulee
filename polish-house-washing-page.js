@@ -149,6 +149,11 @@ body.house-home-match .y-home-glass h1{color:#fff!important;font-size:clamp(48px
 body.house-home-match .y-home-glass .hero-text{font-size:14px;line-height:1.45;color:rgba(255,255,255,.92)!important;text-shadow:none!important}
 body.house-home-match .y-home-proof-stack{max-width:372px;justify-self:end;margin-top:24px}
 body.house-home-match .y-home-proof-blue{white-space:normal;line-height:1.35!important}
+body.house-home-match .y-home-feature-wrap{margin-left:auto!important;margin-right:auto!important}
+body.house-home-match .y-home-feature-strip{grid-template-columns:repeat(4,minmax(0,1fr))}
+body.house-home-match .y-home-feature{display:flex;align-items:center;justify-content:center;text-align:center}
+body.house-home-match .y-home-feature h3{margin:0;text-align:center}
+@media(max-width:640px){body.house-home-match .y-home-feature-strip{grid-template-columns:repeat(2,minmax(0,1fr))}}
 body.house-home-match .house-home-process{width:100%;max-width:none;margin:0;padding:90px max(20px,calc((100vw - 1180px)/2));border-radius:0;box-shadow:none}
 @media(max-width:900px){body.house-home-match .y-home-hero-grid{grid-template-columns:1fr;padding-top:130px;padding-bottom:65px}body.house-home-match .y-home-proof-stack{justify-self:start;max-width:100%;margin-top:0}body.house-home-match .house-home-process{padding:48px 24px}}
 @media(max-width:640px){body.house-home-match .hero.y-home-hero{min-height:0!important}body.house-home-match .y-home-header{top:10px}body.house-home-match .y-home-hero-grid{padding-top:110px;gap:22px}body.house-home-match .y-home-glass{padding:26px 22px!important}body.house-home-match .y-home-glass h1{font-size:42px}}
