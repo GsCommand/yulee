@@ -117,3 +117,41 @@ body.house-home-match .y-home-proof-blue{white-space:normal;line-height:1.5}
 redesigned = redesigned.replace('</head>',redesignCss+'</head>');
 fs.writeFileSync(file,redesigned);
 console.log('Redesigned house washing page with dedicated generated hero image and service-focused sections.');
+
+
+// Match the final homepage hero composition, retaining house-washing content.
+const homepage = fs.readFileSync(path.join(__dirname, 'public', 'index.html'), 'utf8');
+let housePage = fs.readFileSync(file, 'utf8');
+const homeHero = homepage.match(/<section class="hero y-home-hero">[\s\S]*?<\/section>/);
+const homeHeroStyles = homepage.match(/<style id="yulee-home-hydroseal-v2">[\s\S]*?<\/style>/);
+if (!homeHero || !homeHeroStyles) throw new Error('Homepage hero layout missing');
+let matchedHero = homeHero[0]
+ .replace('/yulee-sealing-pavers-header.png', '/images/yulee-house-soft-washing-hero.webp')
+ .replace('Resealed paver driveway in Yulee, Florida', 'Illustration of a clean Florida stucco home')
+ .replace('Professional paver sealing in Yulee, Wildlight &amp; Nassau County', 'House washing in Yulee, Wildlight &amp; Nassau County')
+ .replace('Paver Sealing Yulee FL', 'Yulee House Washing')
+ .replace('WE BRING YOUR<br>PAVERS BACK.', 'A CLEANER HOME.<br>A FRESH START.')
+ .replace('Cleaned. Resanded. Sealed. Built for Florida.', 'Soft washing. Exterior care. Built for Florida.')
+ .replace(/<p class="hero-text">[\s\S]*?<\/p>/, '<p class="hero-text">Soft washing for stucco, siding, trim, soffits, fascia and exterior organic buildup caused by Florida humidity, shade and irrigation.</p>')
+ .replace('5-STAR RATED PAVER RESTORATION.', 'TRUSTED BY LOCAL HOMEOWNERS.')
+ .replace('Homeowners hire HydroSeal when faded, dirty pavers need more than a quick pressure wash.', 'See what Northeast Florida homeowners say about their experience with HydroSeal.')
+ .replace('Trident Master Certified', 'Surface-specific soft washing')
+ .replaceAll('href="#calculator"', 'href="https://hydrosealpavers.com/get-a-quote"');
+housePage = housePage.replace(/<section class="hero y-home-hero">[\s\S]*?<\/section>/, matchedHero)
+ .replace(/<section class="house-review-section">[\s\S]*?<\/section>/, '');
+housePage = housePage.replace('</head>', homeHeroStyles[0] + `<style id="house-homepage-layout-v6">
+body.house-home-match .y-home-header{position:absolute;top:18px;left:0;right:0;padding-top:0}
+body.house-home-match .hero.y-home-hero{min-height:760px!important;background:#0b2d4a;padding:0}
+body.house-home-match .y-home-hero-grid{grid-template-columns:minmax(0,1.18fr) minmax(300px,.62fr);gap:34px;padding-top:150px;padding-bottom:96px}
+body.house-home-match .y-home-hero-bg{width:100%;height:100%;object-fit:cover;object-position:center}
+body.house-home-match .y-home-glass{max-width:690px;padding:34px 34px 30px!important;border-radius:30px!important;background:rgba(8,35,57,.48)!important;border:1px solid rgba(255,255,255,.18)!important;backdrop-filter:blur(14px)!important;-webkit-backdrop-filter:blur(14px)!important;box-shadow:0 22px 60px rgba(4,21,34,.20)!important}
+body.house-home-match .y-home-glass h1{color:#fff!important;font-size:clamp(48px,5.1vw,72px);line-height:.95;text-shadow:0 2px 12px rgba(0,0,0,.35)!important;letter-spacing:-2px}
+body.house-home-match .y-home-glass .hero-text{font-size:14px;line-height:1.45;color:rgba(255,255,255,.92)!important;text-shadow:none!important}
+body.house-home-match .y-home-proof-stack{max-width:372px;justify-self:end;margin-top:24px}
+body.house-home-match .y-home-proof-blue{white-space:normal;line-height:1.35!important}
+body.house-home-match .house-home-process{width:100%;max-width:none;margin:0;padding:90px max(20px,calc((100vw - 1180px)/2));border-radius:0;box-shadow:none}
+@media(max-width:900px){body.house-home-match .y-home-hero-grid{grid-template-columns:1fr;padding-top:130px;padding-bottom:65px}body.house-home-match .y-home-proof-stack{justify-self:start;max-width:100%;margin-top:0}body.house-home-match .house-home-process{padding:48px 24px}}
+@media(max-width:640px){body.house-home-match .hero.y-home-hero{min-height:0!important}body.house-home-match .y-home-header{top:10px}body.house-home-match .y-home-hero-grid{padding-top:110px;gap:22px}body.house-home-match .y-home-glass{padding:26px 22px!important}body.house-home-match .y-home-glass h1{font-size:42px}}
+</style></head>`);
+fs.writeFileSync(file, housePage);
+console.log('Matched house-washing hero image and page layout to homepage.');
