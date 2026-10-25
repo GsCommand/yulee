@@ -75,7 +75,7 @@ if (!firstSection.text.includes('pool-condition-section')) {
   const cards = [...gridInner.matchAll(/<div class="content-card">([\s\S]*?)<\/div>/g)].map(m => m[1]);
   if (cards.length !== 3) throw new Error(`Expected three pool deck opening cards, found ${cards.length}.`);
   const cardMarkup = cards.map((inner, i) => `<article class="pool-condition-card pool-condition-card--${i + 1}"><span class="pool-condition-number">0${i + 1}</span><div>${inner}</div></article>`).join('');
-  const replacement = `<section class="article-block pool-condition-section"><div class="pool-condition-grid"><div class="pool-condition-content">${prefix}<div class="pool-condition-stack">${cardMarkup}</div></div><figure class="pool-condition-image"><img src="/pool-deck-link.png" alt="Pool deck and patio paver sealing in Yulee, Florida" loading="lazy" decoding="async" /></figure></div></section>`;
+  const replacement = `<section class="article-block pool-condition-section"><div class="pool-condition-grid"><div class="pool-condition-content">${prefix}<div class="pool-condition-stack">${cardMarkup}</div></div><figure class="pool-condition-image"><img src="https://raw.githubusercontent.com/GsCommand/yulee/main/yulee-paver-pool-deck-sealing.jpg" alt="Pool deck and patio paver sealing in Yulee, Florida" loading="lazy" decoding="async" /></figure></div></section>`;
   html = html.slice(0, firstSection.start) + replacement + html.slice(firstSection.end);
 }
 
@@ -164,7 +164,7 @@ else html = html.replace('</head>', `${css}\n</head>`);
 const protectedAfter = freezeProtected(html);
 assertProtected(protectedBefore, protectedAfter);
 
-for (const required of ['pool-driveway-clone','pool-condition-section','/pool-deck-link.png','pool-wildlight-focus','pool-secondary-band','pool-process-section','pool-pricing-section',reviewWidget]) {
+for (const required of ['pool-driveway-clone','pool-condition-section','https://raw.githubusercontent.com/GsCommand/yulee/main/yulee-paver-pool-deck-sealing.jpg','pool-wildlight-focus','pool-secondary-band','pool-process-section','pool-pricing-section',reviewWidget]) {
   if (!html.includes(required)) throw new Error(`Pool deck clone verification failed: ${required}`);
 }
 const reviewPos = html.indexOf(reviewWidget);
