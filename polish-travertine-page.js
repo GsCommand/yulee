@@ -268,3 +268,13 @@ if (!html.includes('</head>')) throw new Error('Travertine page head closing tag
 html = html.replace('</head>', `${css}\n</head>`);
 fs.writeFileSync(file, html);
 console.log('Applied premium homepage-inspired visual polish to travertine page.');
+
+
+// Remove the service-area card section after the layout transforms have finished.
+{
+  let page = fs.readFileSync(file, 'utf8');
+  const section = /<section\b[^>]*>\s*<p class="eyebrow">Service areas<\/p>\s*<h2>Travertine and natural stone sealing near Yulee<\/h2>[\s\S]*?<\/section>/i;
+  if (!section.test(page)) throw new Error('Expected travertine service-area section missing.');
+  page = page.replace(section, '');
+  fs.writeFileSync(file, page);
+}
