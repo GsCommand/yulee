@@ -74,7 +74,7 @@ if (!firstSection.text.includes('travertine-condition-section')) {
   const cards = [...gridInner.matchAll(/<div class="content-card">([\s\S]*?)<\/div>/g)].map(m => m[1]);
   if (cards.length !== 3) throw new Error(`Expected three travertine opening cards, found ${cards.length}.`);
   const cardMarkup = cards.map((inner, i) => `<article class="travertine-condition-card travertine-condition-card--${i + 1}"><span class="travertine-condition-number">0${i + 1}</span><div>${inner}</div></article>`).join('');
-  const replacement = `<section class="article-block travertine-condition-section"><div class="travertine-condition-grid"><div class="travertine-condition-content">${prefix}<div class="travertine-condition-stack">${cardMarkup}</div></div><figure class="travertine-condition-image"><img src="/travertine-link.png" alt="Travertine and natural stone sealing in Yulee, Florida" loading="lazy" decoding="async" /></figure></div></section>`;
+  const replacement = `<section class="article-block travertine-condition-section"><div class="travertine-condition-grid"><div class="travertine-condition-content">${prefix}<div class="travertine-condition-stack">${cardMarkup}</div></div><figure class="travertine-condition-image"><img src="/yulee-natural-stone.jpg" alt="Travertine and natural stone sealing in Yulee, Florida" loading="lazy" decoding="async" /></figure></div></section>`;
   html = html.slice(0, firstSection.start) + replacement + html.slice(firstSection.end);
 }
 
@@ -157,7 +157,7 @@ else html = html.replace('</head>', `${css}\n</head>`);
 const protectedAfter = freezeProtected(html);
 assertProtected(protectedBefore, protectedAfter);
 
-for (const required of ['travertine-driveway-clone','travertine-condition-section','/travertine-link.png','travertine-secondary-band','travertine-wildlight-focus','travertine-process-section','travertine-pricing-section',reviewWidget]) {
+for (const required of ['travertine-driveway-clone','travertine-condition-section','/yulee-natural-stone.jpg','travertine-secondary-band','travertine-wildlight-focus','travertine-process-section','travertine-pricing-section',reviewWidget]) {
   if (!html.includes(required)) throw new Error(`Travertine clone verification failed: ${required}`);
 }
 const reviewPos = html.indexOf(reviewWidget);
