@@ -138,6 +138,7 @@ body.travertine-driveway-clone .travertine-secondary-band>.article-card:nth-chil
 /* Compact foreground cards while preserving the full-width photo. */
 body.travertine-driveway-clone .travertine-secondary-band>.article-card{
   width:75%;justify-self:center;padding:21px!important;border-radius:18px!important;
+  background:rgba(255,255,255,.70)!important;
 }
 body.travertine-driveway-clone .travertine-secondary-band>.article-card h2{font-size:clamp(24px,2.625vw,40px)!important;margin-bottom:13px!important}
 body.travertine-driveway-clone .travertine-secondary-band>.article-card h3{font-size:.915rem!important;margin-bottom:7px!important}
