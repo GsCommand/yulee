@@ -120,7 +120,7 @@ body.travertine-driveway-clone .travertine-condition-image img{border-radius:15p
 
 /* dark two-card band refined to match homepage */
 body.travertine-driveway-clone .travertine-secondary-band{
-  background:linear-gradient(135deg,#0b2d4a 0%,#164f76 58%,#315f84 100%)!important;
+  background:url('/yulee-sealing-travertine.jpeg') center center / cover no-repeat!important;
   gap:20px!important;
 }
 body.travertine-driveway-clone .travertine-secondary-band>.article-card{
