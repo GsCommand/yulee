@@ -278,3 +278,18 @@ console.log('Applied premium homepage-inspired visual polish to travertine page.
   page = page.replace(section, '');
   fs.writeFileSync(file, page);
 }
+
+
+// Remove the finish-choice/local-conditions pair after layout transforms.
+{
+  let page = fs.readFileSync(file, 'utf8');
+  const heading = '<h2>Natural vs. enhancing travertine sealer</h2>';
+  const at = page.indexOf(heading);
+  if (at < 0) throw new Error('Expected travertine finish-choice section missing.');
+  const start = page.lastIndexOf('<section', at);
+  const end = page.indexOf('</section>', at) + '</section>'.length;
+  const section = page.slice(start, end);
+  if (!section.includes('Why Yulee and Wildlight are hard on outdoor stone')) throw new Error('Unexpected finish-choice section bounds.');
+  page = page.slice(0, start) + page.slice(end);
+  fs.writeFileSync(file, page);
+}
