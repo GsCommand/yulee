@@ -146,6 +146,10 @@ body.travertine-driveway-clone .travertine-secondary-band>.article-card p:not(.e
 body.travertine-driveway-clone .travertine-secondary-band>.article-card .eyebrow{font-size:.555rem!important}
 @media(max-width:650px){body.travertine-driveway-clone .travertine-secondary-band>.article-card{width:90%}}
 
+body.travertine-driveway-clone .travertine-secondary-band>.article-card p:not(.eyebrow),
+body.travertine-driveway-clone .travertine-secondary-band>.article-card h3{color:#142338!important}
+body.travertine-driveway-clone .travertine-secondary-band>.article-card .eyebrow{color:#003f73!important}
+
 /* paired cards */
 body.travertine-driveway-clone .travertine-detail-pair{
   background:#f1f5f7!important;
