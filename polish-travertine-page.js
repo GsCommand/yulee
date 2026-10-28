@@ -260,7 +260,7 @@ body.travertine-driveway-clone .cta-panel .button.primary{background:var(--trav-
 
 
 body.travertine-driveway-clone .faq-section{
-  background:url('/yulee-natural-stone.jpg') center center / cover no-repeat!important;
+  background:linear-gradient(rgba(255,255,255,.50),rgba(255,255,255,.50)),url('/yulee-natural-stone.jpg') center center / cover no-repeat!important;
 }
 body.travertine-driveway-clone .faq-section .section-heading{
   padding:18px 22px;border-radius:18px;background:rgba(255,255,255,.90);
