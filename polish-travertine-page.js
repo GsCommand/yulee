@@ -196,7 +196,7 @@ body.travertine-driveway-clone .travertine-pricing-section{
 }
 body.travertine-driveway-clone .travertine-pricing-section>h2,
 body.travertine-driveway-clone .travertine-pricing-section>.eyebrow{
-  width:fit-content;background:rgba(255,255,255,.88);border-radius:10px;padding:6px 10px;
+  width:fit-content;background:rgba(255,255,255,.25);border-radius:10px;padding:6px 10px;
 }
 
 body.travertine-driveway-clone .price-table-wrap{border:1px solid var(--trav-line)!important;border-radius:20px!important;overflow:hidden!important;box-shadow:0 10px 26px rgba(11,45,74,.06)!important;background:#fff}
@@ -266,19 +266,6 @@ body.travertine-driveway-clone .faq-section .section-heading{
   padding:18px 22px;border-radius:18px;background:rgba(255,255,255,.90);
 }
 
-
-body.travertine-driveway-clone .travertine-pricing-section .nocatee-price-content,
-body.travertine-driveway-clone .travertine-pricing-section .hspav-card{
-  background:rgba(255,255,255,.25)!important;
-}
-body.travertine-driveway-clone .travertine-pricing-section .nocatee-calculator-column,
-body.travertine-driveway-clone .travertine-pricing-section .hspav,
-body.travertine-driveway-clone .travertine-pricing-section .price-table,
-body.travertine-driveway-clone .travertine-pricing-section .price-table tbody,
-body.travertine-driveway-clone .travertine-pricing-section .price-table tbody tr,
-body.travertine-driveway-clone .travertine-pricing-section .price-table td{
-  background:transparent!important;
-}
 
 /* headings */
 body.travertine-driveway-clone .service-article h2,
