@@ -266,6 +266,20 @@ body.travertine-driveway-clone .faq-section .section-heading{
   padding:18px 22px;border-radius:18px;background:rgba(255,255,255,.90);
 }
 
+
+body.travertine-driveway-clone .travertine-pricing-section .nocatee-price-content,
+body.travertine-driveway-clone .travertine-pricing-section .hspav-card{
+  background:rgba(255,255,255,.50)!important;
+}
+body.travertine-driveway-clone .travertine-pricing-section .nocatee-calculator-column,
+body.travertine-driveway-clone .travertine-pricing-section .hspav,
+body.travertine-driveway-clone .travertine-pricing-section .price-table,
+body.travertine-driveway-clone .travertine-pricing-section .price-table tbody,
+body.travertine-driveway-clone .travertine-pricing-section .price-table tbody tr,
+body.travertine-driveway-clone .travertine-pricing-section .price-table td{
+  background:transparent!important;
+}
+
 /* headings */
 body.travertine-driveway-clone .service-article h2,
 body.travertine-driveway-clone .faq-section h2,
