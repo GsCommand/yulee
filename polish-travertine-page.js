@@ -269,7 +269,7 @@ body.travertine-driveway-clone .faq-section .section-heading{
 
 body.travertine-driveway-clone .travertine-pricing-section .nocatee-price-content,
 body.travertine-driveway-clone .travertine-pricing-section .hspav-card{
-  background:rgba(255,255,255,.50)!important;
+  background:rgba(255,255,255,.25)!important;
 }
 body.travertine-driveway-clone .travertine-pricing-section .nocatee-calculator-column,
 body.travertine-driveway-clone .travertine-pricing-section .hspav,
