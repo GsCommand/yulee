@@ -190,6 +190,15 @@ body.travertine-driveway-clone .process-step:nth-child(6)::before{background:var
 body.travertine-driveway-clone .process-step strong{color:var(--trav-navy)!important}
 
 /* pricing */
+
+body.travertine-driveway-clone .travertine-pricing-section{
+  background:url('/travertine-sealing.jpeg') center center / cover no-repeat!important;
+}
+body.travertine-driveway-clone .travertine-pricing-section>h2,
+body.travertine-driveway-clone .travertine-pricing-section>.eyebrow{
+  width:fit-content;background:rgba(255,255,255,.88);border-radius:10px;padding:6px 10px;
+}
+
 body.travertine-driveway-clone .price-table-wrap{border:1px solid var(--trav-line)!important;border-radius:20px!important;overflow:hidden!important;box-shadow:0 10px 26px rgba(11,45,74,.06)!important;background:#fff}
 body.travertine-driveway-clone .price-table thead th{background:var(--trav-navy)!important;color:#fff!important}
 body.travertine-driveway-clone .price-table tbody tr:nth-child(even){background:#f7fafc!important}
