@@ -258,6 +258,14 @@ body.travertine-driveway-clone .cta-panel h2,body.travertine-driveway-clone .cta
 body.travertine-driveway-clone .cta-panel .eyebrow{color:#aee9fb!important}
 body.travertine-driveway-clone .cta-panel .button.primary{background:var(--trav-water)!important;color:#fff!important;box-shadow:0 12px 28px rgba(57,191,234,.28)!important}
 
+
+body.travertine-driveway-clone .faq-section{
+  background:url('/yulee-natural-stone.jpg') center center / cover no-repeat!important;
+}
+body.travertine-driveway-clone .faq-section .section-heading{
+  padding:18px 22px;border-radius:18px;background:rgba(255,255,255,.90);
+}
+
 /* headings */
 body.travertine-driveway-clone .service-article h2,
 body.travertine-driveway-clone .faq-section h2,
